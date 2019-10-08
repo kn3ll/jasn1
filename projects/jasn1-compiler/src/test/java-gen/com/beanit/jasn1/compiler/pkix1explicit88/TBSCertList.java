@@ -135,6 +135,14 @@ public class TBSCertList implements BerType, Serializable {
 					}
 					revocationDate = new Time();
 					int choiceDecodeLength = revocationDate.decode(is, berTag);
+					if (length.val == -1) {
+						int nextByte1 = is.read();
+						int nextByte2 = is.read();
+						if (nextByte1 != 0 || nextByte2 != 0) {
+							throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+						}
+						subCodeLength += 2;
+					}
 					if (choiceDecodeLength != 0) {
 						subCodeLength += choiceDecodeLength;
 						subCodeLength += berTag.decode(is);
@@ -548,6 +556,14 @@ public class TBSCertList implements BerType, Serializable {
 			}
 			issuer = new Name();
 			int choiceDecodeLength = issuer.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);
@@ -569,6 +585,14 @@ public class TBSCertList implements BerType, Serializable {
 			}
 			thisUpdate = new Time();
 			choiceDecodeLength = thisUpdate.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);
@@ -590,6 +614,14 @@ public class TBSCertList implements BerType, Serializable {
 			}
 			nextUpdate = new Time();
 			choiceDecodeLength = nextUpdate.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);

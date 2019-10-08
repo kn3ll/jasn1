@@ -229,6 +229,14 @@ public class DisableProfileRequest implements BerType, Serializable {
 				subCodeLength += length.decode(is);
 				profileIdentifier = new ProfileIdentifier();
 				int choiceDecodeLength = profileIdentifier.decode(is, null);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+					}
+					subCodeLength += 2;
+				}
 				if (choiceDecodeLength != 0) {
 					subCodeLength += choiceDecodeLength;
 					subCodeLength += berTag.decode(is);

@@ -707,6 +707,14 @@ public class SequenceOfAll implements BerType, Serializable {
 				subCodeLength += length.decode(is);
 				any = new BerAny();
 				int choiceDecodeLength = any.decode(is, null);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+					}
+					subCodeLength += 2;
+				}
 				if (choiceDecodeLength != 0) {
 					subCodeLength += choiceDecodeLength;
 					subCodeLength += berTag.decode(is);
@@ -745,6 +753,14 @@ public class SequenceOfAll implements BerType, Serializable {
 			}
 			myChoice = new MyChoice();
 			int choiceDecodeLength = myChoice.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);

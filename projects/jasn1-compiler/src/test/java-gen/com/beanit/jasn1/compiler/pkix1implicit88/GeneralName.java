@@ -187,9 +187,18 @@ public class GeneralName implements BerType, Serializable {
 		}
 
 		if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 4)) {
-			codeLength += BerLength.skip(is);
+			BerLength length = new BerLength();
+			codeLength += length.decode(is);
 			directoryName = new Name();
 			codeLength += directoryName.decode(is, null);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets.");
+				}
+				codeLength += 2;
+			}
 			return codeLength;
 		}
 

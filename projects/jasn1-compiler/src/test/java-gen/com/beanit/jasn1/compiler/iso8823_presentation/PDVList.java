@@ -101,9 +101,18 @@ public class PDVList implements BerType, Serializable {
 			}
 
 			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
-				codeLength += BerLength.skip(is);
+				BerLength length = new BerLength();
+				codeLength += length.decode(is);
 				singleASN1Type = new BerAny();
 				codeLength += singleASN1Type.decode(is, null);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets.");
+					}
+					codeLength += 2;
+				}
 				return codeLength;
 			}
 
@@ -280,6 +289,14 @@ public class PDVList implements BerType, Serializable {
 			}
 			presentationDataValues = new PresentationDataValues();
 			int choiceDecodeLength = presentationDataValues.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);

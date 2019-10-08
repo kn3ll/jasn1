@@ -1051,6 +1051,14 @@ public class PersonnelRecord implements BerType, Serializable {
 			}
 			test2 = new TestChoice();
 			int choiceDecodeLength = test2.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);
@@ -1072,6 +1080,14 @@ public class PersonnelRecord implements BerType, Serializable {
 			}
 			test3 = new TestChoice();
 			choiceDecodeLength = test3.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);
@@ -1095,6 +1111,14 @@ public class PersonnelRecord implements BerType, Serializable {
 				subCodeLength += length.decode(is);
 				test4 = new TestChoice();
 				choiceDecodeLength = test4.decode(is, null);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+					}
+					subCodeLength += 2;
+				}
 				if (choiceDecodeLength != 0) {
 					subCodeLength += choiceDecodeLength;
 					subCodeLength += berTag.decode(is);
@@ -1119,6 +1143,14 @@ public class PersonnelRecord implements BerType, Serializable {
 				subCodeLength += length.decode(is);
 				test5 = new TestChoice();
 				choiceDecodeLength = test5.decode(is, null);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+					}
+					subCodeLength += 2;
+				}
 				if (choiceDecodeLength != 0) {
 					subCodeLength += choiceDecodeLength;
 					subCodeLength += berTag.decode(is);
@@ -1143,6 +1175,14 @@ public class PersonnelRecord implements BerType, Serializable {
 				subCodeLength += length.decode(is);
 				test6 = new TestChoice();
 				choiceDecodeLength = test6.decode(is, null);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+					}
+					subCodeLength += 2;
+				}
 				if (choiceDecodeLength != 0) {
 					subCodeLength += choiceDecodeLength;
 					subCodeLength += berTag.decode(is);
@@ -1165,6 +1205,14 @@ public class PersonnelRecord implements BerType, Serializable {
 			}
 			employeeNumberZ = new EmployeeNumberZ();
 			choiceDecodeLength = employeeNumberZ.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);

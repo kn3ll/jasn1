@@ -1,6 +1,5 @@
 plugins {
     id("biz.aQute.bnd.builder") version "4.1.0"
-    id("com.diffplug.gradle.spotless") version "3.24.2" apply false
     id("io.codearte.nexus-staging") version "0.20.0"
 }
 
@@ -24,7 +23,6 @@ configure(javaProjects) {
     apply plugin: "maven"
     apply plugin: "signing"
     apply plugin: "biz.aQute.bnd.builder"
-    apply plugin: "com.diffplug.gradle.spotless"
 
     uploadArchives.enabled = false
 
@@ -66,12 +64,6 @@ configure(javaProjects) {
                 version = project.version.replace("-", ".")
                 attributes('Automatic-Module-Name': moduleName)
             }
-        }
-    }
-
-    spotless {
-        java {
-            googleJavaFormat()
         }
     }
 

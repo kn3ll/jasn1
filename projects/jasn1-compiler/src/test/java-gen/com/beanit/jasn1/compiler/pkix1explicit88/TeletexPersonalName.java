@@ -116,82 +116,94 @@ public class TeletexPersonalName implements BerType, Serializable {
 
 		int totalLength = length.val;
 		if (totalLength == -1) {
+			int lastSubCodeLength = 0;
 			subCodeLength += berTag.decode(is);
 
-			if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {
-				int nextByte = is.read();
-				if (nextByte != 0) {
-					if (nextByte == -1) {
-						throw new EOFException("Unexpected end of input stream.");
+			while (true) {
+				if (lastSubCodeLength == subCodeLength) {
+					throw new IOException("Unknown berTag: class:" + berTag.tagClass + " primitive: " + berTag.primitive + " number: " + berTag.tagNumber);
+				}
+				lastSubCodeLength = subCodeLength;
+				if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {
+					int nextByte = is.read();
+					if (nextByte != 0) {
+						if (nextByte == -1) {
+							throw new EOFException("Unexpected end of input stream.");
+						}
+						throw new IOException("Decoded sequence has wrong end of contents octets");
 					}
-					throw new IOException("Decoded sequence has wrong end of contents octets");
+					codeLength += subCodeLength + 1;
+					return codeLength;
 				}
-				codeLength += subCodeLength + 1;
-				return codeLength;
-			}
-			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.PRIMITIVE, 0)) {
-				surname = new BerTeletexString();
-				subCodeLength += surname.decode(is, false);
-				subCodeLength += berTag.decode(is);
-			}
-			if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {
-				int nextByte = is.read();
-				if (nextByte != 0) {
-					if (nextByte == -1) {
-						throw new EOFException("Unexpected end of input stream.");
+				if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.PRIMITIVE, 0)) {
+					surname = new BerTeletexString();
+					subCodeLength += surname.decode(is, false);
+					subCodeLength += berTag.decode(is);
+				}
+				if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {
+					int nextByte = is.read();
+					if (nextByte != 0) {
+						if (nextByte == -1) {
+							throw new EOFException("Unexpected end of input stream.");
+						}
+						throw new IOException("Decoded sequence has wrong end of contents octets");
 					}
-					throw new IOException("Decoded sequence has wrong end of contents octets");
+					codeLength += subCodeLength + 1;
+					return codeLength;
 				}
-				codeLength += subCodeLength + 1;
-				return codeLength;
-			}
-			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.PRIMITIVE, 1)) {
-				givenName = new BerTeletexString();
-				subCodeLength += givenName.decode(is, false);
-				subCodeLength += berTag.decode(is);
-			}
-			if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {
-				int nextByte = is.read();
-				if (nextByte != 0) {
-					if (nextByte == -1) {
-						throw new EOFException("Unexpected end of input stream.");
+				if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.PRIMITIVE, 1)) {
+					givenName = new BerTeletexString();
+					subCodeLength += givenName.decode(is, false);
+					subCodeLength += berTag.decode(is);
+				}
+				if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {
+					int nextByte = is.read();
+					if (nextByte != 0) {
+						if (nextByte == -1) {
+							throw new EOFException("Unexpected end of input stream.");
+						}
+						throw new IOException("Decoded sequence has wrong end of contents octets");
 					}
-					throw new IOException("Decoded sequence has wrong end of contents octets");
+					codeLength += subCodeLength + 1;
+					return codeLength;
 				}
-				codeLength += subCodeLength + 1;
-				return codeLength;
-			}
-			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.PRIMITIVE, 2)) {
-				initials = new BerTeletexString();
-				subCodeLength += initials.decode(is, false);
-				subCodeLength += berTag.decode(is);
-			}
-			if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {
-				int nextByte = is.read();
-				if (nextByte != 0) {
-					if (nextByte == -1) {
-						throw new EOFException("Unexpected end of input stream.");
+				if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.PRIMITIVE, 2)) {
+					initials = new BerTeletexString();
+					subCodeLength += initials.decode(is, false);
+					subCodeLength += berTag.decode(is);
+				}
+				if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {
+					int nextByte = is.read();
+					if (nextByte != 0) {
+						if (nextByte == -1) {
+							throw new EOFException("Unexpected end of input stream.");
+						}
+						throw new IOException("Decoded sequence has wrong end of contents octets");
 					}
-					throw new IOException("Decoded sequence has wrong end of contents octets");
+					codeLength += subCodeLength + 1;
+					return codeLength;
 				}
-				codeLength += subCodeLength + 1;
-				return codeLength;
-			}
-			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.PRIMITIVE, 3)) {
-				generationQualifier = new BerTeletexString();
-				subCodeLength += generationQualifier.decode(is, false);
-				subCodeLength += berTag.decode(is);
-			}
-			int nextByte = is.read();
-			if (berTag.tagNumber != 0 || berTag.tagClass != 0 || berTag.primitive != 0
-			|| nextByte != 0) {
-				if (nextByte == -1) {
-					throw new EOFException("Unexpected end of input stream.");
+				if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.PRIMITIVE, 3)) {
+					generationQualifier = new BerTeletexString();
+					subCodeLength += generationQualifier.decode(is, false);
+					subCodeLength += berTag.decode(is);
 				}
-				throw new IOException("Decoded sequence has wrong end of contents octets");
+				if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {
+					int nextByte = is.read();
+					if (nextByte != 0) {
+						if (nextByte == -1) {
+							throw new EOFException("Unexpected end of input stream.");
+						}
+						throw new IOException("Decoded sequence has wrong end of contents octets");
+					} else {
+						codeLength += subCodeLength + 1;
+						return codeLength;
+					}
+
+				}
+
 			}
-			codeLength += subCodeLength + 1;
-			return codeLength;
+
 		}
 
 		while (subCodeLength < totalLength) {

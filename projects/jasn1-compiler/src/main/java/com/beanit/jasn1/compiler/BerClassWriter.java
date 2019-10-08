@@ -1379,12 +1379,25 @@ public class BerClassWriter {
         write("if (berTag.equals(" + getBerTagParametersString(componentTag) + ")) {");
 
         if (componentTag.type == TagType.EXPLICIT) {
-          write("codeLength += BerLength.skip(is);");
+          write("BerLength length = new BerLength();");
+          write("codeLength += length.decode(is);");
         }
 
         write(getName(componentType) + " = new " + getClassNameOfComponent(componentType) + "();");
 
         write("codeLength += " + getName(componentType) + ".decode(is" + explicitEncoding + ");");
+
+        if (componentTag.type == TagType.EXPLICIT) {
+          write("if (length.val == -1) {");
+          write("int nextByte1 = is.read();");
+          write("int nextByte2 = is.read();");
+
+          write("if (nextByte1 != 0 || nextByte2 != 0) {");
+          write("throw new IOException(\"Decoded sequence has wrong end of contents octets.\");");
+          write("}");
+          write("codeLength += 2;");
+          write("}");
+        }
 
         write("return codeLength;");
 
@@ -2131,9 +2144,23 @@ public class BerClassWriter {
                 + ".decode(is, "
                 + explicitEncoding
                 + ");");
+
+        // sem
+        write("if (length.val == -1) {");
+        write("int nextByte1 = is.read();");
+        write("int nextByte2 = is.read();");
+
+        write("if (nextByte1 != 0 || nextByte2 != 0) {");
+        write("throw new IOException(\"Decoded sequence has wrong end of contents octets. Byte position: \" + (subCodeLength + codeLength));");
+        write("}");
+        write("subCodeLength += 2;");
+        write("}");
+
         if (!isExplicit(componentTag)) {
           initChoiceDecodeLength = "";
         }
+
+
         write("if (choiceDecodeLength != 0) {");
         write("subCodeLength += choiceDecodeLength;");
 
@@ -2187,7 +2214,14 @@ public class BerClassWriter {
   private void writeSetDecodeIndefiniteLenghtPart(List<AsnElementType> componentTypes)
       throws IOException {
     write("if (totalLength == -1) {");
+    write("int lastSubCodeLength = 0;");
     write("subCodeLength += berTag.decode(is);\n");
+    write("while (true) {");
+
+    write("if (lastSubCodeLength == subCodeLength) {");
+    write("throw new IOException(\"Unknown berTag: class:\" + berTag.tagClass + \" primitive: \" + berTag.primitive + \" number: \" + berTag.tagNumber);");
+    write("}");
+    write("lastSubCodeLength = subCodeLength;");
 
     String initChoiceDecodeLength = "int ";
 
@@ -2228,9 +2262,23 @@ public class BerClassWriter {
                 + ".decode(is, "
                 + explicitEncoding
                 + ");");
+
+        // sem
+        write("if (length.val == -1) {");
+        write("int nextByte1 = is.read();");
+        write("int nextByte2 = is.read();");
+
+        write("if (nextByte1 != 0 || nextByte2 != 0) {");
+        write("throw new IOException(\"Decoded sequence has wrong end of contents octets. Byte position: \" + (subCodeLength + codeLength));");
+        write("}");
+        write("subCodeLength += 2;");
+        write("}");
+
         if (!isExplicit(componentTag)) {
           initChoiceDecodeLength = "";
         }
+
+
         write("if (choiceDecodeLength != 0) {");
         write("subCodeLength += choiceDecodeLength;");
 
@@ -2267,17 +2315,20 @@ public class BerClassWriter {
       }
     }
 
+    write("if (berTag.tagNumber == 0 && berTag.tagClass == 0 && berTag.primitive == 0) {");
     write("int nextByte = is.read();");
-    write("if (berTag.tagNumber != 0 || berTag.tagClass != 0 || berTag.primitive != 0");
-    write("|| nextByte != 0) {");
+    write("if (nextByte != 0) {");
     write("if (nextByte == -1) {");
     write("throw new EOFException(\"Unexpected end of input stream.\");");
     write("}");
     write("throw new IOException(\"Decoded sequence has wrong end of contents octets\");");
-    write("}");
+    write("} else {");
     write("codeLength += subCodeLength + 1;");
 
     write("return codeLength;");
+    write("}\n");
+    write("}\n");
+    write("}\n");
     write("}\n");
   }
 

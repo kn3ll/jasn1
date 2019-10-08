@@ -238,16 +238,34 @@ public class SequenceNameClashTest implements BerType, Serializable {
 			}
 
 			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 2)) {
-				codeLength += BerLength.skip(is);
+				BerLength length = new BerLength();
+				codeLength += length.decode(is);
 				myInteger = new com.beanit.jasn1.compiler.various_tests.UntaggedInteger();
 				codeLength += myInteger.decode(is, true);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets.");
+					}
+					codeLength += 2;
+				}
 				return codeLength;
 			}
 
 			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 3)) {
-				codeLength += BerLength.skip(is);
+				BerLength length = new BerLength();
+				codeLength += length.decode(is);
 				myBoolean = new BerBoolean();
 				codeLength += myBoolean.decode(is, true);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets.");
+					}
+					codeLength += 2;
+				}
 				return codeLength;
 			}
 
@@ -362,16 +380,34 @@ public class SequenceNameClashTest implements BerType, Serializable {
 				}
 
 				if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 6)) {
-					codeLength += BerLength.skip(is);
+					BerLength length = new BerLength();
+					codeLength += length.decode(is);
 					myInteger = new com.beanit.jasn1.compiler.various_tests.UntaggedInteger();
 					codeLength += myInteger.decode(is, true);
+					if (length.val == -1) {
+						int nextByte1 = is.read();
+						int nextByte2 = is.read();
+						if (nextByte1 != 0 || nextByte2 != 0) {
+							throw new IOException("Decoded sequence has wrong end of contents octets.");
+						}
+						codeLength += 2;
+					}
 					return codeLength;
 				}
 
 				if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 7)) {
-					codeLength += BerLength.skip(is);
+					BerLength length = new BerLength();
+					codeLength += length.decode(is);
 					myBoolean = new BerBoolean();
 					codeLength += myBoolean.decode(is, true);
+					if (length.val == -1) {
+						int nextByte1 = is.read();
+						int nextByte2 = is.read();
+						if (nextByte1 != 0 || nextByte2 != 0) {
+							throw new IOException("Decoded sequence has wrong end of contents octets.");
+						}
+						codeLength += 2;
+					}
 					return codeLength;
 				}
 
@@ -848,30 +884,66 @@ public class SequenceNameClashTest implements BerType, Serializable {
 			}
 
 			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 4)) {
-				codeLength += BerLength.skip(is);
+				BerLength length = new BerLength();
+				codeLength += length.decode(is);
 				myInteger = new com.beanit.jasn1.compiler.various_tests.UntaggedInteger();
 				codeLength += myInteger.decode(is, true);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets.");
+					}
+					codeLength += 2;
+				}
 				return codeLength;
 			}
 
 			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 5)) {
-				codeLength += BerLength.skip(is);
+				BerLength length = new BerLength();
+				codeLength += length.decode(is);
 				myChoice2 = new MyChoice2();
 				codeLength += myChoice2.decode(is, null);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets.");
+					}
+					codeLength += 2;
+				}
 				return codeLength;
 			}
 
 			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 8)) {
-				codeLength += BerLength.skip(is);
+				BerLength length = new BerLength();
+				codeLength += length.decode(is);
 				mySequence = new MySequence();
 				codeLength += mySequence.decode(is, true);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets.");
+					}
+					codeLength += 2;
+				}
 				return codeLength;
 			}
 
 			if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
-				codeLength += BerLength.skip(is);
+				BerLength length = new BerLength();
+				codeLength += length.decode(is);
 				myseqof = new Myseqof();
 				codeLength += myseqof.decode(is, true);
+				if (length.val == -1) {
+					int nextByte1 = is.read();
+					int nextByte2 = is.read();
+					if (nextByte1 != 0 || nextByte2 != 0) {
+						throw new IOException("Decoded sequence has wrong end of contents octets.");
+					}
+					codeLength += 2;
+				}
 				return codeLength;
 			}
 
@@ -1252,6 +1324,14 @@ public class SequenceNameClashTest implements BerType, Serializable {
 			}
 			untaggedInteger = new UntaggedInteger();
 			int choiceDecodeLength = untaggedInteger.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);
@@ -1273,6 +1353,14 @@ public class SequenceNameClashTest implements BerType, Serializable {
 			}
 			myChoice = new MyChoice();
 			choiceDecodeLength = myChoice.decode(is, berTag);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets. Byte position: " + (subCodeLength + codeLength));
+				}
+				subCodeLength += 2;
+			}
 			if (choiceDecodeLength != 0) {
 				subCodeLength += choiceDecodeLength;
 				subCodeLength += berTag.decode(is);

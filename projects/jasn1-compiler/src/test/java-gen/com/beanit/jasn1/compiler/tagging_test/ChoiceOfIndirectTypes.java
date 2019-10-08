@@ -344,23 +344,50 @@ public class ChoiceOfIndirectTypes implements BerType, Serializable {
 		}
 
 		if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
-			codeLength += BerLength.skip(is);
+			BerLength length = new BerLength();
+			codeLength += length.decode(is);
 			explicitlyTaggedInt = new UntaggedInteger();
 			codeLength += explicitlyTaggedInt.decode(is, true);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets.");
+				}
+				codeLength += 2;
+			}
 			return codeLength;
 		}
 
 		if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 11)) {
-			codeLength += BerLength.skip(is);
+			BerLength length = new BerLength();
+			codeLength += length.decode(is);
 			explicitlyTaggedInt2 = new ExplicitlyTaggedInteger();
 			codeLength += explicitlyTaggedInt2.decode(is, true);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets.");
+				}
+				codeLength += 2;
+			}
 			return codeLength;
 		}
 
 		if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 21)) {
-			codeLength += BerLength.skip(is);
+			BerLength length = new BerLength();
+			codeLength += length.decode(is);
 			explicitlyTaggedInt3 = new ImplicitlyTaggedInteger();
 			codeLength += explicitlyTaggedInt3.decode(is, true);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets.");
+				}
+				codeLength += 2;
+			}
 			return codeLength;
 		}
 
@@ -398,9 +425,18 @@ public class ChoiceOfIndirectTypes implements BerType, Serializable {
 		}
 
 		if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 5)) {
-			codeLength += BerLength.skip(is);
+			BerLength length = new BerLength();
+			codeLength += length.decode(is);
 			taggedChoice = new UntaggedChoice();
 			codeLength += taggedChoice.decode(is, null);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets.");
+				}
+				codeLength += 2;
+			}
 			return codeLength;
 		}
 
@@ -417,9 +453,18 @@ public class ChoiceOfIndirectTypes implements BerType, Serializable {
 		}
 
 		if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 8)) {
-			codeLength += BerLength.skip(is);
+			BerLength length = new BerLength();
+			codeLength += length.decode(is);
 			taggedAny = new UntaggedAny();
 			codeLength += taggedAny.decode(is, null);
+			if (length.val == -1) {
+				int nextByte1 = is.read();
+				int nextByte2 = is.read();
+				if (nextByte1 != 0 || nextByte2 != 0) {
+					throw new IOException("Decoded sequence has wrong end of contents octets.");
+				}
+				codeLength += 2;
+			}
 			return codeLength;
 		}
 
