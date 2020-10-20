@@ -2492,8 +2492,8 @@ public class BerClassWriter {
     write("}");
     write("}");
 
-    // void setField(BerType value, String fieldName);
-    write("public void setField(BerType value, String fieldName) {");
+    // void setField(String fieldName, BerType value);
+    write("public void setField(String fieldName, BerType value) {");
     write("switch(fieldName) {");
     for (AsnElementType element : componentTypes) {
       String variableName = cleanUpName(element.name);
