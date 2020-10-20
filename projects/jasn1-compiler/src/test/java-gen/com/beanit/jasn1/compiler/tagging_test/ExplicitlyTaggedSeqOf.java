@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ExplicitlyTaggedSeqOf implements BerType, Serializable {
+public class ExplicitlyTaggedSeqOf implements BerSequenceOf, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -42,6 +44,12 @@ public class ExplicitlyTaggedSeqOf implements BerType, Serializable {
 		return seqOf;
 	}
 
+	public List<? extends BerType> getSeqOf() {
+		return seqOf;
+	}
+	public Class<? extends BerType> getSeqOfElementClass() {
+		return BerInteger.class;
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEUSIM implements BerType, Serializable {
+public class PEUSIM implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -89,6 +91,211 @@ public class PEUSIM implements BerType, Serializable {
 		this.efEpsnsc = efEpsnsc;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "usim-header":
+				return usimHeader;
+			case "templateID":
+				return templateID;
+			case "adf-usim":
+				return adfUsim;
+			case "ef-imsi":
+				return efImsi;
+			case "ef-arr":
+				return efArr;
+			case "ef-keys":
+				return efKeys;
+			case "ef-keysPS":
+				return efKeysPS;
+			case "ef-hpplmn":
+				return efHpplmn;
+			case "ef-ust":
+				return efUst;
+			case "ef-fdn":
+				return efFdn;
+			case "ef-sms":
+				return efSms;
+			case "ef-smsp":
+				return efSmsp;
+			case "ef-smss":
+				return efSmss;
+			case "ef-spn":
+				return efSpn;
+			case "ef-est":
+				return efEst;
+			case "ef-start-hfn":
+				return efStartHfn;
+			case "ef-threshold":
+				return efThreshold;
+			case "ef-psloci":
+				return efPsloci;
+			case "ef-acc":
+				return efAcc;
+			case "ef-fplmn":
+				return efFplmn;
+			case "ef-loci":
+				return efLoci;
+			case "ef-ad":
+				return efAd;
+			case "ef-ecc":
+				return efEcc;
+			case "ef-netpar":
+				return efNetpar;
+			case "ef-epsloci":
+				return efEpsloci;
+			case "ef-epsnsc":
+				return efEpsnsc;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "usim-header":
+				return PEHeader.class;
+			case "templateID":
+				return BerObjectIdentifier.class;
+			case "adf-usim":
+				return File.class;
+			case "ef-imsi":
+				return File.class;
+			case "ef-arr":
+				return File.class;
+			case "ef-keys":
+				return File.class;
+			case "ef-keysPS":
+				return File.class;
+			case "ef-hpplmn":
+				return File.class;
+			case "ef-ust":
+				return File.class;
+			case "ef-fdn":
+				return File.class;
+			case "ef-sms":
+				return File.class;
+			case "ef-smsp":
+				return File.class;
+			case "ef-smss":
+				return File.class;
+			case "ef-spn":
+				return File.class;
+			case "ef-est":
+				return File.class;
+			case "ef-start-hfn":
+				return File.class;
+			case "ef-threshold":
+				return File.class;
+			case "ef-psloci":
+				return File.class;
+			case "ef-acc":
+				return File.class;
+			case "ef-fplmn":
+				return File.class;
+			case "ef-loci":
+				return File.class;
+			case "ef-ad":
+				return File.class;
+			case "ef-ecc":
+				return File.class;
+			case "ef-netpar":
+				return File.class;
+			case "ef-epsloci":
+				return File.class;
+			case "ef-epsnsc":
+				return File.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "usim-header":
+				usimHeader = (PEHeader) value;
+				break;
+			case "templateID":
+				templateID = (BerObjectIdentifier) value;
+				break;
+			case "adf-usim":
+				adfUsim = (File) value;
+				break;
+			case "ef-imsi":
+				efImsi = (File) value;
+				break;
+			case "ef-arr":
+				efArr = (File) value;
+				break;
+			case "ef-keys":
+				efKeys = (File) value;
+				break;
+			case "ef-keysPS":
+				efKeysPS = (File) value;
+				break;
+			case "ef-hpplmn":
+				efHpplmn = (File) value;
+				break;
+			case "ef-ust":
+				efUst = (File) value;
+				break;
+			case "ef-fdn":
+				efFdn = (File) value;
+				break;
+			case "ef-sms":
+				efSms = (File) value;
+				break;
+			case "ef-smsp":
+				efSmsp = (File) value;
+				break;
+			case "ef-smss":
+				efSmss = (File) value;
+				break;
+			case "ef-spn":
+				efSpn = (File) value;
+				break;
+			case "ef-est":
+				efEst = (File) value;
+				break;
+			case "ef-start-hfn":
+				efStartHfn = (File) value;
+				break;
+			case "ef-threshold":
+				efThreshold = (File) value;
+				break;
+			case "ef-psloci":
+				efPsloci = (File) value;
+				break;
+			case "ef-acc":
+				efAcc = (File) value;
+				break;
+			case "ef-fplmn":
+				efFplmn = (File) value;
+				break;
+			case "ef-loci":
+				efLoci = (File) value;
+				break;
+			case "ef-ad":
+				efAd = (File) value;
+				break;
+			case "ef-ecc":
+				efEcc = (File) value;
+				break;
+			case "ef-netpar":
+				efNetpar = (File) value;
+				break;
+			case "ef-epsloci":
+				efEpsloci = (File) value;
+				break;
+			case "ef-epsnsc":
+				efEpsnsc = (File) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

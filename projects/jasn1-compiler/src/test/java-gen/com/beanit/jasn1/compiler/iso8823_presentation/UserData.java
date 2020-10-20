@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class UserData implements BerType, Serializable {
+public class UserData implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +41,43 @@ public class UserData implements BerType, Serializable {
 		this.fullyEncodedData = fullyEncodedData;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "simply_encoded_data":
+				return simplyEncodedData;
+			case "fully_encoded_data":
+				return fullyEncodedData;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "simply_encoded_data":
+				return SimplyEncodedData.class;
+			case "fully_encoded_data":
+				return FullyEncodedData.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "simply_encoded_data":
+				simplyEncodedData = (SimplyEncodedData) value;
+				break;
+			case "fully_encoded_data":
+				fullyEncodedData = (FullyEncodedData) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

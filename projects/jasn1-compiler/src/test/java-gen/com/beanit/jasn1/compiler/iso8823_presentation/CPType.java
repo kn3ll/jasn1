@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class CPType implements BerType, Serializable {
+public class CPType implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class NormalModeParameters implements BerType, Serializable {
+	public static class NormalModeParameters implements BerSequenceSet, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -57,6 +59,85 @@ public class CPType implements BerType, Serializable {
 			this.userData = userData;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "protocol_version":
+					return protocolVersion;
+				case "calling_presentation_selector":
+					return callingPresentationSelector;
+				case "called_presentation_selector":
+					return calledPresentationSelector;
+				case "presentation_context_definition_list":
+					return presentationContextDefinitionList;
+				case "default_context_name":
+					return defaultContextName;
+				case "presentation_requirements":
+					return presentationRequirements;
+				case "user_session_requirements":
+					return userSessionRequirements;
+				case "user_data":
+					return userData;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "protocol_version":
+					return ProtocolVersion.class;
+				case "calling_presentation_selector":
+					return CallingPresentationSelector.class;
+				case "called_presentation_selector":
+					return CalledPresentationSelector.class;
+				case "presentation_context_definition_list":
+					return PresentationContextDefinitionList.class;
+				case "default_context_name":
+					return DefaultContextName.class;
+				case "presentation_requirements":
+					return PresentationRequirements.class;
+				case "user_session_requirements":
+					return UserSessionRequirements.class;
+				case "user_data":
+					return UserData.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "protocol_version":
+					protocolVersion = (ProtocolVersion) value;
+					break;
+				case "calling_presentation_selector":
+					callingPresentationSelector = (CallingPresentationSelector) value;
+					break;
+				case "called_presentation_selector":
+					calledPresentationSelector = (CalledPresentationSelector) value;
+					break;
+				case "presentation_context_definition_list":
+					presentationContextDefinitionList = (PresentationContextDefinitionList) value;
+					break;
+				case "default_context_name":
+					defaultContextName = (DefaultContextName) value;
+					break;
+				case "presentation_requirements":
+					presentationRequirements = (PresentationRequirements) value;
+					break;
+				case "user_session_requirements":
+					userSessionRequirements = (UserSessionRequirements) value;
+					break;
+				case "user_data":
+					userData = (UserData) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -522,6 +603,43 @@ public class CPType implements BerType, Serializable {
 		this.normalModeParameters = normalModeParameters;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "mode_selector":
+				return modeSelector;
+			case "normal_mode_parameters":
+				return normalModeParameters;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "mode_selector":
+				return ModeSelector.class;
+			case "normal_mode_parameters":
+				return NormalModeParameters.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "mode_selector":
+				modeSelector = (ModeSelector) value;
+				break;
+			case "normal_mode_parameters":
+				normalModeParameters = (NormalModeParameters) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

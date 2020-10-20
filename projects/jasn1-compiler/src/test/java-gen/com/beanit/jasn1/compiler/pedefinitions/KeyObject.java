@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,15 +21,15 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class KeyObject implements BerType, Serializable {
+public class KeyObject implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class KeyCompontents implements BerType, Serializable {
+	public static class KeyCompontents implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
-		public static class SEQUENCE implements BerType, Serializable {
+		public static class SEQUENCE implements BerSequenceSet, Serializable {
 
 			private static final long serialVersionUID = 1L;
 
@@ -51,6 +53,50 @@ public class KeyObject implements BerType, Serializable {
 				this.macLength = macLength;
 			}
 
+			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			));
+			public List<String> getFields() {
+				return FIELDS;
+			}
+			public BerType getField(String fieldName) {
+				switch(fieldName) {
+					case "keyType":
+						return keyType;
+					case "keyData":
+						return keyData;
+					case "macLength":
+						return macLength;
+					default:
+						return null;
+				}
+			}
+			public Class<? extends BerType> getFieldClass(String fieldName) {
+				switch(fieldName) {
+					case "keyType":
+						return BerOctetString.class;
+					case "keyData":
+						return BerOctetString.class;
+					case "macLength":
+						return UInt8.class;
+					default:
+						return null;
+				}
+			}
+			public void setField(String fieldName, BerType value) {
+				switch(fieldName) {
+					case "keyType":
+						keyType = (BerOctetString) value;
+						break;
+					case "keyData":
+						keyData = (BerOctetString) value;
+						break;
+					case "macLength":
+						macLength = (UInt8) value;
+						break;
+					default:
+						throw new IllegalArgumentException("Unknown field " + fieldName);
+				}
+			}
 			public int encode(OutputStream reverseOS) throws IOException {
 				return encode(reverseOS, true);
 			}
@@ -281,6 +327,12 @@ public class KeyObject implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return SEQUENCE.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -432,6 +484,71 @@ public class KeyObject implements BerType, Serializable {
 		this.keyCompontents = keyCompontents;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "keyUsageQualifier":
+				return keyUsageQualifier;
+			case "keyAccess":
+				return keyAccess;
+			case "keyIdentifier":
+				return keyIdentifier;
+			case "keyVersionNumber":
+				return keyVersionNumber;
+			case "keyCounterValue":
+				return keyCounterValue;
+			case "keyCompontents":
+				return keyCompontents;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "keyUsageQualifier":
+				return BerOctetString.class;
+			case "keyAccess":
+				return BerOctetString.class;
+			case "keyIdentifier":
+				return BerOctetString.class;
+			case "keyVersionNumber":
+				return BerOctetString.class;
+			case "keyCounterValue":
+				return BerOctetString.class;
+			case "keyCompontents":
+				return KeyCompontents.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "keyUsageQualifier":
+				keyUsageQualifier = (BerOctetString) value;
+				break;
+			case "keyAccess":
+				keyAccess = (BerOctetString) value;
+				break;
+			case "keyIdentifier":
+				keyIdentifier = (BerOctetString) value;
+				break;
+			case "keyVersionNumber":
+				keyVersionNumber = (BerOctetString) value;
+				break;
+			case "keyCounterValue":
+				keyCounterValue = (BerOctetString) value;
+				break;
+			case "keyCompontents":
+				keyCompontents = (KeyCompontents) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

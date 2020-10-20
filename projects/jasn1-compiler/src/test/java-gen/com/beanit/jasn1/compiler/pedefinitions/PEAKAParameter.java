@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEAKAParameter implements BerType, Serializable {
+public class PEAKAParameter implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class AlgoConfiguration implements BerType, Serializable {
+	public static class AlgoConfiguration implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,43 @@ public class PEAKAParameter implements BerType, Serializable {
 			this.algoParameter = algoParameter;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "mappingParameter":
+					return mappingParameter;
+				case "algoParameter":
+					return algoParameter;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "mappingParameter":
+					return MappingParameter.class;
+				case "algoParameter":
+					return AlgoParameter.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "mappingParameter":
+					mappingParameter = (MappingParameter) value;
+					break;
+				case "algoParameter":
+					algoParameter = (AlgoParameter) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -136,7 +175,7 @@ public class PEAKAParameter implements BerType, Serializable {
 
 	}
 
-	public static class SqnInit implements BerType, Serializable {
+	public static class SqnInit implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -156,6 +195,12 @@ public class PEAKAParameter implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return BerOctetString.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -307,6 +352,71 @@ public class PEAKAParameter implements BerType, Serializable {
 		this.sqnInit = sqnInit;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "aka-header":
+				return akaHeader;
+			case "algoConfiguration":
+				return algoConfiguration;
+			case "sqnOptions":
+				return sqnOptions;
+			case "sqnDelta":
+				return sqnDelta;
+			case "sqnAgeLimit":
+				return sqnAgeLimit;
+			case "sqnInit":
+				return sqnInit;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "aka-header":
+				return PEHeader.class;
+			case "algoConfiguration":
+				return AlgoConfiguration.class;
+			case "sqnOptions":
+				return BerOctetString.class;
+			case "sqnDelta":
+				return BerOctetString.class;
+			case "sqnAgeLimit":
+				return BerOctetString.class;
+			case "sqnInit":
+				return SqnInit.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "aka-header":
+				akaHeader = (PEHeader) value;
+				break;
+			case "algoConfiguration":
+				algoConfiguration = (AlgoConfiguration) value;
+				break;
+			case "sqnOptions":
+				sqnOptions = (BerOctetString) value;
+				break;
+			case "sqnDelta":
+				sqnDelta = (BerOctetString) value;
+				break;
+			case "sqnAgeLimit":
+				sqnAgeLimit = (BerOctetString) value;
+				break;
+			case "sqnInit":
+				sqnInit = (SqnInit) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

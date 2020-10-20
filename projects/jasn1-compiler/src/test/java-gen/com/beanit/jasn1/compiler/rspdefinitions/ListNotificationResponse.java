@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,14 +25,14 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class ListNotificationResponse implements BerType, Serializable {
+public class ListNotificationResponse implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public byte[] code = null;
 	public static final BerTag tag = new BerTag(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 40);
 
-	public static class NotificationMetadataList implements BerType, Serializable {
+	public static class NotificationMetadataList implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -50,6 +52,12 @@ public class ListNotificationResponse implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return NotificationMetadata.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -190,6 +198,43 @@ public class ListNotificationResponse implements BerType, Serializable {
 		this.listNotificationsResultError = listNotificationsResultError;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "notificationMetadataList":
+				return notificationMetadataList;
+			case "listNotificationsResultError":
+				return listNotificationsResultError;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "notificationMetadataList":
+				return NotificationMetadataList.class;
+			case "listNotificationsResultError":
+				return BerInteger.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "notificationMetadataList":
+				notificationMetadataList = (NotificationMetadataList) value;
+				break;
+			case "listNotificationsResultError":
+				listNotificationsResultError = (BerInteger) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

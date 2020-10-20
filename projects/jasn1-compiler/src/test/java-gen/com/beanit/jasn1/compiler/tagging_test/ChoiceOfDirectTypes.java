@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,12 +21,12 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ChoiceOfDirectTypes implements BerType, Serializable {
+public class ChoiceOfDirectTypes implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public byte[] code = null;
-	public static class UntaggedChoice implements BerType, Serializable {
+	public static class UntaggedChoice implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -55,6 +57,43 @@ public class ChoiceOfDirectTypes implements BerType, Serializable {
 			return myBoolean;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return myInteger;
+				case "myBoolean":
+					return myBoolean;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return BerInteger.class;
+				case "myBoolean":
+					return BerBoolean.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "myInteger":
+					myInteger = (BerInteger) value;
+					break;
+				case "myBoolean":
+					myBoolean = (BerBoolean) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -146,7 +185,7 @@ public class ChoiceOfDirectTypes implements BerType, Serializable {
 
 	}
 
-	public static class TaggedChoice implements BerType, Serializable {
+	public static class TaggedChoice implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -177,6 +216,43 @@ public class ChoiceOfDirectTypes implements BerType, Serializable {
 			return myBoolean;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return myInteger;
+				case "myBoolean":
+					return myBoolean;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return BerInteger.class;
+				case "myBoolean":
+					return BerBoolean.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "myInteger":
+					myInteger = (BerInteger) value;
+					break;
+				case "myBoolean":
+					myBoolean = (BerBoolean) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -268,7 +344,7 @@ public class ChoiceOfDirectTypes implements BerType, Serializable {
 
 	}
 
-	public static class UntaggedChoice2 implements BerType, Serializable {
+	public static class UntaggedChoice2 implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -299,6 +375,43 @@ public class ChoiceOfDirectTypes implements BerType, Serializable {
 			return myBoolean;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return myInteger;
+				case "myBoolean":
+					return myBoolean;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return BerInteger.class;
+				case "myBoolean":
+					return BerBoolean.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "myInteger":
+					myInteger = (BerInteger) value;
+					break;
+				case "myBoolean":
+					myBoolean = (BerBoolean) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -461,6 +574,78 @@ public class ChoiceOfDirectTypes implements BerType, Serializable {
 		return untaggedChoice2;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "untaggedInt":
+				return untaggedInt;
+			case "explicitlyTaggedInt":
+				return explicitlyTaggedInt;
+			case "implicitlyTaggedInt":
+				return implicitlyTaggedInt;
+			case "untaggedChoice":
+				return untaggedChoice;
+			case "taggedChoice":
+				return taggedChoice;
+			case "taggedAny":
+				return taggedAny;
+			case "untaggedChoice2":
+				return untaggedChoice2;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "untaggedInt":
+				return BerInteger.class;
+			case "explicitlyTaggedInt":
+				return BerInteger.class;
+			case "implicitlyTaggedInt":
+				return BerInteger.class;
+			case "untaggedChoice":
+				return UntaggedChoice.class;
+			case "taggedChoice":
+				return TaggedChoice.class;
+			case "taggedAny":
+				return BerAny.class;
+			case "untaggedChoice2":
+				return UntaggedChoice2.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "untaggedInt":
+				untaggedInt = (BerInteger) value;
+				break;
+			case "explicitlyTaggedInt":
+				explicitlyTaggedInt = (BerInteger) value;
+				break;
+			case "implicitlyTaggedInt":
+				implicitlyTaggedInt = (BerInteger) value;
+				break;
+			case "untaggedChoice":
+				untaggedChoice = (UntaggedChoice) value;
+				break;
+			case "taggedChoice":
+				taggedChoice = (TaggedChoice) value;
+				break;
+			case "taggedAny":
+				taggedAny = (BerAny) value;
+				break;
+			case "untaggedChoice2":
+				untaggedChoice2 = (UntaggedChoice2) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

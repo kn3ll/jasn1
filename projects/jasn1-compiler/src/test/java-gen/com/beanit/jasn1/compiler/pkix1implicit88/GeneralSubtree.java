@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -25,7 +27,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.Name;
 import com.beanit.jasn1.compiler.pkix1explicit88.ORAddress;
 import com.beanit.jasn1.compiler.pkix1explicit88.RelativeDistinguishedName;
 
-public class GeneralSubtree implements BerType, Serializable {
+public class GeneralSubtree implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -49,6 +51,50 @@ public class GeneralSubtree implements BerType, Serializable {
 		this.maximum = maximum;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "base":
+				return base;
+			case "minimum":
+				return minimum;
+			case "maximum":
+				return maximum;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "base":
+				return GeneralName.class;
+			case "minimum":
+				return BaseDistance.class;
+			case "maximum":
+				return BaseDistance.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "base":
+				base = (GeneralName) value;
+				break;
+			case "minimum":
+				minimum = (BaseDistance) value;
+				break;
+			case "maximum":
+				maximum = (BaseDistance) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

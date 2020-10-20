@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,12 +21,12 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class MyChoice2 implements BerType, Serializable {
+public class MyChoice2 implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public byte[] code = null;
-	public static class Element1 implements BerType, Serializable {
+	public static class Element1 implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -42,6 +44,36 @@ public class MyChoice2 implements BerType, Serializable {
 			this.test = test;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "test":
+					return test;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "test":
+					return BerInteger.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "test":
+					test = (BerInteger) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -111,7 +143,7 @@ public class MyChoice2 implements BerType, Serializable {
 
 	}
 
-	public static class Element4 implements BerType, Serializable {
+	public static class Element4 implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -131,6 +163,43 @@ public class MyChoice2 implements BerType, Serializable {
 			this.test2 = test2;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "test":
+					return test;
+				case "test2":
+					return test2;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "test":
+					return BerInteger.class;
+				case "test2":
+					return BerBoolean.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "test":
+					test = (BerInteger) value;
+					break;
+				case "test2":
+					test2 = (BerBoolean) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -235,6 +304,57 @@ public class MyChoice2 implements BerType, Serializable {
 		this.element4 = element4;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "element1":
+				return element1;
+			case "element2":
+				return element2;
+			case "myboolean":
+				return myboolean;
+			case "element4":
+				return element4;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "element1":
+				return Element1.class;
+			case "element2":
+				return BerInteger.class;
+			case "myboolean":
+				return BerBoolean.class;
+			case "element4":
+				return Element4.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "element1":
+				element1 = (Element1) value;
+				break;
+			case "element2":
+				element2 = (BerInteger) value;
+				break;
+			case "myboolean":
+				myboolean = (BerBoolean) value;
+				break;
+			case "element4":
+				element4 = (Element4) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

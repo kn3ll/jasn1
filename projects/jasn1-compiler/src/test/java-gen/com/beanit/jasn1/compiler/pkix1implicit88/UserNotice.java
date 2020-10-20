@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -25,7 +27,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.Name;
 import com.beanit.jasn1.compiler.pkix1explicit88.ORAddress;
 import com.beanit.jasn1.compiler.pkix1explicit88.RelativeDistinguishedName;
 
-public class UserNotice implements BerType, Serializable {
+public class UserNotice implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,43 @@ public class UserNotice implements BerType, Serializable {
 		this.explicitText = explicitText;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "noticeRef":
+				return noticeRef;
+			case "explicitText":
+				return explicitText;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "noticeRef":
+				return NoticeReference.class;
+			case "explicitText":
+				return DisplayText.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "noticeRef":
+				noticeRef = (NoticeReference) value;
+				break;
+			case "explicitText":
+				explicitText = (DisplayText) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

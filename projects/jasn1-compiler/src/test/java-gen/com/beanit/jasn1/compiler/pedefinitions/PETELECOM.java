@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PETELECOM implements BerType, Serializable {
+public class PETELECOM implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -117,6 +119,309 @@ public class PETELECOM implements BerType, Serializable {
 		this.efMmssmode = efMmssmode;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "telecom-header":
+				return telecomHeader;
+			case "templateID":
+				return templateID;
+			case "df-telecom":
+				return dfTelecom;
+			case "ef-arr":
+				return efArr;
+			case "ef-rma":
+				return efRma;
+			case "ef-sume":
+				return efSume;
+			case "ef-ice-dn":
+				return efIceDn;
+			case "ef-ice-ff":
+				return efIceFf;
+			case "ef-psismsc":
+				return efPsismsc;
+			case "df-graphics":
+				return dfGraphics;
+			case "ef-img":
+				return efImg;
+			case "ef-iidf":
+				return efIidf;
+			case "ef-ice-graphics":
+				return efIceGraphics;
+			case "ef-launch-scws":
+				return efLaunchScws;
+			case "ef-icon":
+				return efIcon;
+			case "df-phonebook":
+				return dfPhonebook;
+			case "ef-pbr":
+				return efPbr;
+			case "ef-ext1":
+				return efExt1;
+			case "ef-aas":
+				return efAas;
+			case "ef-gas":
+				return efGas;
+			case "ef-psc":
+				return efPsc;
+			case "ef-cc":
+				return efCc;
+			case "ef-puid":
+				return efPuid;
+			case "ef-iap":
+				return efIap;
+			case "ef-adn":
+				return efAdn;
+			case "ef-pbc":
+				return efPbc;
+			case "ef-anr":
+				return efAnr;
+			case "ef-puri":
+				return efPuri;
+			case "ef-email":
+				return efEmail;
+			case "ef-sne":
+				return efSne;
+			case "ef-uid":
+				return efUid;
+			case "ef-grp":
+				return efGrp;
+			case "ef-ccp1":
+				return efCcp1;
+			case "df-multimedia":
+				return dfMultimedia;
+			case "ef-mml":
+				return efMml;
+			case "ef-mmdf":
+				return efMmdf;
+			case "df-mmss":
+				return dfMmss;
+			case "ef-mlpl":
+				return efMlpl;
+			case "ef-mspl":
+				return efMspl;
+			case "ef-mmssmode":
+				return efMmssmode;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "telecom-header":
+				return PEHeader.class;
+			case "templateID":
+				return BerObjectIdentifier.class;
+			case "df-telecom":
+				return File.class;
+			case "ef-arr":
+				return File.class;
+			case "ef-rma":
+				return File.class;
+			case "ef-sume":
+				return File.class;
+			case "ef-ice-dn":
+				return File.class;
+			case "ef-ice-ff":
+				return File.class;
+			case "ef-psismsc":
+				return File.class;
+			case "df-graphics":
+				return File.class;
+			case "ef-img":
+				return File.class;
+			case "ef-iidf":
+				return File.class;
+			case "ef-ice-graphics":
+				return File.class;
+			case "ef-launch-scws":
+				return File.class;
+			case "ef-icon":
+				return File.class;
+			case "df-phonebook":
+				return File.class;
+			case "ef-pbr":
+				return File.class;
+			case "ef-ext1":
+				return File.class;
+			case "ef-aas":
+				return File.class;
+			case "ef-gas":
+				return File.class;
+			case "ef-psc":
+				return File.class;
+			case "ef-cc":
+				return File.class;
+			case "ef-puid":
+				return File.class;
+			case "ef-iap":
+				return File.class;
+			case "ef-adn":
+				return File.class;
+			case "ef-pbc":
+				return File.class;
+			case "ef-anr":
+				return File.class;
+			case "ef-puri":
+				return File.class;
+			case "ef-email":
+				return File.class;
+			case "ef-sne":
+				return File.class;
+			case "ef-uid":
+				return File.class;
+			case "ef-grp":
+				return File.class;
+			case "ef-ccp1":
+				return File.class;
+			case "df-multimedia":
+				return File.class;
+			case "ef-mml":
+				return File.class;
+			case "ef-mmdf":
+				return File.class;
+			case "df-mmss":
+				return File.class;
+			case "ef-mlpl":
+				return File.class;
+			case "ef-mspl":
+				return File.class;
+			case "ef-mmssmode":
+				return File.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "telecom-header":
+				telecomHeader = (PEHeader) value;
+				break;
+			case "templateID":
+				templateID = (BerObjectIdentifier) value;
+				break;
+			case "df-telecom":
+				dfTelecom = (File) value;
+				break;
+			case "ef-arr":
+				efArr = (File) value;
+				break;
+			case "ef-rma":
+				efRma = (File) value;
+				break;
+			case "ef-sume":
+				efSume = (File) value;
+				break;
+			case "ef-ice-dn":
+				efIceDn = (File) value;
+				break;
+			case "ef-ice-ff":
+				efIceFf = (File) value;
+				break;
+			case "ef-psismsc":
+				efPsismsc = (File) value;
+				break;
+			case "df-graphics":
+				dfGraphics = (File) value;
+				break;
+			case "ef-img":
+				efImg = (File) value;
+				break;
+			case "ef-iidf":
+				efIidf = (File) value;
+				break;
+			case "ef-ice-graphics":
+				efIceGraphics = (File) value;
+				break;
+			case "ef-launch-scws":
+				efLaunchScws = (File) value;
+				break;
+			case "ef-icon":
+				efIcon = (File) value;
+				break;
+			case "df-phonebook":
+				dfPhonebook = (File) value;
+				break;
+			case "ef-pbr":
+				efPbr = (File) value;
+				break;
+			case "ef-ext1":
+				efExt1 = (File) value;
+				break;
+			case "ef-aas":
+				efAas = (File) value;
+				break;
+			case "ef-gas":
+				efGas = (File) value;
+				break;
+			case "ef-psc":
+				efPsc = (File) value;
+				break;
+			case "ef-cc":
+				efCc = (File) value;
+				break;
+			case "ef-puid":
+				efPuid = (File) value;
+				break;
+			case "ef-iap":
+				efIap = (File) value;
+				break;
+			case "ef-adn":
+				efAdn = (File) value;
+				break;
+			case "ef-pbc":
+				efPbc = (File) value;
+				break;
+			case "ef-anr":
+				efAnr = (File) value;
+				break;
+			case "ef-puri":
+				efPuri = (File) value;
+				break;
+			case "ef-email":
+				efEmail = (File) value;
+				break;
+			case "ef-sne":
+				efSne = (File) value;
+				break;
+			case "ef-uid":
+				efUid = (File) value;
+				break;
+			case "ef-grp":
+				efGrp = (File) value;
+				break;
+			case "ef-ccp1":
+				efCcp1 = (File) value;
+				break;
+			case "df-multimedia":
+				dfMultimedia = (File) value;
+				break;
+			case "ef-mml":
+				efMml = (File) value;
+				break;
+			case "ef-mmdf":
+				efMmdf = (File) value;
+				break;
+			case "df-mmss":
+				dfMmss = (File) value;
+				break;
+			case "ef-mlpl":
+				efMlpl = (File) value;
+				break;
+			case "ef-mspl":
+				efMspl = (File) value;
+				break;
+			case "ef-mmssmode":
+				efMmssmode = (File) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEEAP implements BerType, Serializable {
+public class PEEAP implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -57,6 +59,99 @@ public class PEEAP implements BerType, Serializable {
 		this.efRealm = efRealm;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "eap-header":
+				return eapHeader;
+			case "templateID":
+				return templateID;
+			case "df-eap":
+				return dfEap;
+			case "ef-eapkeys":
+				return efEapkeys;
+			case "ef-eapstatus":
+				return efEapstatus;
+			case "ef-puid":
+				return efPuid;
+			case "ef-ps":
+				return efPs;
+			case "ef-curid":
+				return efCurid;
+			case "ef-reid":
+				return efReid;
+			case "ef-realm":
+				return efRealm;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "eap-header":
+				return PEHeader.class;
+			case "templateID":
+				return BerObjectIdentifier.class;
+			case "df-eap":
+				return File.class;
+			case "ef-eapkeys":
+				return File.class;
+			case "ef-eapstatus":
+				return File.class;
+			case "ef-puid":
+				return File.class;
+			case "ef-ps":
+				return File.class;
+			case "ef-curid":
+				return File.class;
+			case "ef-reid":
+				return File.class;
+			case "ef-realm":
+				return File.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "eap-header":
+				eapHeader = (PEHeader) value;
+				break;
+			case "templateID":
+				templateID = (BerObjectIdentifier) value;
+				break;
+			case "df-eap":
+				dfEap = (File) value;
+				break;
+			case "ef-eapkeys":
+				efEapkeys = (File) value;
+				break;
+			case "ef-eapstatus":
+				efEapstatus = (File) value;
+				break;
+			case "ef-puid":
+				efPuid = (File) value;
+				break;
+			case "ef-ps":
+				efPs = (File) value;
+				break;
+			case "ef-curid":
+				efCurid = (File) value;
+				break;
+			case "ef-reid":
+				efReid = (File) value;
+				break;
+			case "ef-realm":
+				efRealm = (File) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

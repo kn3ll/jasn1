@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class SequenceOfAll implements BerType, Serializable {
+public class SequenceOfAll implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -101,6 +103,253 @@ public class SequenceOfAll implements BerType, Serializable {
 		this.myChoice = myChoice;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "myInteger":
+				return myInteger;
+			case "myInteger2":
+				return myInteger2;
+			case "myBoolean":
+				return myBoolean;
+			case "bitString":
+				return bitString;
+			case "enumerated":
+				return enumerated;
+			case "generalizedTime":
+				return generalizedTime;
+			case "myNull":
+				return myNull;
+			case "objectIdentifier":
+				return objectIdentifier;
+			case "octetString":
+				return octetString;
+			case "real":
+				return real;
+			case "testIntegerWithValues":
+				return testIntegerWithValues;
+			case "testOctetStringWithSize":
+				return testOctetStringWithSize;
+			case "testSequenceWithSize":
+				return testSequenceWithSize;
+			case "time":
+				return time;
+			case "date2":
+				return date2;
+			case "timeOfDay":
+				return timeOfDay;
+			case "dateTime":
+				return dateTime;
+			case "duration":
+				return duration;
+			case "bmpString":
+				return bmpString;
+			case "generalString":
+				return generalString;
+			case "graphicString":
+				return graphicString;
+			case "iA5String":
+				return iA5String;
+			case "numericString":
+				return numericString;
+			case "printableString":
+				return printableString;
+			case "teletexString":
+				return teletexString;
+			case "universalString":
+				return universalString;
+			case "utf8String":
+				return utf8String;
+			case "videotexString":
+				return videotexString;
+			case "visibleString":
+				return visibleString;
+			case "any":
+				return any;
+			case "my-sequence":
+				return mySequence;
+			case "my-choice":
+				return myChoice;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "myInteger":
+				return BerInteger.class;
+			case "myInteger2":
+				return BerInteger.class;
+			case "myBoolean":
+				return BerBoolean.class;
+			case "bitString":
+				return BerBitString.class;
+			case "enumerated":
+				return BerEnum.class;
+			case "generalizedTime":
+				return BerGeneralizedTime.class;
+			case "myNull":
+				return BerNull.class;
+			case "objectIdentifier":
+				return BerObjectIdentifier.class;
+			case "octetString":
+				return BerOctetString.class;
+			case "real":
+				return BerReal.class;
+			case "testIntegerWithValues":
+				return IntegerWithValues.class;
+			case "testOctetStringWithSize":
+				return OctetStringWithSize.class;
+			case "testSequenceWithSize":
+				return SequenceWithSize.class;
+			case "time":
+				return BerTime.class;
+			case "date2":
+				return BerDate.class;
+			case "timeOfDay":
+				return BerTimeOfDay.class;
+			case "dateTime":
+				return BerDateTime.class;
+			case "duration":
+				return BerDuration.class;
+			case "bmpString":
+				return BerBMPString.class;
+			case "generalString":
+				return BerGeneralString.class;
+			case "graphicString":
+				return BerGraphicString.class;
+			case "iA5String":
+				return BerIA5String.class;
+			case "numericString":
+				return BerNumericString.class;
+			case "printableString":
+				return BerPrintableString.class;
+			case "teletexString":
+				return BerTeletexString.class;
+			case "universalString":
+				return BerUniversalString.class;
+			case "utf8String":
+				return BerUTF8String.class;
+			case "videotexString":
+				return BerVideotexString.class;
+			case "visibleString":
+				return BerVisibleString.class;
+			case "any":
+				return BerAny.class;
+			case "my-sequence":
+				return MySequence.class;
+			case "my-choice":
+				return MyChoice.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "myInteger":
+				myInteger = (BerInteger) value;
+				break;
+			case "myInteger2":
+				myInteger2 = (BerInteger) value;
+				break;
+			case "myBoolean":
+				myBoolean = (BerBoolean) value;
+				break;
+			case "bitString":
+				bitString = (BerBitString) value;
+				break;
+			case "enumerated":
+				enumerated = (BerEnum) value;
+				break;
+			case "generalizedTime":
+				generalizedTime = (BerGeneralizedTime) value;
+				break;
+			case "myNull":
+				myNull = (BerNull) value;
+				break;
+			case "objectIdentifier":
+				objectIdentifier = (BerObjectIdentifier) value;
+				break;
+			case "octetString":
+				octetString = (BerOctetString) value;
+				break;
+			case "real":
+				real = (BerReal) value;
+				break;
+			case "testIntegerWithValues":
+				testIntegerWithValues = (IntegerWithValues) value;
+				break;
+			case "testOctetStringWithSize":
+				testOctetStringWithSize = (OctetStringWithSize) value;
+				break;
+			case "testSequenceWithSize":
+				testSequenceWithSize = (SequenceWithSize) value;
+				break;
+			case "time":
+				time = (BerTime) value;
+				break;
+			case "date2":
+				date2 = (BerDate) value;
+				break;
+			case "timeOfDay":
+				timeOfDay = (BerTimeOfDay) value;
+				break;
+			case "dateTime":
+				dateTime = (BerDateTime) value;
+				break;
+			case "duration":
+				duration = (BerDuration) value;
+				break;
+			case "bmpString":
+				bmpString = (BerBMPString) value;
+				break;
+			case "generalString":
+				generalString = (BerGeneralString) value;
+				break;
+			case "graphicString":
+				graphicString = (BerGraphicString) value;
+				break;
+			case "iA5String":
+				iA5String = (BerIA5String) value;
+				break;
+			case "numericString":
+				numericString = (BerNumericString) value;
+				break;
+			case "printableString":
+				printableString = (BerPrintableString) value;
+				break;
+			case "teletexString":
+				teletexString = (BerTeletexString) value;
+				break;
+			case "universalString":
+				universalString = (BerUniversalString) value;
+				break;
+			case "utf8String":
+				utf8String = (BerUTF8String) value;
+				break;
+			case "videotexString":
+				videotexString = (BerVideotexString) value;
+				break;
+			case "visibleString":
+				visibleString = (BerVisibleString) value;
+				break;
+			case "any":
+				any = (BerAny) value;
+				break;
+			case "my-sequence":
+				mySequence = (MySequence) value;
+				break;
+			case "my-choice":
+				myChoice = (MyChoice) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

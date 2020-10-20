@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,16 +21,16 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEPINCodes implements BerType, Serializable {
+public class PEPINCodes implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class PinCodes implements BerType, Serializable {
+	public static class PinCodes implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
 		public byte[] code = null;
-		public static class Pinconfig implements BerType, Serializable {
+		public static class Pinconfig implements BerSequenceOf, Serializable {
 
 			private static final long serialVersionUID = 1L;
 
@@ -48,6 +50,12 @@ public class PEPINCodes implements BerType, Serializable {
 				this.seqOf = seqOf;
 			}
 
+			public List<? extends BerType> getSeqOf() {
+				return seqOf;
+			}
+			public Class<? extends BerType> getSeqOfElementClass() {
+				return PINConfiguration.class;
+			}
 			public int encode(OutputStream reverseOS) throws IOException {
 				return encode(reverseOS, true);
 			}
@@ -188,6 +196,43 @@ public class PEPINCodes implements BerType, Serializable {
 			this.filePath = filePath;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "pinconfig":
+					return pinconfig;
+				case "filePath":
+					return filePath;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "pinconfig":
+					return Pinconfig.class;
+				case "filePath":
+					return BerOctetString.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "pinconfig":
+					pinconfig = (Pinconfig) value;
+					break;
+				case "filePath":
+					filePath = (BerOctetString) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -298,6 +343,43 @@ public class PEPINCodes implements BerType, Serializable {
 		this.pinCodes = pinCodes;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "pin-Header":
+				return pinHeader;
+			case "pinCodes":
+				return pinCodes;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "pin-Header":
+				return PEHeader.class;
+			case "pinCodes":
+				return PinCodes.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "pin-Header":
+				pinHeader = (PEHeader) value;
+				break;
+			case "pinCodes":
+				pinCodes = (PinCodes) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

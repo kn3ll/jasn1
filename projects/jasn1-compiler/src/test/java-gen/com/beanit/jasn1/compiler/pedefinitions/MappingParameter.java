@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class MappingParameter implements BerType, Serializable {
+public class MappingParameter implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -41,6 +43,43 @@ public class MappingParameter implements BerType, Serializable {
 		this.mappingSource = mappingSource;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "mappingOptions":
+				return mappingOptions;
+			case "mappingSource":
+				return mappingSource;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "mappingOptions":
+				return BerOctetString.class;
+			case "mappingSource":
+				return ApplicationIdentifier.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "mappingOptions":
+				mappingOptions = (BerOctetString) value;
+				break;
+			case "mappingSource":
+				mappingSource = (ApplicationIdentifier) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

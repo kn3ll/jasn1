@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class Fcp implements BerType, Serializable {
+public class Fcp implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -57,6 +59,99 @@ public class Fcp implements BerType, Serializable {
 		this.linkPath = linkPath;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "fileDescriptor":
+				return fileDescriptor;
+			case "fileID":
+				return fileID;
+			case "dfName":
+				return dfName;
+			case "lcsi":
+				return lcsi;
+			case "securityAttributesReferenced":
+				return securityAttributesReferenced;
+			case "efFileSize":
+				return efFileSize;
+			case "pinStatusTemplateDO":
+				return pinStatusTemplateDO;
+			case "shortEFID":
+				return shortEFID;
+			case "proprietaryEFInfo":
+				return proprietaryEFInfo;
+			case "linkPath":
+				return linkPath;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "fileDescriptor":
+				return BerOctetString.class;
+			case "fileID":
+				return BerOctetString.class;
+			case "dfName":
+				return ApplicationIdentifier.class;
+			case "lcsi":
+				return BerOctetString.class;
+			case "securityAttributesReferenced":
+				return BerOctetString.class;
+			case "efFileSize":
+				return BerOctetString.class;
+			case "pinStatusTemplateDO":
+				return BerOctetString.class;
+			case "shortEFID":
+				return BerOctetString.class;
+			case "proprietaryEFInfo":
+				return ProprietaryInfo.class;
+			case "linkPath":
+				return BerOctetString.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "fileDescriptor":
+				fileDescriptor = (BerOctetString) value;
+				break;
+			case "fileID":
+				fileID = (BerOctetString) value;
+				break;
+			case "dfName":
+				dfName = (ApplicationIdentifier) value;
+				break;
+			case "lcsi":
+				lcsi = (BerOctetString) value;
+				break;
+			case "securityAttributesReferenced":
+				securityAttributesReferenced = (BerOctetString) value;
+				break;
+			case "efFileSize":
+				efFileSize = (BerOctetString) value;
+				break;
+			case "pinStatusTemplateDO":
+				pinStatusTemplateDO = (BerOctetString) value;
+				break;
+			case "shortEFID":
+				shortEFID = (BerOctetString) value;
+				break;
+			case "proprietaryEFInfo":
+				proprietaryEFInfo = (ProprietaryInfo) value;
+				break;
+			case "linkPath":
+				linkPath = (BerOctetString) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

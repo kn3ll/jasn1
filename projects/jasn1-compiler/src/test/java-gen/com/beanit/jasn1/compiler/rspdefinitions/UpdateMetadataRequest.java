@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class UpdateMetadataRequest implements BerType, Serializable {
+public class UpdateMetadataRequest implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,6 +53,64 @@ public class UpdateMetadataRequest implements BerType, Serializable {
 		this.profilePolicyRules = profilePolicyRules;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "serviceProviderName":
+				return serviceProviderName;
+			case "profileName":
+				return profileName;
+			case "iconType":
+				return iconType;
+			case "icon":
+				return icon;
+			case "profilePolicyRules":
+				return profilePolicyRules;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "serviceProviderName":
+				return BerUTF8String.class;
+			case "profileName":
+				return BerUTF8String.class;
+			case "iconType":
+				return IconType.class;
+			case "icon":
+				return BerOctetString.class;
+			case "profilePolicyRules":
+				return PprIds.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "serviceProviderName":
+				serviceProviderName = (BerUTF8String) value;
+				break;
+			case "profileName":
+				profileName = (BerUTF8String) value;
+				break;
+			case "iconType":
+				iconType = (IconType) value;
+				break;
+			case "icon":
+				icon = (BerOctetString) value;
+				break;
+			case "profilePolicyRules":
+				profilePolicyRules = (PprIds) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

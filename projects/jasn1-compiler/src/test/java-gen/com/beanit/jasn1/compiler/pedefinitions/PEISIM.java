@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEISIM implements BerType, Serializable {
+public class PEISIM implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -55,6 +57,92 @@ public class PEISIM implements BerType, Serializable {
 		this.efArr = efArr;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "isim-header":
+				return isimHeader;
+			case "templateID":
+				return templateID;
+			case "adf-isim":
+				return adfIsim;
+			case "ef-impi":
+				return efImpi;
+			case "ef-impu":
+				return efImpu;
+			case "ef-domain":
+				return efDomain;
+			case "ef-ist":
+				return efIst;
+			case "ef-ad":
+				return efAd;
+			case "ef-arr":
+				return efArr;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "isim-header":
+				return PEHeader.class;
+			case "templateID":
+				return BerObjectIdentifier.class;
+			case "adf-isim":
+				return File.class;
+			case "ef-impi":
+				return File.class;
+			case "ef-impu":
+				return File.class;
+			case "ef-domain":
+				return File.class;
+			case "ef-ist":
+				return File.class;
+			case "ef-ad":
+				return File.class;
+			case "ef-arr":
+				return File.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "isim-header":
+				isimHeader = (PEHeader) value;
+				break;
+			case "templateID":
+				templateID = (BerObjectIdentifier) value;
+				break;
+			case "adf-isim":
+				adfIsim = (File) value;
+				break;
+			case "ef-impi":
+				efImpi = (File) value;
+				break;
+			case "ef-impu":
+				efImpu = (File) value;
+				break;
+			case "ef-domain":
+				efDomain = (File) value;
+				break;
+			case "ef-ist":
+				efIst = (File) value;
+				break;
+			case "ef-ad":
+				efAd = (File) value;
+				break;
+			case "ef-arr":
+				efArr = (File) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -22,11 +24,11 @@ import com.beanit.jasn1.compiler.modules.module2.EmployeeNumberZ;
 import com.beanit.jasn1.compiler.modules.module3.Datezz;
 import com.beanit.jasn1.compiler.modules.module3.EmployeeNumberzz;
 
-public class PersonnelRecord implements BerType, Serializable {
+public class PersonnelRecord implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class Children implements BerType, Serializable {
+	public static class Children implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -49,6 +51,12 @@ public class PersonnelRecord implements BerType, Serializable {
 			return seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return ChildInformation.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -174,7 +182,7 @@ public class PersonnelRecord implements BerType, Serializable {
 
 	}
 
-	public static class EmployeeNumberZ implements BerType, Serializable {
+	public static class EmployeeNumberZ implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -196,6 +204,36 @@ public class PersonnelRecord implements BerType, Serializable {
 			return employeeNumberZ;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "employeeNumber-z":
+					return employeeNumberZ;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "employeeNumber-z":
+					return com.beanit.jasn1.compiler.modules.module2.EmployeeNumberZ.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "employeeNumber-z":
+					employeeNumberZ = (com.beanit.jasn1.compiler.modules.module2.EmployeeNumberZ) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -265,11 +303,11 @@ public class PersonnelRecord implements BerType, Serializable {
 
 	}
 
-	public static class TestSequenceOf2 implements BerType, Serializable {
+	public static class TestSequenceOf2 implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
-		public static class SEQUENCE implements BerType, Serializable {
+		public static class SEQUENCE implements BerSequenceSet, Serializable {
 
 			private static final long serialVersionUID = 1L;
 
@@ -302,6 +340,43 @@ public class PersonnelRecord implements BerType, Serializable {
 				return test2;
 			}
 
+			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			));
+			public List<String> getFields() {
+				return FIELDS;
+			}
+			public BerType getField(String fieldName) {
+				switch(fieldName) {
+					case "test1":
+						return test1;
+					case "test2":
+						return test2;
+					default:
+						return null;
+				}
+			}
+			public Class<? extends BerType> getFieldClass(String fieldName) {
+				switch(fieldName) {
+					case "test1":
+						return BerInteger.class;
+					case "test2":
+						return BerInteger.class;
+					default:
+						return null;
+				}
+			}
+			public void setField(String fieldName, BerType value) {
+				switch(fieldName) {
+					case "test1":
+						test1 = (BerInteger) value;
+						break;
+					case "test2":
+						test2 = (BerInteger) value;
+						break;
+					default:
+						throw new IllegalArgumentException("Unknown field " + fieldName);
+				}
+			}
 			public int encode(OutputStream reverseOS) throws IOException {
 				return encode(reverseOS, true);
 			}
@@ -486,6 +561,12 @@ public class PersonnelRecord implements BerType, Serializable {
 			return seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return SEQUENCE.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -784,6 +865,155 @@ public class PersonnelRecord implements BerType, Serializable {
 		return embeddedPdv;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "name":
+				return name;
+			case "title":
+				return title;
+			case "number":
+				return number;
+			case "dateOfHire":
+				return dateOfHire;
+			case "nameOfSpouse":
+				return nameOfSpouse;
+			case "children":
+				return children;
+			case "testBitString":
+				return testBitString;
+			case "test":
+				return test;
+			case "test2":
+				return test2;
+			case "test3":
+				return test3;
+			case "test4":
+				return test4;
+			case "test5":
+				return test5;
+			case "test6":
+				return test6;
+			case "employeeNumber-z":
+				return employeeNumberZ;
+			case "code":
+				return code_;
+			case "testSequenceOf":
+				return testSequenceOf;
+			case "testSequenceOf2":
+				return testSequenceOf2;
+			case "embeddedPdv":
+				return embeddedPdv;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "name":
+				return Name.class;
+			case "title":
+				return BerVisibleString.class;
+			case "number":
+				return com.beanit.jasn1.compiler.modules.module2.EmployeeNumberZ.class;
+			case "dateOfHire":
+				return Date.class;
+			case "nameOfSpouse":
+				return Name.class;
+			case "children":
+				return Children.class;
+			case "testBitString":
+				return MyBitString.class;
+			case "test":
+				return MyInt.class;
+			case "test2":
+				return TestChoice.class;
+			case "test3":
+				return TestChoice.class;
+			case "test4":
+				return TestChoice.class;
+			case "test5":
+				return TestChoice.class;
+			case "test6":
+				return TestChoice.class;
+			case "employeeNumber-z":
+				return EmployeeNumberZ.class;
+			case "code":
+				return BerVisibleString.class;
+			case "testSequenceOf":
+				return TestSequenceOf.class;
+			case "testSequenceOf2":
+				return TestSequenceOf2.class;
+			case "embeddedPdv":
+				return BerEmbeddedPdv.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "name":
+				name = (Name) value;
+				break;
+			case "title":
+				title = (BerVisibleString) value;
+				break;
+			case "number":
+				number = (com.beanit.jasn1.compiler.modules.module2.EmployeeNumberZ) value;
+				break;
+			case "dateOfHire":
+				dateOfHire = (Date) value;
+				break;
+			case "nameOfSpouse":
+				nameOfSpouse = (Name) value;
+				break;
+			case "children":
+				children = (Children) value;
+				break;
+			case "testBitString":
+				testBitString = (MyBitString) value;
+				break;
+			case "test":
+				test = (MyInt) value;
+				break;
+			case "test2":
+				test2 = (TestChoice) value;
+				break;
+			case "test3":
+				test3 = (TestChoice) value;
+				break;
+			case "test4":
+				test4 = (TestChoice) value;
+				break;
+			case "test5":
+				test5 = (TestChoice) value;
+				break;
+			case "test6":
+				test6 = (TestChoice) value;
+				break;
+			case "employeeNumber-z":
+				employeeNumberZ = (EmployeeNumberZ) value;
+				break;
+			case "code":
+				code_ = (BerVisibleString) value;
+				break;
+			case "testSequenceOf":
+				testSequenceOf = (TestSequenceOf) value;
+				break;
+			case "testSequenceOf2":
+				testSequenceOf2 = (TestSequenceOf2) value;
+				break;
+			case "embeddedPdv":
+				embeddedPdv = (BerEmbeddedPdv) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

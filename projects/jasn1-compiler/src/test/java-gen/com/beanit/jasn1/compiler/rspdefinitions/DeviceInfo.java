@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class DeviceInfo implements BerType, Serializable {
+public class DeviceInfo implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,50 @@ public class DeviceInfo implements BerType, Serializable {
 		this.imei = imei;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "tac":
+				return tac;
+			case "deviceCapabilities":
+				return deviceCapabilities;
+			case "imei":
+				return imei;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "tac":
+				return Octet4.class;
+			case "deviceCapabilities":
+				return DeviceCapabilities.class;
+			case "imei":
+				return Octet8.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "tac":
+				tac = (Octet4) value;
+				break;
+			case "deviceCapabilities":
+				deviceCapabilities = (DeviceCapabilities) value;
+				break;
+			case "imei":
+				imei = (Octet8) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

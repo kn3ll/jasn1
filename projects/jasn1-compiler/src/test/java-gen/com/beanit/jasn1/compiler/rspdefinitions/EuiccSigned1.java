@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class EuiccSigned1 implements BerType, Serializable {
+public class EuiccSigned1 implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,6 +53,64 @@ public class EuiccSigned1 implements BerType, Serializable {
 		this.ctxParams1 = ctxParams1;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "transactionId":
+				return transactionId;
+			case "serverAddress":
+				return serverAddress;
+			case "serverChallenge":
+				return serverChallenge;
+			case "euiccInfo2":
+				return euiccInfo2;
+			case "ctxParams1":
+				return ctxParams1;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "transactionId":
+				return TransactionId.class;
+			case "serverAddress":
+				return BerUTF8String.class;
+			case "serverChallenge":
+				return Octet16.class;
+			case "euiccInfo2":
+				return EUICCInfo2.class;
+			case "ctxParams1":
+				return CtxParams1.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "transactionId":
+				transactionId = (TransactionId) value;
+				break;
+			case "serverAddress":
+				serverAddress = (BerUTF8String) value;
+				break;
+			case "serverChallenge":
+				serverChallenge = (Octet16) value;
+				break;
+			case "euiccInfo2":
+				euiccInfo2 = (EUICCInfo2) value;
+				break;
+			case "ctxParams1":
+				ctxParams1 = (CtxParams1) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

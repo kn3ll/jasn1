@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PINConfiguration implements BerType, Serializable {
+public class PINConfiguration implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,64 @@ public class PINConfiguration implements BerType, Serializable {
 		this.maxNumOfAttempsRetryNumLeft = maxNumOfAttempsRetryNumLeft;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "keyReference":
+				return keyReference;
+			case "pinValue":
+				return pinValue;
+			case "unblockingPINReference":
+				return unblockingPINReference;
+			case "pinAttributes":
+				return pinAttributes;
+			case "maxNumOfAttemps-retryNumLeft":
+				return maxNumOfAttempsRetryNumLeft;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "keyReference":
+				return PINKeyReferenceValue.class;
+			case "pinValue":
+				return BerOctetString.class;
+			case "unblockingPINReference":
+				return PUKKeyReferenceValue.class;
+			case "pinAttributes":
+				return UInt8.class;
+			case "maxNumOfAttemps-retryNumLeft":
+				return UInt8.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "keyReference":
+				keyReference = (PINKeyReferenceValue) value;
+				break;
+			case "pinValue":
+				pinValue = (BerOctetString) value;
+				break;
+			case "unblockingPINReference":
+				unblockingPINReference = (PUKKeyReferenceValue) value;
+				break;
+			case "pinAttributes":
+				pinAttributes = (UInt8) value;
+				break;
+			case "maxNumOfAttemps-retryNumLeft":
+				maxNumOfAttempsRetryNumLeft = (UInt8) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

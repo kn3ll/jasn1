@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class SmdpSigned2 implements BerType, Serializable {
+public class SmdpSigned2 implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,50 @@ public class SmdpSigned2 implements BerType, Serializable {
 		this.bppEuiccOtpk = bppEuiccOtpk;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "transactionId":
+				return transactionId;
+			case "ccRequiredFlag":
+				return ccRequiredFlag;
+			case "bppEuiccOtpk":
+				return bppEuiccOtpk;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "transactionId":
+				return TransactionId.class;
+			case "ccRequiredFlag":
+				return BerBoolean.class;
+			case "bppEuiccOtpk":
+				return BerOctetString.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "transactionId":
+				transactionId = (TransactionId) value;
+				break;
+			case "ccRequiredFlag":
+				ccRequiredFlag = (BerBoolean) value;
+				break;
+			case "bppEuiccOtpk":
+				bppEuiccOtpk = (BerOctetString) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

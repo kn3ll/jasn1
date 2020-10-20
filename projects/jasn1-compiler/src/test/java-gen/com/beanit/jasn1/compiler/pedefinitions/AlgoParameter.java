@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class AlgoParameter implements BerType, Serializable {
+public class AlgoParameter implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -53,6 +55,85 @@ public class AlgoParameter implements BerType, Serializable {
 		this.numberOfKeccak = numberOfKeccak;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "algorithmID":
+				return algorithmID;
+			case "algorithmOptions":
+				return algorithmOptions;
+			case "key":
+				return key;
+			case "opc":
+				return opc;
+			case "rotationConstants":
+				return rotationConstants;
+			case "xoringConstants":
+				return xoringConstants;
+			case "authCounterMax":
+				return authCounterMax;
+			case "numberOfKeccak":
+				return numberOfKeccak;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "algorithmID":
+				return BerInteger.class;
+			case "algorithmOptions":
+				return BerOctetString.class;
+			case "key":
+				return BerOctetString.class;
+			case "opc":
+				return BerOctetString.class;
+			case "rotationConstants":
+				return BerOctetString.class;
+			case "xoringConstants":
+				return BerOctetString.class;
+			case "authCounterMax":
+				return BerOctetString.class;
+			case "numberOfKeccak":
+				return UInt8.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "algorithmID":
+				algorithmID = (BerInteger) value;
+				break;
+			case "algorithmOptions":
+				algorithmOptions = (BerOctetString) value;
+				break;
+			case "key":
+				key = (BerOctetString) value;
+				break;
+			case "opc":
+				opc = (BerOctetString) value;
+				break;
+			case "rotationConstants":
+				rotationConstants = (BerOctetString) value;
+				break;
+			case "xoringConstants":
+				xoringConstants = (BerOctetString) value;
+				break;
+			case "authCounterMax":
+				authCounterMax = (BerOctetString) value;
+				break;
+			case "numberOfKeccak":
+				numberOfKeccak = (UInt8) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

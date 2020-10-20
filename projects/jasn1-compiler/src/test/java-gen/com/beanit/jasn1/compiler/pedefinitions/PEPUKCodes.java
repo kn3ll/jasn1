@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEPUKCodes implements BerType, Serializable {
+public class PEPUKCodes implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class PukCodes implements BerType, Serializable {
+	public static class PukCodes implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,12 @@ public class PEPUKCodes implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return PUKConfiguration.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -186,6 +194,43 @@ public class PEPUKCodes implements BerType, Serializable {
 		this.pukCodes = pukCodes;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "puk-Header":
+				return pukHeader;
+			case "pukCodes":
+				return pukCodes;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "puk-Header":
+				return PEHeader.class;
+			case "pukCodes":
+				return PukCodes.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "puk-Header":
+				pukHeader = (PEHeader) value;
+				break;
+			case "pukCodes":
+				pukCodes = (PukCodes) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

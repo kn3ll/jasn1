@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ChoiceOfRenamedUntaggedSequence implements BerType, Serializable {
+public class ChoiceOfRenamedUntaggedSequence implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -59,6 +61,50 @@ public class ChoiceOfRenamedUntaggedSequence implements BerType, Serializable {
 		return myBoolean;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "myInteger":
+				return myInteger;
+			case "renamedUntaggedSequence":
+				return renamedUntaggedSequence;
+			case "myBoolean":
+				return myBoolean;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "myInteger":
+				return BerInteger.class;
+			case "renamedUntaggedSequence":
+				return RenamedUntaggedSequence.class;
+			case "myBoolean":
+				return BerBoolean.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "myInteger":
+				myInteger = (BerInteger) value;
+				break;
+			case "renamedUntaggedSequence":
+				renamedUntaggedSequence = (RenamedUntaggedSequence) value;
+				break;
+			case "myBoolean":
+				myBoolean = (BerBoolean) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

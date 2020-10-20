@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ChoiceOfIndirectTypes implements BerType, Serializable {
+public class ChoiceOfIndirectTypes implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -176,6 +178,141 @@ public class ChoiceOfIndirectTypes implements BerType, Serializable {
 		return taggedAny2;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "untaggedInt":
+				return untaggedInt;
+			case "untaggedInt2":
+				return untaggedInt2;
+			case "untaggedInt3":
+				return untaggedInt3;
+			case "explicitlyTaggedInt":
+				return explicitlyTaggedInt;
+			case "explicitlyTaggedInt2":
+				return explicitlyTaggedInt2;
+			case "explicitlyTaggedInt3":
+				return explicitlyTaggedInt3;
+			case "implicitlyTaggedInt":
+				return implicitlyTaggedInt;
+			case "implicitlyTaggedInt2":
+				return implicitlyTaggedInt2;
+			case "implicitlyTaggedInt3":
+				return implicitlyTaggedInt3;
+			case "untaggedChoice":
+				return untaggedChoice;
+			case "untaggedChoice2":
+				return untaggedChoice2;
+			case "taggedChoice":
+				return taggedChoice;
+			case "taggedChoice2":
+				return taggedChoice2;
+			case "untaggedAny":
+				return untaggedAny;
+			case "taggedAny":
+				return taggedAny;
+			case "taggedAny2":
+				return taggedAny2;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "untaggedInt":
+				return UntaggedInteger.class;
+			case "untaggedInt2":
+				return ExplicitlyTaggedInteger.class;
+			case "untaggedInt3":
+				return ImplicitlyTaggedInteger.class;
+			case "explicitlyTaggedInt":
+				return UntaggedInteger.class;
+			case "explicitlyTaggedInt2":
+				return ExplicitlyTaggedInteger.class;
+			case "explicitlyTaggedInt3":
+				return ImplicitlyTaggedInteger.class;
+			case "implicitlyTaggedInt":
+				return UntaggedInteger.class;
+			case "implicitlyTaggedInt2":
+				return ExplicitlyTaggedInteger.class;
+			case "implicitlyTaggedInt3":
+				return ImplicitlyTaggedInteger.class;
+			case "untaggedChoice":
+				return UntaggedChoice.class;
+			case "untaggedChoice2":
+				return TaggedChoice.class;
+			case "taggedChoice":
+				return UntaggedChoice.class;
+			case "taggedChoice2":
+				return TaggedChoice.class;
+			case "untaggedAny":
+				return TaggedAny.class;
+			case "taggedAny":
+				return UntaggedAny.class;
+			case "taggedAny2":
+				return TaggedAny.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "untaggedInt":
+				untaggedInt = (UntaggedInteger) value;
+				break;
+			case "untaggedInt2":
+				untaggedInt2 = (ExplicitlyTaggedInteger) value;
+				break;
+			case "untaggedInt3":
+				untaggedInt3 = (ImplicitlyTaggedInteger) value;
+				break;
+			case "explicitlyTaggedInt":
+				explicitlyTaggedInt = (UntaggedInteger) value;
+				break;
+			case "explicitlyTaggedInt2":
+				explicitlyTaggedInt2 = (ExplicitlyTaggedInteger) value;
+				break;
+			case "explicitlyTaggedInt3":
+				explicitlyTaggedInt3 = (ImplicitlyTaggedInteger) value;
+				break;
+			case "implicitlyTaggedInt":
+				implicitlyTaggedInt = (UntaggedInteger) value;
+				break;
+			case "implicitlyTaggedInt2":
+				implicitlyTaggedInt2 = (ExplicitlyTaggedInteger) value;
+				break;
+			case "implicitlyTaggedInt3":
+				implicitlyTaggedInt3 = (ImplicitlyTaggedInteger) value;
+				break;
+			case "untaggedChoice":
+				untaggedChoice = (UntaggedChoice) value;
+				break;
+			case "untaggedChoice2":
+				untaggedChoice2 = (TaggedChoice) value;
+				break;
+			case "taggedChoice":
+				taggedChoice = (UntaggedChoice) value;
+				break;
+			case "taggedChoice2":
+				taggedChoice2 = (TaggedChoice) value;
+				break;
+			case "untaggedAny":
+				untaggedAny = (TaggedAny) value;
+				break;
+			case "taggedAny":
+				taggedAny = (UntaggedAny) value;
+				break;
+			case "taggedAny2":
+				taggedAny2 = (TaggedAny) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

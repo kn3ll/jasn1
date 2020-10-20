@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,11 +25,11 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class ProfileInfoListRequest implements BerType, Serializable {
+public class ProfileInfoListRequest implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class SearchCriteria implements BerType, Serializable {
+	public static class SearchCriteria implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -49,6 +51,50 @@ public class ProfileInfoListRequest implements BerType, Serializable {
 			this.profileClass = profileClass;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "isdpAid":
+					return isdpAid;
+				case "iccid":
+					return iccid;
+				case "profileClass":
+					return profileClass;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "isdpAid":
+					return OctetTo16.class;
+				case "iccid":
+					return Iccid.class;
+				case "profileClass":
+					return ProfileClass.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "isdpAid":
+					isdpAid = (OctetTo16) value;
+					break;
+				case "iccid":
+					iccid = (Iccid) value;
+					break;
+				case "profileClass":
+					profileClass = (ProfileClass) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -174,6 +220,43 @@ public class ProfileInfoListRequest implements BerType, Serializable {
 		this.tagList = tagList;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "searchCriteria":
+				return searchCriteria;
+			case "tagList":
+				return tagList;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "searchCriteria":
+				return SearchCriteria.class;
+			case "tagList":
+				return BerOctetString.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "searchCriteria":
+				searchCriteria = (SearchCriteria) value;
+				break;
+			case "tagList":
+				tagList = (BerOctetString) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

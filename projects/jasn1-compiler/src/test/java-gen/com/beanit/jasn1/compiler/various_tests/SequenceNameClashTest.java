@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class SequenceNameClashTest implements BerType, Serializable {
+public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class Myseqof implements BerType, Serializable {
+	public static class Myseqof implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,12 @@ public class SequenceNameClashTest implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return com.beanit.jasn1.compiler.various_tests.UntaggedInteger.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -168,7 +176,7 @@ public class SequenceNameClashTest implements BerType, Serializable {
 
 	}
 
-	public static class UntaggedInteger implements BerType, Serializable {
+	public static class UntaggedInteger implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -188,6 +196,43 @@ public class SequenceNameClashTest implements BerType, Serializable {
 			this.myBoolean = myBoolean;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return myInteger;
+				case "myBoolean":
+					return myBoolean;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return com.beanit.jasn1.compiler.various_tests.UntaggedInteger.class;
+				case "myBoolean":
+					return BerBoolean.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "myInteger":
+					myInteger = (com.beanit.jasn1.compiler.various_tests.UntaggedInteger) value;
+					break;
+				case "myBoolean":
+					myBoolean = (BerBoolean) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -305,12 +350,12 @@ public class SequenceNameClashTest implements BerType, Serializable {
 
 	}
 
-	public static class MyChoice implements BerType, Serializable {
+	public static class MyChoice implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
 		public byte[] code = null;
-		public static class MyChoice2 implements BerType, Serializable {
+		public static class MyChoice2 implements BerChoice, Serializable {
 
 			private static final long serialVersionUID = 1L;
 
@@ -330,6 +375,43 @@ public class SequenceNameClashTest implements BerType, Serializable {
 				this.myBoolean = myBoolean;
 			}
 
+			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			));
+			public List<String> getFields() {
+				return FIELDS;
+			}
+			public BerType getField(String fieldName) {
+				switch(fieldName) {
+					case "myInteger":
+						return myInteger;
+					case "myBoolean":
+						return myBoolean;
+					default:
+						return null;
+				}
+			}
+			public Class<? extends BerType> getFieldClass(String fieldName) {
+				switch(fieldName) {
+					case "myInteger":
+						return com.beanit.jasn1.compiler.various_tests.UntaggedInteger.class;
+					case "myBoolean":
+						return BerBoolean.class;
+					default:
+						return null;
+				}
+			}
+			public void setField(String fieldName, BerType value) {
+				switch(fieldName) {
+					case "myInteger":
+						myInteger = (com.beanit.jasn1.compiler.various_tests.UntaggedInteger) value;
+						break;
+					case "myBoolean":
+						myBoolean = (BerBoolean) value;
+						break;
+					default:
+						throw new IllegalArgumentException("Unknown field " + fieldName);
+				}
+			}
 			public int encode(OutputStream reverseOS) throws IOException {
 
 				if (code != null) {
@@ -447,7 +529,7 @@ public class SequenceNameClashTest implements BerType, Serializable {
 
 		}
 
-		public static class MySequence implements BerType, Serializable {
+		public static class MySequence implements BerSequenceSet, Serializable {
 
 			private static final long serialVersionUID = 1L;
 
@@ -469,6 +551,43 @@ public class SequenceNameClashTest implements BerType, Serializable {
 				this.myBoolean = myBoolean;
 			}
 
+			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			));
+			public List<String> getFields() {
+				return FIELDS;
+			}
+			public BerType getField(String fieldName) {
+				switch(fieldName) {
+					case "myInteger":
+						return myInteger;
+					case "myBoolean":
+						return myBoolean;
+					default:
+						return null;
+				}
+			}
+			public Class<? extends BerType> getFieldClass(String fieldName) {
+				switch(fieldName) {
+					case "myInteger":
+						return com.beanit.jasn1.compiler.various_tests.UntaggedInteger.class;
+					case "myBoolean":
+						return BerBoolean.class;
+					default:
+						return null;
+				}
+			}
+			public void setField(String fieldName, BerType value) {
+				switch(fieldName) {
+					case "myInteger":
+						myInteger = (com.beanit.jasn1.compiler.various_tests.UntaggedInteger) value;
+						break;
+					case "myBoolean":
+						myBoolean = (BerBoolean) value;
+						break;
+					default:
+						throw new IllegalArgumentException("Unknown field " + fieldName);
+				}
+			}
 			public int encode(OutputStream reverseOS) throws IOException {
 				return encode(reverseOS, true);
 			}
@@ -650,7 +769,7 @@ public class SequenceNameClashTest implements BerType, Serializable {
 
 		}
 
-		public static class Myseqof implements BerType, Serializable {
+		public static class Myseqof implements BerSequenceOf, Serializable {
 
 			private static final long serialVersionUID = 1L;
 
@@ -670,6 +789,12 @@ public class SequenceNameClashTest implements BerType, Serializable {
 				this.seqOf = seqOf;
 			}
 
+			public List<? extends BerType> getSeqOf() {
+				return seqOf;
+			}
+			public Class<? extends BerType> getSeqOfElementClass() {
+				return com.beanit.jasn1.compiler.various_tests.UntaggedInteger.class;
+			}
 			public int encode(OutputStream reverseOS) throws IOException {
 				return encode(reverseOS, true);
 			}
@@ -814,6 +939,57 @@ public class SequenceNameClashTest implements BerType, Serializable {
 			this.myseqof = myseqof;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return myInteger;
+				case "myChoice2":
+					return myChoice2;
+				case "mySequence":
+					return mySequence;
+				case "myseqof":
+					return myseqof;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return com.beanit.jasn1.compiler.various_tests.UntaggedInteger.class;
+				case "myChoice2":
+					return MyChoice2.class;
+				case "mySequence":
+					return MySequence.class;
+				case "myseqof":
+					return Myseqof.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "myInteger":
+					myInteger = (com.beanit.jasn1.compiler.various_tests.UntaggedInteger) value;
+					break;
+				case "myChoice2":
+					myChoice2 = (MyChoice2) value;
+					break;
+				case "mySequence":
+					mySequence = (MySequence) value;
+					break;
+				case "myseqof":
+					myseqof = (Myseqof) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -996,7 +1172,7 @@ public class SequenceNameClashTest implements BerType, Serializable {
 
 	}
 
-	public static class SequenceNameClashTest_ implements BerType, Serializable {
+	public static class SequenceNameClashTest_ implements BerSequenceSet, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -1018,6 +1194,43 @@ public class SequenceNameClashTest implements BerType, Serializable {
 			this.myBoolean = myBoolean;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return myInteger;
+				case "myBoolean":
+					return myBoolean;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "myInteger":
+					return com.beanit.jasn1.compiler.various_tests.UntaggedInteger.class;
+				case "myBoolean":
+					return BerBoolean.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "myInteger":
+					myInteger = (com.beanit.jasn1.compiler.various_tests.UntaggedInteger) value;
+					break;
+				case "myBoolean":
+					myBoolean = (BerBoolean) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -1221,6 +1434,57 @@ public class SequenceNameClashTest implements BerType, Serializable {
 		this.sequenceNameClashTest = sequenceNameClashTest;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "myseqof":
+				return myseqof;
+			case "untaggedInteger":
+				return untaggedInteger;
+			case "myChoice":
+				return myChoice;
+			case "sequenceNameClashTest":
+				return sequenceNameClashTest;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "myseqof":
+				return Myseqof.class;
+			case "untaggedInteger":
+				return UntaggedInteger.class;
+			case "myChoice":
+				return MyChoice.class;
+			case "sequenceNameClashTest":
+				return SequenceNameClashTest_.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "myseqof":
+				myseqof = (Myseqof) value;
+				break;
+			case "untaggedInteger":
+				untaggedInteger = (UntaggedInteger) value;
+				break;
+			case "myChoice":
+				myChoice = (MyChoice) value;
+				break;
+			case "sequenceNameClashTest":
+				sequenceNameClashTest = (SequenceNameClashTest_) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEOPTISIM implements BerType, Serializable {
+public class PEOPTISIM implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -59,6 +61,106 @@ public class PEOPTISIM implements BerType, Serializable {
 		this.efUicciari = efUicciari;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "optisim-header":
+				return optisimHeader;
+			case "templateID":
+				return templateID;
+			case "ef-pcscf":
+				return efPcscf;
+			case "ef-sms":
+				return efSms;
+			case "ef-smsp":
+				return efSmsp;
+			case "ef-smss":
+				return efSmss;
+			case "ef-smsr":
+				return efSmsr;
+			case "ef-gbabp":
+				return efGbabp;
+			case "ef-gbanl":
+				return efGbanl;
+			case "ef-nafkca":
+				return efNafkca;
+			case "ef-uicciari":
+				return efUicciari;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "optisim-header":
+				return PEHeader.class;
+			case "templateID":
+				return BerObjectIdentifier.class;
+			case "ef-pcscf":
+				return File.class;
+			case "ef-sms":
+				return File.class;
+			case "ef-smsp":
+				return File.class;
+			case "ef-smss":
+				return File.class;
+			case "ef-smsr":
+				return File.class;
+			case "ef-gbabp":
+				return File.class;
+			case "ef-gbanl":
+				return File.class;
+			case "ef-nafkca":
+				return File.class;
+			case "ef-uicciari":
+				return File.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "optisim-header":
+				optisimHeader = (PEHeader) value;
+				break;
+			case "templateID":
+				templateID = (BerObjectIdentifier) value;
+				break;
+			case "ef-pcscf":
+				efPcscf = (File) value;
+				break;
+			case "ef-sms":
+				efSms = (File) value;
+				break;
+			case "ef-smsp":
+				efSmsp = (File) value;
+				break;
+			case "ef-smss":
+				efSmss = (File) value;
+				break;
+			case "ef-smsr":
+				efSmsr = (File) value;
+				break;
+			case "ef-gbabp":
+				efGbabp = (File) value;
+				break;
+			case "ef-gbanl":
+				efGbanl = (File) value;
+				break;
+			case "ef-nafkca":
+				efNafkca = (File) value;
+				break;
+			case "ef-uicciari":
+				efUicciari = (File) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ApplicationLoadPackage implements BerType, Serializable {
+public class ApplicationLoadPackage implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,6 +53,78 @@ public class ApplicationLoadPackage implements BerType, Serializable {
 		this.loadBlockObject = loadBlockObject;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "loadPackageAID":
+				return loadPackageAID;
+			case "securityDomainAID":
+				return securityDomainAID;
+			case "nonVolatileCodeLimitC6":
+				return nonVolatileCodeLimitC6;
+			case "volatileDataLimitC7":
+				return volatileDataLimitC7;
+			case "nonVolatileDataLimitC8":
+				return nonVolatileDataLimitC8;
+			case "hashValue":
+				return hashValue;
+			case "loadBlockObject":
+				return loadBlockObject;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "loadPackageAID":
+				return ApplicationIdentifier.class;
+			case "securityDomainAID":
+				return ApplicationIdentifier.class;
+			case "nonVolatileCodeLimitC6":
+				return BerOctetString.class;
+			case "volatileDataLimitC7":
+				return BerOctetString.class;
+			case "nonVolatileDataLimitC8":
+				return BerOctetString.class;
+			case "hashValue":
+				return BerOctetString.class;
+			case "loadBlockObject":
+				return BerOctetString.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "loadPackageAID":
+				loadPackageAID = (ApplicationIdentifier) value;
+				break;
+			case "securityDomainAID":
+				securityDomainAID = (ApplicationIdentifier) value;
+				break;
+			case "nonVolatileCodeLimitC6":
+				nonVolatileCodeLimitC6 = (BerOctetString) value;
+				break;
+			case "volatileDataLimitC7":
+				volatileDataLimitC7 = (BerOctetString) value;
+				break;
+			case "nonVolatileDataLimitC8":
+				nonVolatileDataLimitC8 = (BerOctetString) value;
+				break;
+			case "hashValue":
+				hashValue = (BerOctetString) value;
+				break;
+			case "loadBlockObject":
+				loadBlockObject = (BerOctetString) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

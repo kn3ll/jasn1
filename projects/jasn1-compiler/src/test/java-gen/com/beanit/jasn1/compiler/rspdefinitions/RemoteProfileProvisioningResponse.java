@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class RemoteProfileProvisioningResponse implements BerType, Serializable {
+public class RemoteProfileProvisioningResponse implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,6 +53,64 @@ public class RemoteProfileProvisioningResponse implements BerType, Serializable 
 		this.authenticateClientResponseEs11 = authenticateClientResponseEs11;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "initiateAuthenticationResponse":
+				return initiateAuthenticationResponse;
+			case "authenticateClientResponseEs9":
+				return authenticateClientResponseEs9;
+			case "getBoundProfilePackageResponse":
+				return getBoundProfilePackageResponse;
+			case "cancelSessionResponseEs9":
+				return cancelSessionResponseEs9;
+			case "authenticateClientResponseEs11":
+				return authenticateClientResponseEs11;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "initiateAuthenticationResponse":
+				return InitiateAuthenticationResponse.class;
+			case "authenticateClientResponseEs9":
+				return AuthenticateClientResponseEs9.class;
+			case "getBoundProfilePackageResponse":
+				return GetBoundProfilePackageResponse.class;
+			case "cancelSessionResponseEs9":
+				return CancelSessionResponseEs9.class;
+			case "authenticateClientResponseEs11":
+				return AuthenticateClientResponseEs11.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "initiateAuthenticationResponse":
+				initiateAuthenticationResponse = (InitiateAuthenticationResponse) value;
+				break;
+			case "authenticateClientResponseEs9":
+				authenticateClientResponseEs9 = (AuthenticateClientResponseEs9) value;
+				break;
+			case "getBoundProfilePackageResponse":
+				getBoundProfilePackageResponse = (GetBoundProfilePackageResponse) value;
+				break;
+			case "cancelSessionResponseEs9":
+				cancelSessionResponseEs9 = (CancelSessionResponseEs9) value;
+				break;
+			case "authenticateClientResponseEs11":
+				authenticateClientResponseEs11 = (AuthenticateClientResponseEs11) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

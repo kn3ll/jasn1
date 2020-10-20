@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ProfileHeader implements BerType, Serializable {
+public class ProfileHeader implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class EUICCMandatoryGFSTEList implements BerType, Serializable {
+	public static class EUICCMandatoryGFSTEList implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,12 @@ public class ProfileHeader implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return BerObjectIdentifier.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -168,11 +176,11 @@ public class ProfileHeader implements BerType, Serializable {
 
 	}
 
-	public static class EUICCMandatoryAIDs implements BerType, Serializable {
+	public static class EUICCMandatoryAIDs implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
-		public static class SEQUENCE implements BerType, Serializable {
+		public static class SEQUENCE implements BerSequenceSet, Serializable {
 
 			private static final long serialVersionUID = 1L;
 
@@ -194,6 +202,43 @@ public class ProfileHeader implements BerType, Serializable {
 				this.version = version;
 			}
 
+			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			));
+			public List<String> getFields() {
+				return FIELDS;
+			}
+			public BerType getField(String fieldName) {
+				switch(fieldName) {
+					case "aid":
+						return aid;
+					case "version":
+						return version;
+					default:
+						return null;
+				}
+			}
+			public Class<? extends BerType> getFieldClass(String fieldName) {
+				switch(fieldName) {
+					case "aid":
+						return ApplicationIdentifier.class;
+					case "version":
+						return BerOctetString.class;
+					default:
+						return null;
+				}
+			}
+			public void setField(String fieldName, BerType value) {
+				switch(fieldName) {
+					case "aid":
+						aid = (ApplicationIdentifier) value;
+						break;
+					case "version":
+						version = (BerOctetString) value;
+						break;
+					default:
+						throw new IllegalArgumentException("Unknown field " + fieldName);
+				}
+			}
 			public int encode(OutputStream reverseOS) throws IOException {
 				return encode(reverseOS, true);
 			}
@@ -381,6 +426,12 @@ public class ProfileHeader implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return SEQUENCE.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -538,6 +589,92 @@ public class ProfileHeader implements BerType, Serializable {
 		this.eUICCMandatoryAIDs = eUICCMandatoryAIDs;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "major-version":
+				return majorVersion;
+			case "minor-version":
+				return minorVersion;
+			case "profileType":
+				return profileType;
+			case "iccid":
+				return iccid;
+			case "pol":
+				return pol;
+			case "eUICC-Mandatory-services":
+				return eUICCMandatoryServices;
+			case "eUICC-Mandatory-GFSTEList":
+				return eUICCMandatoryGFSTEList;
+			case "connectivityParameters":
+				return connectivityParameters;
+			case "eUICC-Mandatory-AIDs":
+				return eUICCMandatoryAIDs;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "major-version":
+				return UInt8.class;
+			case "minor-version":
+				return UInt8.class;
+			case "profileType":
+				return BerUTF8String.class;
+			case "iccid":
+				return BerOctetString.class;
+			case "pol":
+				return BerOctetString.class;
+			case "eUICC-Mandatory-services":
+				return ServicesList.class;
+			case "eUICC-Mandatory-GFSTEList":
+				return EUICCMandatoryGFSTEList.class;
+			case "connectivityParameters":
+				return BerOctetString.class;
+			case "eUICC-Mandatory-AIDs":
+				return EUICCMandatoryAIDs.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "major-version":
+				majorVersion = (UInt8) value;
+				break;
+			case "minor-version":
+				minorVersion = (UInt8) value;
+				break;
+			case "profileType":
+				profileType = (BerUTF8String) value;
+				break;
+			case "iccid":
+				iccid = (BerOctetString) value;
+				break;
+			case "pol":
+				pol = (BerOctetString) value;
+				break;
+			case "eUICC-Mandatory-services":
+				eUICCMandatoryServices = (ServicesList) value;
+				break;
+			case "eUICC-Mandatory-GFSTEList":
+				eUICCMandatoryGFSTEList = (EUICCMandatoryGFSTEList) value;
+				break;
+			case "connectivityParameters":
+				connectivityParameters = (BerOctetString) value;
+				break;
+			case "eUICC-Mandatory-AIDs":
+				eUICCMandatoryAIDs = (EUICCMandatoryAIDs) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

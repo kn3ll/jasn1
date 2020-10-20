@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -25,7 +27,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.Name;
 import com.beanit.jasn1.compiler.pkix1explicit88.ORAddress;
 import com.beanit.jasn1.compiler.pkix1explicit88.RelativeDistinguishedName;
 
-public class IssuingDistributionPoint implements BerType, Serializable {
+public class IssuingDistributionPoint implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -55,6 +57,71 @@ public class IssuingDistributionPoint implements BerType, Serializable {
 		this.onlyContainsAttributeCerts = onlyContainsAttributeCerts;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "distributionPoint":
+				return distributionPoint;
+			case "onlyContainsUserCerts":
+				return onlyContainsUserCerts;
+			case "onlyContainsCACerts":
+				return onlyContainsCACerts;
+			case "onlySomeReasons":
+				return onlySomeReasons;
+			case "indirectCRL":
+				return indirectCRL;
+			case "onlyContainsAttributeCerts":
+				return onlyContainsAttributeCerts;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "distributionPoint":
+				return DistributionPointName.class;
+			case "onlyContainsUserCerts":
+				return BerBoolean.class;
+			case "onlyContainsCACerts":
+				return BerBoolean.class;
+			case "onlySomeReasons":
+				return ReasonFlags.class;
+			case "indirectCRL":
+				return BerBoolean.class;
+			case "onlyContainsAttributeCerts":
+				return BerBoolean.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "distributionPoint":
+				distributionPoint = (DistributionPointName) value;
+				break;
+			case "onlyContainsUserCerts":
+				onlyContainsUserCerts = (BerBoolean) value;
+				break;
+			case "onlyContainsCACerts":
+				onlyContainsCACerts = (BerBoolean) value;
+				break;
+			case "onlySomeReasons":
+				onlySomeReasons = (ReasonFlags) value;
+				break;
+			case "indirectCRL":
+				indirectCRL = (BerBoolean) value;
+				break;
+			case "onlyContainsAttributeCerts":
+				onlyContainsAttributeCerts = (BerBoolean) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

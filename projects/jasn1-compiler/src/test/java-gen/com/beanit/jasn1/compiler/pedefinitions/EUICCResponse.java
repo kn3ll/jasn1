@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class EUICCResponse implements BerType, Serializable {
+public class EUICCResponse implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class PeStatus implements BerType, Serializable {
+	public static class PeStatus implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,12 @@ public class EUICCResponse implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return PEStatus.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -188,6 +196,50 @@ public class EUICCResponse implements BerType, Serializable {
 		this.statusMessage = statusMessage;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "peStatus":
+				return peStatus;
+			case "profileInstallationAborted":
+				return profileInstallationAborted;
+			case "statusMessage":
+				return statusMessage;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "peStatus":
+				return PeStatus.class;
+			case "profileInstallationAborted":
+				return BerNull.class;
+			case "statusMessage":
+				return BerUTF8String.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "peStatus":
+				peStatus = (PeStatus) value;
+				break;
+			case "profileInstallationAborted":
+				profileInstallationAborted = (BerNull) value;
+				break;
+			case "statusMessage":
+				statusMessage = (BerUTF8String) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

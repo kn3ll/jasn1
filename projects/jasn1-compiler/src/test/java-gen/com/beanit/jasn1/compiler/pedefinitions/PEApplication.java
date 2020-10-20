@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEApplication implements BerType, Serializable {
+public class PEApplication implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class InstanceList implements BerType, Serializable {
+	public static class InstanceList implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,12 @@ public class PEApplication implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return ApplicationInstance.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -188,6 +196,50 @@ public class PEApplication implements BerType, Serializable {
 		this.instanceList = instanceList;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "app-Header":
+				return appHeader;
+			case "loadBlock":
+				return loadBlock;
+			case "instanceList":
+				return instanceList;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "app-Header":
+				return PEHeader.class;
+			case "loadBlock":
+				return ApplicationLoadPackage.class;
+			case "instanceList":
+				return InstanceList.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "app-Header":
+				appHeader = (PEHeader) value;
+				break;
+			case "loadBlock":
+				loadBlock = (ApplicationLoadPackage) value;
+				break;
+			case "instanceList":
+				instanceList = (InstanceList) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

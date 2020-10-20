@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PERFM implements BerType, Serializable {
+public class PERFM implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class TarList implements BerType, Serializable {
+	public static class TarList implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,12 @@ public class PERFM implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return BerOctetString.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -198,6 +206,85 @@ public class PERFM implements BerType, Serializable {
 		this.adfRFMAccess = adfRFMAccess;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "rfm-header":
+				return rfmHeader;
+			case "instanceAID":
+				return instanceAID;
+			case "securityDomainAID":
+				return securityDomainAID;
+			case "tarList":
+				return tarList;
+			case "minimumSecurityLevel":
+				return minimumSecurityLevel;
+			case "uiccAccessDomain":
+				return uiccAccessDomain;
+			case "uiccAdminAccessDomain":
+				return uiccAdminAccessDomain;
+			case "adfRFMAccess":
+				return adfRFMAccess;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "rfm-header":
+				return PEHeader.class;
+			case "instanceAID":
+				return ApplicationIdentifier.class;
+			case "securityDomainAID":
+				return ApplicationIdentifier.class;
+			case "tarList":
+				return TarList.class;
+			case "minimumSecurityLevel":
+				return BerOctetString.class;
+			case "uiccAccessDomain":
+				return BerOctetString.class;
+			case "uiccAdminAccessDomain":
+				return BerOctetString.class;
+			case "adfRFMAccess":
+				return ADFRFMAccess.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "rfm-header":
+				rfmHeader = (PEHeader) value;
+				break;
+			case "instanceAID":
+				instanceAID = (ApplicationIdentifier) value;
+				break;
+			case "securityDomainAID":
+				securityDomainAID = (ApplicationIdentifier) value;
+				break;
+			case "tarList":
+				tarList = (TarList) value;
+				break;
+			case "minimumSecurityLevel":
+				minimumSecurityLevel = (BerOctetString) value;
+				break;
+			case "uiccAccessDomain":
+				uiccAccessDomain = (BerOctetString) value;
+				break;
+			case "uiccAdminAccessDomain":
+				uiccAdminAccessDomain = (BerOctetString) value;
+				break;
+			case "adfRFMAccess":
+				adfRFMAccess = (ADFRFMAccess) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

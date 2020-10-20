@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -25,7 +27,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.Name;
 import com.beanit.jasn1.compiler.pkix1explicit88.ORAddress;
 import com.beanit.jasn1.compiler.pkix1explicit88.RelativeDistinguishedName;
 
-public class ExtKeyUsageSyntax implements BerType, Serializable {
+public class ExtKeyUsageSyntax implements BerSequenceOf, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -45,6 +47,12 @@ public class ExtKeyUsageSyntax implements BerType, Serializable {
 		this.seqOf = seqOf;
 	}
 
+	public List<? extends BerType> getSeqOf() {
+		return seqOf;
+	}
+	public Class<? extends BerType> getSeqOfElementClass() {
+		return KeyPurposeId.class;
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

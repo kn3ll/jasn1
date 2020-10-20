@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,11 +25,11 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class BoundProfilePackage implements BerType, Serializable {
+public class BoundProfilePackage implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class FirstSequenceOf87 implements BerType, Serializable {
+	public static class FirstSequenceOf87 implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,12 @@ public class BoundProfilePackage implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return BerOctetString.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -176,7 +184,7 @@ public class BoundProfilePackage implements BerType, Serializable {
 
 	}
 
-	public static class SequenceOf88 implements BerType, Serializable {
+	public static class SequenceOf88 implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -196,6 +204,12 @@ public class BoundProfilePackage implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return BerOctetString.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -325,7 +339,7 @@ public class BoundProfilePackage implements BerType, Serializable {
 
 	}
 
-	public static class SecondSequenceOf87 implements BerType, Serializable {
+	public static class SecondSequenceOf87 implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -345,6 +359,12 @@ public class BoundProfilePackage implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return BerOctetString.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -474,7 +494,7 @@ public class BoundProfilePackage implements BerType, Serializable {
 
 	}
 
-	public static class SequenceOf86 implements BerType, Serializable {
+	public static class SequenceOf86 implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -494,6 +514,12 @@ public class BoundProfilePackage implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return BerOctetString.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -647,6 +673,64 @@ public class BoundProfilePackage implements BerType, Serializable {
 		this.sequenceOf86 = sequenceOf86;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "initialiseSecureChannelRequest":
+				return initialiseSecureChannelRequest;
+			case "firstSequenceOf87":
+				return firstSequenceOf87;
+			case "sequenceOf88":
+				return sequenceOf88;
+			case "secondSequenceOf87":
+				return secondSequenceOf87;
+			case "sequenceOf86":
+				return sequenceOf86;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "initialiseSecureChannelRequest":
+				return InitialiseSecureChannelRequest.class;
+			case "firstSequenceOf87":
+				return FirstSequenceOf87.class;
+			case "sequenceOf88":
+				return SequenceOf88.class;
+			case "secondSequenceOf87":
+				return SecondSequenceOf87.class;
+			case "sequenceOf86":
+				return SequenceOf86.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "initialiseSecureChannelRequest":
+				initialiseSecureChannelRequest = (InitialiseSecureChannelRequest) value;
+				break;
+			case "firstSequenceOf87":
+				firstSequenceOf87 = (FirstSequenceOf87) value;
+				break;
+			case "sequenceOf88":
+				sequenceOf88 = (SequenceOf88) value;
+				break;
+			case "secondSequenceOf87":
+				secondSequenceOf87 = (SecondSequenceOf87) value;
+				break;
+			case "sequenceOf86":
+				sequenceOf86 = (SequenceOf86) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

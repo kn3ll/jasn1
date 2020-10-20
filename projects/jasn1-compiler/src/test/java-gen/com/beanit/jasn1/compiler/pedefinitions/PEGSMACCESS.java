@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEGSMACCESS implements BerType, Serializable {
+public class PEGSMACCESS implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,6 +53,78 @@ public class PEGSMACCESS implements BerType, Serializable {
 		this.efInvscan = efInvscan;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "gsm-access-header":
+				return gsmAccessHeader;
+			case "templateID":
+				return templateID;
+			case "df-gsm-access":
+				return dfGsmAccess;
+			case "ef-kc":
+				return efKc;
+			case "ef-kcgprs":
+				return efKcgprs;
+			case "ef-cpbcch":
+				return efCpbcch;
+			case "ef-invscan":
+				return efInvscan;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "gsm-access-header":
+				return PEHeader.class;
+			case "templateID":
+				return BerObjectIdentifier.class;
+			case "df-gsm-access":
+				return File.class;
+			case "ef-kc":
+				return File.class;
+			case "ef-kcgprs":
+				return File.class;
+			case "ef-cpbcch":
+				return File.class;
+			case "ef-invscan":
+				return File.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "gsm-access-header":
+				gsmAccessHeader = (PEHeader) value;
+				break;
+			case "templateID":
+				templateID = (BerObjectIdentifier) value;
+				break;
+			case "df-gsm-access":
+				dfGsmAccess = (File) value;
+				break;
+			case "ef-kc":
+				efKc = (File) value;
+				break;
+			case "ef-kcgprs":
+				efKcgprs = (File) value;
+				break;
+			case "ef-cpbcch":
+				efCpbcch = (File) value;
+				break;
+			case "ef-invscan":
+				efInvscan = (File) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

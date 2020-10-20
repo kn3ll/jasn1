@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class EUICCSigned2 implements BerType, Serializable {
+public class EUICCSigned2 implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,50 @@ public class EUICCSigned2 implements BerType, Serializable {
 		this.hashCc = hashCc;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "transactionId":
+				return transactionId;
+			case "euiccOtpk":
+				return euiccOtpk;
+			case "hashCc":
+				return hashCc;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "transactionId":
+				return TransactionId.class;
+			case "euiccOtpk":
+				return BerOctetString.class;
+			case "hashCc":
+				return Octet32.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "transactionId":
+				transactionId = (TransactionId) value;
+				break;
+			case "euiccOtpk":
+				euiccOtpk = (BerOctetString) value;
+				break;
+			case "hashCc":
+				hashCc = (Octet32) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

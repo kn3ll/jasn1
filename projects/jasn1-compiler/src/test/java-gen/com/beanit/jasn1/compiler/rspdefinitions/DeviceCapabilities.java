@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class DeviceCapabilities implements BerType, Serializable {
+public class DeviceCapabilities implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -57,6 +59,85 @@ public class DeviceCapabilities implements BerType, Serializable {
 		this.rspCrlSupportedVersion = rspCrlSupportedVersion;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "gsmSupportedRelease":
+				return gsmSupportedRelease;
+			case "utranSupportedRelease":
+				return utranSupportedRelease;
+			case "cdma2000onexSupportedRelease":
+				return cdma2000onexSupportedRelease;
+			case "cdma2000hrpdSupportedRelease":
+				return cdma2000hrpdSupportedRelease;
+			case "cdma2000ehrpdSupportedRelease":
+				return cdma2000ehrpdSupportedRelease;
+			case "eutranSupportedRelease":
+				return eutranSupportedRelease;
+			case "contactlessSupportedRelease":
+				return contactlessSupportedRelease;
+			case "rspCrlSupportedVersion":
+				return rspCrlSupportedVersion;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "gsmSupportedRelease":
+				return VersionType.class;
+			case "utranSupportedRelease":
+				return VersionType.class;
+			case "cdma2000onexSupportedRelease":
+				return VersionType.class;
+			case "cdma2000hrpdSupportedRelease":
+				return VersionType.class;
+			case "cdma2000ehrpdSupportedRelease":
+				return VersionType.class;
+			case "eutranSupportedRelease":
+				return VersionType.class;
+			case "contactlessSupportedRelease":
+				return VersionType.class;
+			case "rspCrlSupportedVersion":
+				return VersionType.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "gsmSupportedRelease":
+				gsmSupportedRelease = (VersionType) value;
+				break;
+			case "utranSupportedRelease":
+				utranSupportedRelease = (VersionType) value;
+				break;
+			case "cdma2000onexSupportedRelease":
+				cdma2000onexSupportedRelease = (VersionType) value;
+				break;
+			case "cdma2000hrpdSupportedRelease":
+				cdma2000hrpdSupportedRelease = (VersionType) value;
+				break;
+			case "cdma2000ehrpdSupportedRelease":
+				cdma2000ehrpdSupportedRelease = (VersionType) value;
+				break;
+			case "eutranSupportedRelease":
+				eutranSupportedRelease = (VersionType) value;
+				break;
+			case "contactlessSupportedRelease":
+				contactlessSupportedRelease = (VersionType) value;
+				break;
+			case "rspCrlSupportedVersion":
+				rspCrlSupportedVersion = (VersionType) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

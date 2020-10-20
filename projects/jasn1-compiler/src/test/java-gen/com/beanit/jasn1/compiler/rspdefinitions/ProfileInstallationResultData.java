@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,11 +25,11 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class ProfileInstallationResultData implements BerType, Serializable {
+public class ProfileInstallationResultData implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class FinalResult implements BerType, Serializable {
+	public static class FinalResult implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,43 @@ public class ProfileInstallationResultData implements BerType, Serializable {
 			this.errorResult = errorResult;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "successResult":
+					return successResult;
+				case "errorResult":
+					return errorResult;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "successResult":
+					return SuccessResult.class;
+				case "errorResult":
+					return ErrorResult.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "successResult":
+					successResult = (SuccessResult) value;
+					break;
+				case "errorResult":
+					errorResult = (ErrorResult) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -162,6 +201,57 @@ public class ProfileInstallationResultData implements BerType, Serializable {
 		this.finalResult = finalResult;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "transactionId":
+				return transactionId;
+			case "notificationMetadata":
+				return notificationMetadata;
+			case "smdpOid":
+				return smdpOid;
+			case "finalResult":
+				return finalResult;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "transactionId":
+				return TransactionId.class;
+			case "notificationMetadata":
+				return NotificationMetadata.class;
+			case "smdpOid":
+				return BerObjectIdentifier.class;
+			case "finalResult":
+				return FinalResult.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "transactionId":
+				transactionId = (TransactionId) value;
+				break;
+			case "notificationMetadata":
+				notificationMetadata = (NotificationMetadata) value;
+				break;
+			case "smdpOid":
+				smdpOid = (BerObjectIdentifier) value;
+				break;
+			case "finalResult":
+				finalResult = (FinalResult) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

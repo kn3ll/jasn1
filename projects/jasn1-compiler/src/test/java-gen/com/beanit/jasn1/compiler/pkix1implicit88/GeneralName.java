@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -25,7 +27,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.Name;
 import com.beanit.jasn1.compiler.pkix1explicit88.ORAddress;
 import com.beanit.jasn1.compiler.pkix1explicit88.RelativeDistinguishedName;
 
-public class GeneralName implements BerType, Serializable {
+public class GeneralName implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -59,6 +61,92 @@ public class GeneralName implements BerType, Serializable {
 		this.registeredID = registeredID;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "otherName":
+				return otherName;
+			case "rfc822Name":
+				return rfc822Name;
+			case "dNSName":
+				return dNSName;
+			case "x400Address":
+				return x400Address;
+			case "directoryName":
+				return directoryName;
+			case "ediPartyName":
+				return ediPartyName;
+			case "uniformResourceIdentifier":
+				return uniformResourceIdentifier;
+			case "iPAddress":
+				return iPAddress;
+			case "registeredID":
+				return registeredID;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "otherName":
+				return AnotherName.class;
+			case "rfc822Name":
+				return BerIA5String.class;
+			case "dNSName":
+				return BerIA5String.class;
+			case "x400Address":
+				return ORAddress.class;
+			case "directoryName":
+				return Name.class;
+			case "ediPartyName":
+				return EDIPartyName.class;
+			case "uniformResourceIdentifier":
+				return BerIA5String.class;
+			case "iPAddress":
+				return BerOctetString.class;
+			case "registeredID":
+				return BerObjectIdentifier.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "otherName":
+				otherName = (AnotherName) value;
+				break;
+			case "rfc822Name":
+				rfc822Name = (BerIA5String) value;
+				break;
+			case "dNSName":
+				dNSName = (BerIA5String) value;
+				break;
+			case "x400Address":
+				x400Address = (ORAddress) value;
+				break;
+			case "directoryName":
+				directoryName = (Name) value;
+				break;
+			case "ediPartyName":
+				ediPartyName = (EDIPartyName) value;
+				break;
+			case "uniformResourceIdentifier":
+				uniformResourceIdentifier = (BerIA5String) value;
+				break;
+			case "iPAddress":
+				iPAddress = (BerOctetString) value;
+				break;
+			case "registeredID":
+				registeredID = (BerObjectIdentifier) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

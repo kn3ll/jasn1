@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PDVList implements BerType, Serializable {
+public class PDVList implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class PresentationDataValues implements BerType, Serializable {
+	public static class PresentationDataValues implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -45,6 +47,50 @@ public class PDVList implements BerType, Serializable {
 			this.arbitrary = arbitrary;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "single_ASN1_type":
+					return singleASN1Type;
+				case "octet_aligned":
+					return octetAligned;
+				case "arbitrary":
+					return arbitrary;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "single_ASN1_type":
+					return BerAny.class;
+				case "octet_aligned":
+					return BerOctetString.class;
+				case "arbitrary":
+					return BerBitString.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "single_ASN1_type":
+					singleASN1Type = (BerAny) value;
+					break;
+				case "octet_aligned":
+					octetAligned = (BerOctetString) value;
+					break;
+				case "arbitrary":
+					arbitrary = (BerBitString) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -189,6 +235,50 @@ public class PDVList implements BerType, Serializable {
 		this.presentationDataValues = presentationDataValues;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "transfer_syntax_name":
+				return transferSyntaxName;
+			case "presentation_context_identifier":
+				return presentationContextIdentifier;
+			case "presentation_data_values":
+				return presentationDataValues;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "transfer_syntax_name":
+				return TransferSyntaxName.class;
+			case "presentation_context_identifier":
+				return PresentationContextIdentifier.class;
+			case "presentation_data_values":
+				return PresentationDataValues.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "transfer_syntax_name":
+				transferSyntaxName = (TransferSyntaxName) value;
+				break;
+			case "presentation_context_identifier":
+				presentationContextIdentifier = (PresentationContextIdentifier) value;
+				break;
+			case "presentation_data_values":
+				presentationDataValues = (PresentationDataValues) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

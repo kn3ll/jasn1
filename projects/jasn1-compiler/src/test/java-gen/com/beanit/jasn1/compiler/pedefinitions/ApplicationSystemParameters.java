@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ApplicationSystemParameters implements BerType, Serializable {
+public class ApplicationSystemParameters implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -61,6 +63,113 @@ public class ApplicationSystemParameters implements BerType, Serializable {
 		this.cumulativeGrantedNonVolatileMemory = cumulativeGrantedNonVolatileMemory;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "volatileMemoryQuotaC7":
+				return volatileMemoryQuotaC7;
+			case "nonVolatileMemoryQuotaC8":
+				return nonVolatileMemoryQuotaC8;
+			case "globalServiceParameters":
+				return globalServiceParameters;
+			case "implicitSelectionParameter":
+				return implicitSelectionParameter;
+			case "volatileReservedMemory":
+				return volatileReservedMemory;
+			case "nonVolatileReservedMemory":
+				return nonVolatileReservedMemory;
+			case "ts102226SIMFileAccessToolkitParameter":
+				return ts102226SIMFileAccessToolkitParameter;
+			case "ts102226AdditionalContactlessParameters":
+				return ts102226AdditionalContactlessParameters;
+			case "contactlessProtocolParameters":
+				return contactlessProtocolParameters;
+			case "userInteractionContactlessParameters":
+				return userInteractionContactlessParameters;
+			case "cumulativeGrantedVolatileMemory":
+				return cumulativeGrantedVolatileMemory;
+			case "cumulativeGrantedNonVolatileMemory":
+				return cumulativeGrantedNonVolatileMemory;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "volatileMemoryQuotaC7":
+				return BerOctetString.class;
+			case "nonVolatileMemoryQuotaC8":
+				return BerOctetString.class;
+			case "globalServiceParameters":
+				return BerOctetString.class;
+			case "implicitSelectionParameter":
+				return BerOctetString.class;
+			case "volatileReservedMemory":
+				return BerOctetString.class;
+			case "nonVolatileReservedMemory":
+				return BerOctetString.class;
+			case "ts102226SIMFileAccessToolkitParameter":
+				return BerOctetString.class;
+			case "ts102226AdditionalContactlessParameters":
+				return TS102226AdditionalContactlessParameters.class;
+			case "contactlessProtocolParameters":
+				return BerOctetString.class;
+			case "userInteractionContactlessParameters":
+				return BerOctetString.class;
+			case "cumulativeGrantedVolatileMemory":
+				return BerOctetString.class;
+			case "cumulativeGrantedNonVolatileMemory":
+				return BerOctetString.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "volatileMemoryQuotaC7":
+				volatileMemoryQuotaC7 = (BerOctetString) value;
+				break;
+			case "nonVolatileMemoryQuotaC8":
+				nonVolatileMemoryQuotaC8 = (BerOctetString) value;
+				break;
+			case "globalServiceParameters":
+				globalServiceParameters = (BerOctetString) value;
+				break;
+			case "implicitSelectionParameter":
+				implicitSelectionParameter = (BerOctetString) value;
+				break;
+			case "volatileReservedMemory":
+				volatileReservedMemory = (BerOctetString) value;
+				break;
+			case "nonVolatileReservedMemory":
+				nonVolatileReservedMemory = (BerOctetString) value;
+				break;
+			case "ts102226SIMFileAccessToolkitParameter":
+				ts102226SIMFileAccessToolkitParameter = (BerOctetString) value;
+				break;
+			case "ts102226AdditionalContactlessParameters":
+				ts102226AdditionalContactlessParameters = (TS102226AdditionalContactlessParameters) value;
+				break;
+			case "contactlessProtocolParameters":
+				contactlessProtocolParameters = (BerOctetString) value;
+				break;
+			case "userInteractionContactlessParameters":
+				userInteractionContactlessParameters = (BerOctetString) value;
+				break;
+			case "cumulativeGrantedVolatileMemory":
+				cumulativeGrantedVolatileMemory = (BerOctetString) value;
+				break;
+			case "cumulativeGrantedNonVolatileMemory":
+				cumulativeGrantedNonVolatileMemory = (BerOctetString) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

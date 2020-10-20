@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -25,7 +27,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.Name;
 import com.beanit.jasn1.compiler.pkix1explicit88.ORAddress;
 import com.beanit.jasn1.compiler.pkix1explicit88.RelativeDistinguishedName;
 
-public class DistributionPoint implements BerType, Serializable {
+public class DistributionPoint implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -49,6 +51,50 @@ public class DistributionPoint implements BerType, Serializable {
 		this.cRLIssuer = cRLIssuer;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "distributionPoint":
+				return distributionPoint;
+			case "reasons":
+				return reasons;
+			case "cRLIssuer":
+				return cRLIssuer;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "distributionPoint":
+				return DistributionPointName.class;
+			case "reasons":
+				return ReasonFlags.class;
+			case "cRLIssuer":
+				return GeneralNames.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "distributionPoint":
+				distributionPoint = (DistributionPointName) value;
+				break;
+			case "reasons":
+				reasons = (ReasonFlags) value;
+				break;
+			case "cRLIssuer":
+				cRLIssuer = (GeneralNames) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

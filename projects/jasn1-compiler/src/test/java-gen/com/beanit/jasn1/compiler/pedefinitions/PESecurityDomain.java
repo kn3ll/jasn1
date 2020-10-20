@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PESecurityDomain implements BerType, Serializable {
+public class PESecurityDomain implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class KeyList implements BerType, Serializable {
+	public static class KeyList implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,12 @@ public class PESecurityDomain implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return KeyObject.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -168,7 +176,7 @@ public class PESecurityDomain implements BerType, Serializable {
 
 	}
 
-	public static class SdPersoData implements BerType, Serializable {
+	public static class SdPersoData implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -188,6 +196,12 @@ public class PESecurityDomain implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return BerOctetString.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -313,7 +327,7 @@ public class PESecurityDomain implements BerType, Serializable {
 
 	}
 
-	public static class OpenPersoData implements BerType, Serializable {
+	public static class OpenPersoData implements BerSequenceSet, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -335,6 +349,43 @@ public class PESecurityDomain implements BerType, Serializable {
 			this.contactlessProtocolParameters = contactlessProtocolParameters;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "restrictParameter":
+					return restrictParameter;
+				case "contactlessProtocolParameters":
+					return contactlessProtocolParameters;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "restrictParameter":
+					return BerOctetString.class;
+				case "contactlessProtocolParameters":
+					return BerOctetString.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "restrictParameter":
+					restrictParameter = (BerOctetString) value;
+					break;
+				case "contactlessProtocolParameters":
+					contactlessProtocolParameters = (BerOctetString) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -509,7 +560,7 @@ public class PESecurityDomain implements BerType, Serializable {
 
 	}
 
-	public static class CatTpParameters implements BerType, Serializable {
+	public static class CatTpParameters implements BerSequenceSet, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -531,6 +582,43 @@ public class PESecurityDomain implements BerType, Serializable {
 			this.catTpMaxPduSize = catTpMaxPduSize;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "catTpMaxSduSize":
+					return catTpMaxSduSize;
+				case "catTpMaxPduSize":
+					return catTpMaxPduSize;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "catTpMaxSduSize":
+					return UInt16.class;
+				case "catTpMaxPduSize":
+					return UInt16.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "catTpMaxSduSize":
+					catTpMaxSduSize = (UInt16) value;
+					break;
+				case "catTpMaxPduSize":
+					catTpMaxPduSize = (UInt16) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -728,6 +816,71 @@ public class PESecurityDomain implements BerType, Serializable {
 		this.catTpParameters = catTpParameters;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "sd-Header":
+				return sdHeader;
+			case "instance":
+				return instance;
+			case "keyList":
+				return keyList;
+			case "sdPersoData":
+				return sdPersoData;
+			case "openPersoData":
+				return openPersoData;
+			case "catTpParameters":
+				return catTpParameters;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "sd-Header":
+				return PEHeader.class;
+			case "instance":
+				return ApplicationInstance.class;
+			case "keyList":
+				return KeyList.class;
+			case "sdPersoData":
+				return SdPersoData.class;
+			case "openPersoData":
+				return OpenPersoData.class;
+			case "catTpParameters":
+				return CatTpParameters.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "sd-Header":
+				sdHeader = (PEHeader) value;
+				break;
+			case "instance":
+				instance = (ApplicationInstance) value;
+				break;
+			case "keyList":
+				keyList = (KeyList) value;
+				break;
+			case "sdPersoData":
+				sdPersoData = (SdPersoData) value;
+				break;
+			case "openPersoData":
+				openPersoData = (OpenPersoData) value;
+				break;
+			case "catTpParameters":
+				catTpParameters = (CatTpParameters) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

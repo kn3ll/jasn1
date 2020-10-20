@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class CtxParamsForCommonAuthentication implements BerType, Serializable {
+public class CtxParamsForCommonAuthentication implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -45,6 +47,43 @@ public class CtxParamsForCommonAuthentication implements BerType, Serializable {
 		this.deviceInfo = deviceInfo;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "matchingId":
+				return matchingId;
+			case "deviceInfo":
+				return deviceInfo;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "matchingId":
+				return BerUTF8String.class;
+			case "deviceInfo":
+				return DeviceInfo.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "matchingId":
+				matchingId = (BerUTF8String) value;
+				break;
+			case "deviceInfo":
+				deviceInfo = (DeviceInfo) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

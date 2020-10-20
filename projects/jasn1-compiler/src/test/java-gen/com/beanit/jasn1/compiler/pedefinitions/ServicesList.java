@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ServicesList implements BerType, Serializable {
+public class ServicesList implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -79,6 +81,176 @@ public class ServicesList implements BerType, Serializable {
 		this.catTp = catTp;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "contactless":
+				return contactless;
+			case "usim":
+				return usim;
+			case "isim":
+				return isim;
+			case "csim":
+				return csim;
+			case "milenage":
+				return milenage;
+			case "tuak128":
+				return tuak128;
+			case "cave":
+				return cave;
+			case "gba-usim":
+				return gbaUsim;
+			case "gba-isim":
+				return gbaIsim;
+			case "mbms":
+				return mbms;
+			case "eap":
+				return eap;
+			case "javacard":
+				return javacard;
+			case "multos":
+				return multos;
+			case "multiple-usim":
+				return multipleUsim;
+			case "multiple-isim":
+				return multipleIsim;
+			case "multiple-csim":
+				return multipleCsim;
+			case "tuak256":
+				return tuak256;
+			case "usim-test-algorithm":
+				return usimTestAlgorithm;
+			case "ber-tlv":
+				return berTlv;
+			case "dfLink":
+				return dfLink;
+			case "cat-tp":
+				return catTp;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "contactless":
+				return BerNull.class;
+			case "usim":
+				return BerNull.class;
+			case "isim":
+				return BerNull.class;
+			case "csim":
+				return BerNull.class;
+			case "milenage":
+				return BerNull.class;
+			case "tuak128":
+				return BerNull.class;
+			case "cave":
+				return BerNull.class;
+			case "gba-usim":
+				return BerNull.class;
+			case "gba-isim":
+				return BerNull.class;
+			case "mbms":
+				return BerNull.class;
+			case "eap":
+				return BerNull.class;
+			case "javacard":
+				return BerNull.class;
+			case "multos":
+				return BerNull.class;
+			case "multiple-usim":
+				return BerNull.class;
+			case "multiple-isim":
+				return BerNull.class;
+			case "multiple-csim":
+				return BerNull.class;
+			case "tuak256":
+				return BerNull.class;
+			case "usim-test-algorithm":
+				return BerNull.class;
+			case "ber-tlv":
+				return BerNull.class;
+			case "dfLink":
+				return BerNull.class;
+			case "cat-tp":
+				return BerNull.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "contactless":
+				contactless = (BerNull) value;
+				break;
+			case "usim":
+				usim = (BerNull) value;
+				break;
+			case "isim":
+				isim = (BerNull) value;
+				break;
+			case "csim":
+				csim = (BerNull) value;
+				break;
+			case "milenage":
+				milenage = (BerNull) value;
+				break;
+			case "tuak128":
+				tuak128 = (BerNull) value;
+				break;
+			case "cave":
+				cave = (BerNull) value;
+				break;
+			case "gba-usim":
+				gbaUsim = (BerNull) value;
+				break;
+			case "gba-isim":
+				gbaIsim = (BerNull) value;
+				break;
+			case "mbms":
+				mbms = (BerNull) value;
+				break;
+			case "eap":
+				eap = (BerNull) value;
+				break;
+			case "javacard":
+				javacard = (BerNull) value;
+				break;
+			case "multos":
+				multos = (BerNull) value;
+				break;
+			case "multiple-usim":
+				multipleUsim = (BerNull) value;
+				break;
+			case "multiple-isim":
+				multipleIsim = (BerNull) value;
+				break;
+			case "multiple-csim":
+				multipleCsim = (BerNull) value;
+				break;
+			case "tuak256":
+				tuak256 = (BerNull) value;
+				break;
+			case "usim-test-algorithm":
+				usimTestAlgorithm = (BerNull) value;
+				break;
+			case "ber-tlv":
+				berTlv = (BerNull) value;
+				break;
+			case "dfLink":
+				dfLink = (BerNull) value;
+				break;
+			case "cat-tp":
+				catTp = (BerNull) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

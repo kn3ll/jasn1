@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEMF implements BerType, Serializable {
+public class PEMF implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -53,6 +55,85 @@ public class PEMF implements BerType, Serializable {
 		this.efUmpc = efUmpc;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "mf-header":
+				return mfHeader;
+			case "templateID":
+				return templateID;
+			case "mf":
+				return mf;
+			case "ef-pl":
+				return efPl;
+			case "ef-iccid":
+				return efIccid;
+			case "ef-dir":
+				return efDir;
+			case "ef-arr":
+				return efArr;
+			case "ef-umpc":
+				return efUmpc;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "mf-header":
+				return PEHeader.class;
+			case "templateID":
+				return BerObjectIdentifier.class;
+			case "mf":
+				return File.class;
+			case "ef-pl":
+				return File.class;
+			case "ef-iccid":
+				return File.class;
+			case "ef-dir":
+				return File.class;
+			case "ef-arr":
+				return File.class;
+			case "ef-umpc":
+				return File.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "mf-header":
+				mfHeader = (PEHeader) value;
+				break;
+			case "templateID":
+				templateID = (BerObjectIdentifier) value;
+				break;
+			case "mf":
+				mf = (File) value;
+				break;
+			case "ef-pl":
+				efPl = (File) value;
+				break;
+			case "ef-iccid":
+				efIccid = (File) value;
+				break;
+			case "ef-dir":
+				efDir = (File) value;
+				break;
+			case "ef-arr":
+				efArr = (File) value;
+				break;
+			case "ef-umpc":
+				efUmpc = (File) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

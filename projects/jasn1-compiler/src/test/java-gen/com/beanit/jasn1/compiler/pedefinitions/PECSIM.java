@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PECSIM implements BerType, Serializable {
+public class PECSIM implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -111,6 +113,288 @@ public class PECSIM implements BerType, Serializable {
 		this.efCallPrompt = efCallPrompt;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "csim-header":
+				return csimHeader;
+			case "templateID":
+				return templateID;
+			case "adf-csim":
+				return adfCsim;
+			case "ef-arr":
+				return efArr;
+			case "ef-call-count":
+				return efCallCount;
+			case "ef-imsi-m":
+				return efImsiM;
+			case "ef-imsi-t":
+				return efImsiT;
+			case "ef-tmsi":
+				return efTmsi;
+			case "ef-ah":
+				return efAh;
+			case "ef-aop":
+				return efAop;
+			case "ef-aloc":
+				return efAloc;
+			case "ef-cdmahome":
+				return efCdmahome;
+			case "ef-znregi":
+				return efZnregi;
+			case "ef-snregi":
+				return efSnregi;
+			case "ef-distregi":
+				return efDistregi;
+			case "ef-accolc":
+				return efAccolc;
+			case "ef-term":
+				return efTerm;
+			case "ef-acp":
+				return efAcp;
+			case "ef-prl":
+				return efPrl;
+			case "ef-ruimid":
+				return efRuimid;
+			case "ef-csim-st":
+				return efCsimSt;
+			case "ef-spc":
+				return efSpc;
+			case "ef-otapaspc":
+				return efOtapaspc;
+			case "ef-namlock":
+				return efNamlock;
+			case "ef-ota":
+				return efOta;
+			case "ef-sp":
+				return efSp;
+			case "ef-esn-meid-me":
+				return efEsnMeidMe;
+			case "ef-li":
+				return efLi;
+			case "ef-usgind":
+				return efUsgind;
+			case "ef-ad":
+				return efAd;
+			case "ef-max-prl":
+				return efMaxPrl;
+			case "ef-spcs":
+				return efSpcs;
+			case "ef-mecrp":
+				return efMecrp;
+			case "ef-home-tag":
+				return efHomeTag;
+			case "ef-group-tag":
+				return efGroupTag;
+			case "ef-specific-tag":
+				return efSpecificTag;
+			case "ef-call-prompt":
+				return efCallPrompt;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "csim-header":
+				return PEHeader.class;
+			case "templateID":
+				return BerObjectIdentifier.class;
+			case "adf-csim":
+				return File.class;
+			case "ef-arr":
+				return File.class;
+			case "ef-call-count":
+				return File.class;
+			case "ef-imsi-m":
+				return File.class;
+			case "ef-imsi-t":
+				return File.class;
+			case "ef-tmsi":
+				return File.class;
+			case "ef-ah":
+				return File.class;
+			case "ef-aop":
+				return File.class;
+			case "ef-aloc":
+				return File.class;
+			case "ef-cdmahome":
+				return File.class;
+			case "ef-znregi":
+				return File.class;
+			case "ef-snregi":
+				return File.class;
+			case "ef-distregi":
+				return File.class;
+			case "ef-accolc":
+				return File.class;
+			case "ef-term":
+				return File.class;
+			case "ef-acp":
+				return File.class;
+			case "ef-prl":
+				return File.class;
+			case "ef-ruimid":
+				return File.class;
+			case "ef-csim-st":
+				return File.class;
+			case "ef-spc":
+				return File.class;
+			case "ef-otapaspc":
+				return File.class;
+			case "ef-namlock":
+				return File.class;
+			case "ef-ota":
+				return File.class;
+			case "ef-sp":
+				return File.class;
+			case "ef-esn-meid-me":
+				return File.class;
+			case "ef-li":
+				return File.class;
+			case "ef-usgind":
+				return File.class;
+			case "ef-ad":
+				return File.class;
+			case "ef-max-prl":
+				return File.class;
+			case "ef-spcs":
+				return File.class;
+			case "ef-mecrp":
+				return File.class;
+			case "ef-home-tag":
+				return File.class;
+			case "ef-group-tag":
+				return File.class;
+			case "ef-specific-tag":
+				return File.class;
+			case "ef-call-prompt":
+				return File.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "csim-header":
+				csimHeader = (PEHeader) value;
+				break;
+			case "templateID":
+				templateID = (BerObjectIdentifier) value;
+				break;
+			case "adf-csim":
+				adfCsim = (File) value;
+				break;
+			case "ef-arr":
+				efArr = (File) value;
+				break;
+			case "ef-call-count":
+				efCallCount = (File) value;
+				break;
+			case "ef-imsi-m":
+				efImsiM = (File) value;
+				break;
+			case "ef-imsi-t":
+				efImsiT = (File) value;
+				break;
+			case "ef-tmsi":
+				efTmsi = (File) value;
+				break;
+			case "ef-ah":
+				efAh = (File) value;
+				break;
+			case "ef-aop":
+				efAop = (File) value;
+				break;
+			case "ef-aloc":
+				efAloc = (File) value;
+				break;
+			case "ef-cdmahome":
+				efCdmahome = (File) value;
+				break;
+			case "ef-znregi":
+				efZnregi = (File) value;
+				break;
+			case "ef-snregi":
+				efSnregi = (File) value;
+				break;
+			case "ef-distregi":
+				efDistregi = (File) value;
+				break;
+			case "ef-accolc":
+				efAccolc = (File) value;
+				break;
+			case "ef-term":
+				efTerm = (File) value;
+				break;
+			case "ef-acp":
+				efAcp = (File) value;
+				break;
+			case "ef-prl":
+				efPrl = (File) value;
+				break;
+			case "ef-ruimid":
+				efRuimid = (File) value;
+				break;
+			case "ef-csim-st":
+				efCsimSt = (File) value;
+				break;
+			case "ef-spc":
+				efSpc = (File) value;
+				break;
+			case "ef-otapaspc":
+				efOtapaspc = (File) value;
+				break;
+			case "ef-namlock":
+				efNamlock = (File) value;
+				break;
+			case "ef-ota":
+				efOta = (File) value;
+				break;
+			case "ef-sp":
+				efSp = (File) value;
+				break;
+			case "ef-esn-meid-me":
+				efEsnMeidMe = (File) value;
+				break;
+			case "ef-li":
+				efLi = (File) value;
+				break;
+			case "ef-usgind":
+				efUsgind = (File) value;
+				break;
+			case "ef-ad":
+				efAd = (File) value;
+				break;
+			case "ef-max-prl":
+				efMaxPrl = (File) value;
+				break;
+			case "ef-spcs":
+				efSpcs = (File) value;
+				break;
+			case "ef-mecrp":
+				efMecrp = (File) value;
+				break;
+			case "ef-home-tag":
+				efHomeTag = (File) value;
+				break;
+			case "ef-group-tag":
+				efGroupTag = (File) value;
+				break;
+			case "ef-specific-tag":
+				efSpecificTag = (File) value;
+				break;
+			case "ef-call-prompt":
+				efCallPrompt = (File) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

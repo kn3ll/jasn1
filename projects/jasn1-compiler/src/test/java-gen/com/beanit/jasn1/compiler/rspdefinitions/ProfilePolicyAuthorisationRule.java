@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,11 +25,11 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class ProfilePolicyAuthorisationRule implements BerType, Serializable {
+public class ProfilePolicyAuthorisationRule implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class AllowedOperators implements BerType, Serializable {
+	public static class AllowedOperators implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,12 @@ public class ProfilePolicyAuthorisationRule implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return OperatorId.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -192,6 +200,50 @@ public class ProfilePolicyAuthorisationRule implements BerType, Serializable {
 		this.pprFlags = pprFlags;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "pprIds":
+				return pprIds;
+			case "allowedOperators":
+				return allowedOperators;
+			case "pprFlags":
+				return pprFlags;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "pprIds":
+				return PprIds.class;
+			case "allowedOperators":
+				return AllowedOperators.class;
+			case "pprFlags":
+				return BerBitString.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "pprIds":
+				pprIds = (PprIds) value;
+				break;
+			case "allowedOperators":
+				allowedOperators = (AllowedOperators) value;
+				break;
+			case "pprFlags":
+				pprFlags = (BerBitString) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

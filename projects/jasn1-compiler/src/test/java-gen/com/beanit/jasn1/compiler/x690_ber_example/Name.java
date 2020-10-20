@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class Name implements BerType, Serializable {
+public class Name implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -61,6 +63,50 @@ public class Name implements BerType, Serializable {
 		return familyName;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "givenName":
+				return givenName;
+			case "initial":
+				return initial;
+			case "familyName":
+				return familyName;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "givenName":
+				return BerVisibleString.class;
+			case "initial":
+				return BerVisibleString.class;
+			case "familyName":
+				return BerVisibleString.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "givenName":
+				givenName = (BerVisibleString) value;
+				break;
+			case "initial":
+				initial = (BerVisibleString) value;
+				break;
+			case "familyName":
+				familyName = (BerVisibleString) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

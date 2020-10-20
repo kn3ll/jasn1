@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ChildInformationz implements BerType, Serializable {
+public class ChildInformationz implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -52,6 +54,43 @@ public class ChildInformationz implements BerType, Serializable {
 		return dateOfBirth;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "name":
+				return name;
+			case "dateOfBirth":
+				return dateOfBirth;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "name":
+				return Namez.class;
+			case "dateOfBirth":
+				return Datez.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "name":
+				name = (Namez) value;
+				break;
+			case "dateOfBirth":
+				dateOfBirth = (Datez) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

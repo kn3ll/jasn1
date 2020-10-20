@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ProfileElement implements BerType, Serializable {
+public class ProfileElement implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -91,6 +93,225 @@ public class ProfileElement implements BerType, Serializable {
 		this.eap = eap;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "header":
+				return header;
+			case "genericFileManagement":
+				return genericFileManagement;
+			case "pinCodes":
+				return pinCodes;
+			case "pukCodes":
+				return pukCodes;
+			case "akaParameter":
+				return akaParameter;
+			case "cdmaParameter":
+				return cdmaParameter;
+			case "securityDomain":
+				return securityDomain;
+			case "rfm":
+				return rfm;
+			case "application":
+				return application;
+			case "nonStandard":
+				return nonStandard;
+			case "end":
+				return end;
+			case "rfu1":
+				return rfu1;
+			case "rfu2":
+				return rfu2;
+			case "rfu3":
+				return rfu3;
+			case "rfu4":
+				return rfu4;
+			case "rfu5":
+				return rfu5;
+			case "mf":
+				return mf;
+			case "cd":
+				return cd;
+			case "telecom":
+				return telecom;
+			case "usim":
+				return usim;
+			case "opt-usim":
+				return optUsim;
+			case "isim":
+				return isim;
+			case "opt-isim":
+				return optIsim;
+			case "phonebook":
+				return phonebook;
+			case "gsm-access":
+				return gsmAccess;
+			case "csim":
+				return csim;
+			case "opt-csim":
+				return optCsim;
+			case "eap":
+				return eap;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "header":
+				return ProfileHeader.class;
+			case "genericFileManagement":
+				return PEGenericFileManagement.class;
+			case "pinCodes":
+				return PEPINCodes.class;
+			case "pukCodes":
+				return PEPUKCodes.class;
+			case "akaParameter":
+				return PEAKAParameter.class;
+			case "cdmaParameter":
+				return PECDMAParameter.class;
+			case "securityDomain":
+				return PESecurityDomain.class;
+			case "rfm":
+				return PERFM.class;
+			case "application":
+				return PEApplication.class;
+			case "nonStandard":
+				return PENonStandard.class;
+			case "end":
+				return PEEnd.class;
+			case "rfu1":
+				return PEDummy.class;
+			case "rfu2":
+				return PEDummy.class;
+			case "rfu3":
+				return PEDummy.class;
+			case "rfu4":
+				return PEDummy.class;
+			case "rfu5":
+				return PEDummy.class;
+			case "mf":
+				return PEMF.class;
+			case "cd":
+				return PECD.class;
+			case "telecom":
+				return PETELECOM.class;
+			case "usim":
+				return PEUSIM.class;
+			case "opt-usim":
+				return PEOPTUSIM.class;
+			case "isim":
+				return PEISIM.class;
+			case "opt-isim":
+				return PEOPTISIM.class;
+			case "phonebook":
+				return PEPHONEBOOK.class;
+			case "gsm-access":
+				return PEGSMACCESS.class;
+			case "csim":
+				return PECSIM.class;
+			case "opt-csim":
+				return PEOPTCSIM.class;
+			case "eap":
+				return PEEAP.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "header":
+				header = (ProfileHeader) value;
+				break;
+			case "genericFileManagement":
+				genericFileManagement = (PEGenericFileManagement) value;
+				break;
+			case "pinCodes":
+				pinCodes = (PEPINCodes) value;
+				break;
+			case "pukCodes":
+				pukCodes = (PEPUKCodes) value;
+				break;
+			case "akaParameter":
+				akaParameter = (PEAKAParameter) value;
+				break;
+			case "cdmaParameter":
+				cdmaParameter = (PECDMAParameter) value;
+				break;
+			case "securityDomain":
+				securityDomain = (PESecurityDomain) value;
+				break;
+			case "rfm":
+				rfm = (PERFM) value;
+				break;
+			case "application":
+				application = (PEApplication) value;
+				break;
+			case "nonStandard":
+				nonStandard = (PENonStandard) value;
+				break;
+			case "end":
+				end = (PEEnd) value;
+				break;
+			case "rfu1":
+				rfu1 = (PEDummy) value;
+				break;
+			case "rfu2":
+				rfu2 = (PEDummy) value;
+				break;
+			case "rfu3":
+				rfu3 = (PEDummy) value;
+				break;
+			case "rfu4":
+				rfu4 = (PEDummy) value;
+				break;
+			case "rfu5":
+				rfu5 = (PEDummy) value;
+				break;
+			case "mf":
+				mf = (PEMF) value;
+				break;
+			case "cd":
+				cd = (PECD) value;
+				break;
+			case "telecom":
+				telecom = (PETELECOM) value;
+				break;
+			case "usim":
+				usim = (PEUSIM) value;
+				break;
+			case "opt-usim":
+				optUsim = (PEOPTUSIM) value;
+				break;
+			case "isim":
+				isim = (PEISIM) value;
+				break;
+			case "opt-isim":
+				optIsim = (PEOPTISIM) value;
+				break;
+			case "phonebook":
+				phonebook = (PEPHONEBOOK) value;
+				break;
+			case "gsm-access":
+				gsmAccess = (PEGSMACCESS) value;
+				break;
+			case "csim":
+				csim = (PECSIM) value;
+				break;
+			case "opt-csim":
+				optCsim = (PEOPTCSIM) value;
+				break;
+			case "eap":
+				eap = (PEEAP) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

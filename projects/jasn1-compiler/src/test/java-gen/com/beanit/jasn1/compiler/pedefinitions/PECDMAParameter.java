@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PECDMAParameter implements BerType, Serializable {
+public class PECDMAParameter implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -49,6 +51,71 @@ public class PECDMAParameter implements BerType, Serializable {
 		this.mobileIPAuthenticationData = mobileIPAuthenticationData;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "cdma-header":
+				return cdmaHeader;
+			case "authenticationKey":
+				return authenticationKey;
+			case "ssd":
+				return ssd;
+			case "hrpdAccessAuthenticationData":
+				return hrpdAccessAuthenticationData;
+			case "simpleIPAuthenticationData":
+				return simpleIPAuthenticationData;
+			case "mobileIPAuthenticationData":
+				return mobileIPAuthenticationData;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "cdma-header":
+				return PEHeader.class;
+			case "authenticationKey":
+				return BerOctetString.class;
+			case "ssd":
+				return BerOctetString.class;
+			case "hrpdAccessAuthenticationData":
+				return BerOctetString.class;
+			case "simpleIPAuthenticationData":
+				return BerOctetString.class;
+			case "mobileIPAuthenticationData":
+				return BerOctetString.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "cdma-header":
+				cdmaHeader = (PEHeader) value;
+				break;
+			case "authenticationKey":
+				authenticationKey = (BerOctetString) value;
+				break;
+			case "ssd":
+				ssd = (BerOctetString) value;
+				break;
+			case "hrpdAccessAuthenticationData":
+				hrpdAccessAuthenticationData = (BerOctetString) value;
+				break;
+			case "simpleIPAuthenticationData":
+				simpleIPAuthenticationData = (BerOctetString) value;
+				break;
+			case "mobileIPAuthenticationData":
+				mobileIPAuthenticationData = (BerOctetString) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

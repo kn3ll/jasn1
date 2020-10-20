@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ApplicationInstance implements BerType, Serializable {
+public class ApplicationInstance implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class ProcessData implements BerType, Serializable {
+	public static class ProcessData implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,12 @@ public class ApplicationInstance implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return BerOctetString.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -202,6 +210,99 @@ public class ApplicationInstance implements BerType, Serializable {
 		this.processData = processData;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "applicationLoadPackageAID":
+				return applicationLoadPackageAID;
+			case "classAID":
+				return classAID;
+			case "instanceAID":
+				return instanceAID;
+			case "extraditeSecurityDomainAID":
+				return extraditeSecurityDomainAID;
+			case "applicationPrivileges":
+				return applicationPrivileges;
+			case "lifeCycleState":
+				return lifeCycleState;
+			case "applicationSpecificParametersC9":
+				return applicationSpecificParametersC9;
+			case "systemSpecificParameters":
+				return systemSpecificParameters;
+			case "applicationParameters":
+				return applicationParameters;
+			case "processData":
+				return processData;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "applicationLoadPackageAID":
+				return ApplicationIdentifier.class;
+			case "classAID":
+				return ApplicationIdentifier.class;
+			case "instanceAID":
+				return ApplicationIdentifier.class;
+			case "extraditeSecurityDomainAID":
+				return ApplicationIdentifier.class;
+			case "applicationPrivileges":
+				return BerOctetString.class;
+			case "lifeCycleState":
+				return BerOctetString.class;
+			case "applicationSpecificParametersC9":
+				return BerOctetString.class;
+			case "systemSpecificParameters":
+				return ApplicationSystemParameters.class;
+			case "applicationParameters":
+				return UICCApplicationParameters.class;
+			case "processData":
+				return ProcessData.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "applicationLoadPackageAID":
+				applicationLoadPackageAID = (ApplicationIdentifier) value;
+				break;
+			case "classAID":
+				classAID = (ApplicationIdentifier) value;
+				break;
+			case "instanceAID":
+				instanceAID = (ApplicationIdentifier) value;
+				break;
+			case "extraditeSecurityDomainAID":
+				extraditeSecurityDomainAID = (ApplicationIdentifier) value;
+				break;
+			case "applicationPrivileges":
+				applicationPrivileges = (BerOctetString) value;
+				break;
+			case "lifeCycleState":
+				lifeCycleState = (BerOctetString) value;
+				break;
+			case "applicationSpecificParametersC9":
+				applicationSpecificParametersC9 = (BerOctetString) value;
+				break;
+			case "systemSpecificParameters":
+				systemSpecificParameters = (ApplicationSystemParameters) value;
+				break;
+			case "applicationParameters":
+				applicationParameters = (UICCApplicationParameters) value;
+				break;
+			case "processData":
+				processData = (ProcessData) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class BuiltInStandardAttributes implements BerType, Serializable {
+public class BuiltInStandardAttributes implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -55,6 +57,92 @@ public class BuiltInStandardAttributes implements BerType, Serializable {
 		this.organizationalUnitNames = organizationalUnitNames;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "country-name":
+				return countryName;
+			case "administration-domain-name":
+				return administrationDomainName;
+			case "network-address":
+				return networkAddress;
+			case "terminal-identifier":
+				return terminalIdentifier;
+			case "private-domain-name":
+				return privateDomainName;
+			case "organization-name":
+				return organizationName;
+			case "numeric-user-identifier":
+				return numericUserIdentifier;
+			case "personal-name":
+				return personalName;
+			case "organizational-unit-names":
+				return organizationalUnitNames;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "country-name":
+				return CountryName.class;
+			case "administration-domain-name":
+				return AdministrationDomainName.class;
+			case "network-address":
+				return NetworkAddress.class;
+			case "terminal-identifier":
+				return TerminalIdentifier.class;
+			case "private-domain-name":
+				return PrivateDomainName.class;
+			case "organization-name":
+				return OrganizationName.class;
+			case "numeric-user-identifier":
+				return NumericUserIdentifier.class;
+			case "personal-name":
+				return PersonalName.class;
+			case "organizational-unit-names":
+				return OrganizationalUnitNames.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "country-name":
+				countryName = (CountryName) value;
+				break;
+			case "administration-domain-name":
+				administrationDomainName = (AdministrationDomainName) value;
+				break;
+			case "network-address":
+				networkAddress = (NetworkAddress) value;
+				break;
+			case "terminal-identifier":
+				terminalIdentifier = (TerminalIdentifier) value;
+				break;
+			case "private-domain-name":
+				privateDomainName = (PrivateDomainName) value;
+				break;
+			case "organization-name":
+				organizationName = (OrganizationName) value;
+				break;
+			case "numeric-user-identifier":
+				numericUserIdentifier = (NumericUserIdentifier) value;
+				break;
+			case "personal-name":
+				personalName = (PersonalName) value;
+				break;
+			case "organizational-unit-names":
+				organizationalUnitNames = (OrganizationalUnitNames) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

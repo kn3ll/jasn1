@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PEStatus implements BerType, Serializable {
+public class PEStatus implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -45,6 +47,57 @@ public class PEStatus implements BerType, Serializable {
 		this.offset = offset;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "status":
+				return status;
+			case "identification":
+				return identification;
+			case "additional-information":
+				return additionalInformation;
+			case "offset":
+				return offset;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "status":
+				return BerInteger.class;
+			case "identification":
+				return UInt15.class;
+			case "additional-information":
+				return UInt8.class;
+			case "offset":
+				return UInt31.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "status":
+				status = (BerInteger) value;
+				break;
+			case "identification":
+				identification = (UInt15) value;
+				break;
+			case "additional-information":
+				additionalInformation = (UInt8) value;
+				break;
+			case "offset":
+				offset = (UInt31) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

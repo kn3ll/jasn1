@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,11 +25,11 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class EnableProfileRequest implements BerType, Serializable {
+public class EnableProfileRequest implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class ProfileIdentifier implements BerType, Serializable {
+	public static class ProfileIdentifier implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,43 @@ public class EnableProfileRequest implements BerType, Serializable {
 			this.iccid = iccid;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "isdpAid":
+					return isdpAid;
+				case "iccid":
+					return iccid;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "isdpAid":
+					return OctetTo16.class;
+				case "iccid":
+					return Iccid.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "isdpAid":
+					isdpAid = (OctetTo16) value;
+					break;
+				case "iccid":
+					iccid = (Iccid) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -153,6 +192,43 @@ public class EnableProfileRequest implements BerType, Serializable {
 		this.refreshFlag = refreshFlag;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "profileIdentifier":
+				return profileIdentifier;
+			case "refreshFlag":
+				return refreshFlag;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "profileIdentifier":
+				return ProfileIdentifier.class;
+			case "refreshFlag":
+				return BerBoolean.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "profileIdentifier":
+				profileIdentifier = (ProfileIdentifier) value;
+				break;
+			case "refreshFlag":
+				refreshFlag = (BerBoolean) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

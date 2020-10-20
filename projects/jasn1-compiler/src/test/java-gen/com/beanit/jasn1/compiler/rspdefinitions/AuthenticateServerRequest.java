@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class AuthenticateServerRequest implements BerType, Serializable {
+public class AuthenticateServerRequest implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,6 +53,64 @@ public class AuthenticateServerRequest implements BerType, Serializable {
 		this.ctxParams1 = ctxParams1;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "serverSigned1":
+				return serverSigned1;
+			case "serverSignature1":
+				return serverSignature1;
+			case "euiccCiPKIdToBeUsed":
+				return euiccCiPKIdToBeUsed;
+			case "serverCertificate":
+				return serverCertificate;
+			case "ctxParams1":
+				return ctxParams1;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "serverSigned1":
+				return ServerSigned1.class;
+			case "serverSignature1":
+				return BerOctetString.class;
+			case "euiccCiPKIdToBeUsed":
+				return SubjectKeyIdentifier.class;
+			case "serverCertificate":
+				return Certificate.class;
+			case "ctxParams1":
+				return CtxParams1.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "serverSigned1":
+				serverSigned1 = (ServerSigned1) value;
+				break;
+			case "serverSignature1":
+				serverSignature1 = (BerOctetString) value;
+				break;
+			case "euiccCiPKIdToBeUsed":
+				euiccCiPKIdToBeUsed = (SubjectKeyIdentifier) value;
+				break;
+			case "serverCertificate":
+				serverCertificate = (Certificate) value;
+				break;
+			case "ctxParams1":
+				ctxParams1 = (CtxParams1) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

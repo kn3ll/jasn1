@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,11 +25,11 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class EUICCInfo2 implements BerType, Serializable {
+public class EUICCInfo2 implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class EuiccCiPKIdListForVerification implements BerType, Serializable {
+	public static class EuiccCiPKIdListForVerification implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,12 @@ public class EUICCInfo2 implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return SubjectKeyIdentifier.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -172,7 +180,7 @@ public class EUICCInfo2 implements BerType, Serializable {
 
 	}
 
-	public static class EuiccCiPKIdListForSigning implements BerType, Serializable {
+	public static class EuiccCiPKIdListForSigning implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -192,6 +200,12 @@ public class EUICCInfo2 implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return SubjectKeyIdentifier.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -361,6 +375,134 @@ public class EUICCInfo2 implements BerType, Serializable {
 		this.certificationDataObject = certificationDataObject;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "profileVersion":
+				return profileVersion;
+			case "svn":
+				return svn;
+			case "euiccFirmwareVer":
+				return euiccFirmwareVer;
+			case "extCardResource":
+				return extCardResource;
+			case "uiccCapability":
+				return uiccCapability;
+			case "ts102241Version":
+				return ts102241Version;
+			case "globalplatformVersion":
+				return globalplatformVersion;
+			case "rspCapability":
+				return rspCapability;
+			case "euiccCiPKIdListForVerification":
+				return euiccCiPKIdListForVerification;
+			case "euiccCiPKIdListForSigning":
+				return euiccCiPKIdListForSigning;
+			case "euiccCategory":
+				return euiccCategory;
+			case "forbiddenProfilePolicyRules":
+				return forbiddenProfilePolicyRules;
+			case "ppVersion":
+				return ppVersion;
+			case "sasAcreditationNumber":
+				return sasAcreditationNumber;
+			case "certificationDataObject":
+				return certificationDataObject;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "profileVersion":
+				return VersionType.class;
+			case "svn":
+				return VersionType.class;
+			case "euiccFirmwareVer":
+				return VersionType.class;
+			case "extCardResource":
+				return BerOctetString.class;
+			case "uiccCapability":
+				return UICCCapability.class;
+			case "ts102241Version":
+				return VersionType.class;
+			case "globalplatformVersion":
+				return VersionType.class;
+			case "rspCapability":
+				return RspCapability.class;
+			case "euiccCiPKIdListForVerification":
+				return EuiccCiPKIdListForVerification.class;
+			case "euiccCiPKIdListForSigning":
+				return EuiccCiPKIdListForSigning.class;
+			case "euiccCategory":
+				return BerInteger.class;
+			case "forbiddenProfilePolicyRules":
+				return PprIds.class;
+			case "ppVersion":
+				return VersionType.class;
+			case "sasAcreditationNumber":
+				return BerUTF8String.class;
+			case "certificationDataObject":
+				return CertificationDataObject.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "profileVersion":
+				profileVersion = (VersionType) value;
+				break;
+			case "svn":
+				svn = (VersionType) value;
+				break;
+			case "euiccFirmwareVer":
+				euiccFirmwareVer = (VersionType) value;
+				break;
+			case "extCardResource":
+				extCardResource = (BerOctetString) value;
+				break;
+			case "uiccCapability":
+				uiccCapability = (UICCCapability) value;
+				break;
+			case "ts102241Version":
+				ts102241Version = (VersionType) value;
+				break;
+			case "globalplatformVersion":
+				globalplatformVersion = (VersionType) value;
+				break;
+			case "rspCapability":
+				rspCapability = (RspCapability) value;
+				break;
+			case "euiccCiPKIdListForVerification":
+				euiccCiPKIdListForVerification = (EuiccCiPKIdListForVerification) value;
+				break;
+			case "euiccCiPKIdListForSigning":
+				euiccCiPKIdListForSigning = (EuiccCiPKIdListForSigning) value;
+				break;
+			case "euiccCategory":
+				euiccCategory = (BerInteger) value;
+				break;
+			case "forbiddenProfilePolicyRules":
+				forbiddenProfilePolicyRules = (PprIds) value;
+				break;
+			case "ppVersion":
+				ppVersion = (VersionType) value;
+				break;
+			case "sasAcreditationNumber":
+				sasAcreditationNumber = (BerUTF8String) value;
+				break;
+			case "certificationDataObject":
+				certificationDataObject = (CertificationDataObject) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

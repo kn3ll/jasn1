@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,15 +21,15 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class TBSCertList implements BerType, Serializable {
+public class TBSCertList implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class RevokedCertificates implements BerType, Serializable {
+	public static class RevokedCertificates implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
-		public static class SEQUENCE implements BerType, Serializable {
+		public static class SEQUENCE implements BerSequenceSet, Serializable {
 
 			private static final long serialVersionUID = 1L;
 
@@ -51,6 +53,50 @@ public class TBSCertList implements BerType, Serializable {
 				this.crlEntryExtensions = crlEntryExtensions;
 			}
 
+			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			));
+			public List<String> getFields() {
+				return FIELDS;
+			}
+			public BerType getField(String fieldName) {
+				switch(fieldName) {
+					case "userCertificate":
+						return userCertificate;
+					case "revocationDate":
+						return revocationDate;
+					case "crlEntryExtensions":
+						return crlEntryExtensions;
+					default:
+						return null;
+				}
+			}
+			public Class<? extends BerType> getFieldClass(String fieldName) {
+				switch(fieldName) {
+					case "userCertificate":
+						return CertificateSerialNumber.class;
+					case "revocationDate":
+						return Time.class;
+					case "crlEntryExtensions":
+						return Extensions.class;
+					default:
+						return null;
+				}
+			}
+			public void setField(String fieldName, BerType value) {
+				switch(fieldName) {
+					case "userCertificate":
+						userCertificate = (CertificateSerialNumber) value;
+						break;
+					case "revocationDate":
+						revocationDate = (Time) value;
+						break;
+					case "crlEntryExtensions":
+						crlEntryExtensions = (Extensions) value;
+						break;
+					default:
+						throw new IllegalArgumentException("Unknown field " + fieldName);
+				}
+			}
 			public int encode(OutputStream reverseOS) throws IOException {
 				return encode(reverseOS, true);
 			}
@@ -282,6 +328,12 @@ public class TBSCertList implements BerType, Serializable {
 			this.seqOf = seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return SEQUENCE.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -435,6 +487,78 @@ public class TBSCertList implements BerType, Serializable {
 		this.crlExtensions = crlExtensions;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "version":
+				return version;
+			case "signature":
+				return signature;
+			case "issuer":
+				return issuer;
+			case "thisUpdate":
+				return thisUpdate;
+			case "nextUpdate":
+				return nextUpdate;
+			case "revokedCertificates":
+				return revokedCertificates;
+			case "crlExtensions":
+				return crlExtensions;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "version":
+				return Version.class;
+			case "signature":
+				return AlgorithmIdentifier.class;
+			case "issuer":
+				return Name.class;
+			case "thisUpdate":
+				return Time.class;
+			case "nextUpdate":
+				return Time.class;
+			case "revokedCertificates":
+				return RevokedCertificates.class;
+			case "crlExtensions":
+				return Extensions.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "version":
+				version = (Version) value;
+				break;
+			case "signature":
+				signature = (AlgorithmIdentifier) value;
+				break;
+			case "issuer":
+				issuer = (Name) value;
+				break;
+			case "thisUpdate":
+				thisUpdate = (Time) value;
+				break;
+			case "nextUpdate":
+				nextUpdate = (Time) value;
+				break;
+			case "revokedCertificates":
+				revokedCertificates = (RevokedCertificates) value;
+				break;
+			case "crlExtensions":
+				crlExtensions = (Extensions) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

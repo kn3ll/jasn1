@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class RulesAuthorisationTable implements BerType, Serializable {
+public class RulesAuthorisationTable implements BerSequenceOf, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,12 @@ public class RulesAuthorisationTable implements BerType, Serializable {
 		this.seqOf = seqOf;
 	}
 
+	public List<? extends BerType> getSeqOf() {
+		return seqOf;
+	}
+	public Class<? extends BerType> getSeqOfElementClass() {
+		return ProfilePolicyAuthorisationRule.class;
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

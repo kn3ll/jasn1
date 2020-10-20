@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,7 +21,7 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ORAddress implements BerType, Serializable {
+public class ORAddress implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,50 @@ public class ORAddress implements BerType, Serializable {
 		this.extensionAttributes = extensionAttributes;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "built-in-standard-attributes":
+				return builtInStandardAttributes;
+			case "built-in-domain-defined-attributes":
+				return builtInDomainDefinedAttributes;
+			case "extension-attributes":
+				return extensionAttributes;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "built-in-standard-attributes":
+				return BuiltInStandardAttributes.class;
+			case "built-in-domain-defined-attributes":
+				return BuiltInDomainDefinedAttributes.class;
+			case "extension-attributes":
+				return ExtensionAttributes.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "built-in-standard-attributes":
+				builtInStandardAttributes = (BuiltInStandardAttributes) value;
+				break;
+			case "built-in-domain-defined-attributes":
+				builtInDomainDefinedAttributes = (BuiltInDomainDefinedAttributes) value;
+				break;
+			case "extension-attributes":
+				extensionAttributes = (ExtensionAttributes) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

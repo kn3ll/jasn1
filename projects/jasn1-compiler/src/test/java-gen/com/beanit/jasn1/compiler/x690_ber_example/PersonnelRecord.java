@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class PersonnelRecord implements BerType, Serializable {
+public class PersonnelRecord implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class Children implements BerType, Serializable {
+	public static class Children implements BerSequenceOf, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -46,6 +48,12 @@ public class PersonnelRecord implements BerType, Serializable {
 			return seqOf;
 		}
 
+		public List<? extends BerType> getSeqOf() {
+			return seqOf;
+		}
+		public Class<? extends BerType> getSeqOfElementClass() {
+			return ChildInformation.class;
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -214,6 +222,71 @@ public class PersonnelRecord implements BerType, Serializable {
 		return children;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "name":
+				return name;
+			case "title":
+				return title;
+			case "number":
+				return number;
+			case "dateOfHire":
+				return dateOfHire;
+			case "nameOfSpouse":
+				return nameOfSpouse;
+			case "children":
+				return children;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "name":
+				return Name.class;
+			case "title":
+				return BerVisibleString.class;
+			case "number":
+				return EmployeeNumber.class;
+			case "dateOfHire":
+				return Date.class;
+			case "nameOfSpouse":
+				return Name.class;
+			case "children":
+				return Children.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "name":
+				name = (Name) value;
+				break;
+			case "title":
+				title = (BerVisibleString) value;
+				break;
+			case "number":
+				number = (EmployeeNumber) value;
+				break;
+			case "dateOfHire":
+				dateOfHire = (Date) value;
+				break;
+			case "nameOfSpouse":
+				nameOfSpouse = (Name) value;
+				break;
+			case "children":
+				children = (Children) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

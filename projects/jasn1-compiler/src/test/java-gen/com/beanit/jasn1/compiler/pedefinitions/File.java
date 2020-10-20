@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,11 +21,11 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class File implements BerType, Serializable {
+public class File implements BerSequenceOf, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class CHOICE implements BerType, Serializable {
+	public static class CHOICE implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,57 @@ public class File implements BerType, Serializable {
 			this.fillFileContent = fillFileContent;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "doNotCreate":
+					return doNotCreate;
+				case "fileDescriptor":
+					return fileDescriptor;
+				case "fillFileOffset":
+					return fillFileOffset;
+				case "fillFileContent":
+					return fillFileContent;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "doNotCreate":
+					return BerNull.class;
+				case "fileDescriptor":
+					return Fcp.class;
+				case "fillFileOffset":
+					return UInt16.class;
+				case "fillFileContent":
+					return BerOctetString.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "doNotCreate":
+					doNotCreate = (BerNull) value;
+					break;
+				case "fileDescriptor":
+					fileDescriptor = (Fcp) value;
+					break;
+				case "fillFileOffset":
+					fillFileOffset = (UInt16) value;
+					break;
+				case "fillFileContent":
+					fillFileContent = (BerOctetString) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -193,6 +246,12 @@ public class File implements BerType, Serializable {
 		this.seqOf = seqOf;
 	}
 
+	public List<? extends BerType> getSeqOf() {
+		return seqOf;
+	}
+	public Class<? extends BerType> getSeqOfElementClass() {
+		return CHOICE.class;
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}

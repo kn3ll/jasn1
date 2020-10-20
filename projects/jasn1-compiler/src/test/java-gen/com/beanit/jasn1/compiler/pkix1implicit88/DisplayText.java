@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -25,7 +27,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.Name;
 import com.beanit.jasn1.compiler.pkix1explicit88.ORAddress;
 import com.beanit.jasn1.compiler.pkix1explicit88.RelativeDistinguishedName;
 
-public class DisplayText implements BerType, Serializable {
+public class DisplayText implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -49,6 +51,57 @@ public class DisplayText implements BerType, Serializable {
 		this.utf8String = utf8String;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "ia5String":
+				return ia5String;
+			case "visibleString":
+				return visibleString;
+			case "bmpString":
+				return bmpString;
+			case "utf8String":
+				return utf8String;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "ia5String":
+				return BerIA5String.class;
+			case "visibleString":
+				return BerVisibleString.class;
+			case "bmpString":
+				return BerBMPString.class;
+			case "utf8String":
+				return BerUTF8String.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "ia5String":
+				ia5String = (BerIA5String) value;
+				break;
+			case "visibleString":
+				visibleString = (BerVisibleString) value;
+				break;
+			case "bmpString":
+				bmpString = (BerBMPString) value;
+				break;
+			case "utf8String":
+				utf8String = (BerUTF8String) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

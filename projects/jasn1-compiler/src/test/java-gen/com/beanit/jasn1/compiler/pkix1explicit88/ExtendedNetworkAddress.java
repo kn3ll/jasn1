@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -19,12 +21,12 @@ import com.beanit.jasn1.ber.types.*;
 import com.beanit.jasn1.ber.types.string.*;
 
 
-public class ExtendedNetworkAddress implements BerType, Serializable {
+public class ExtendedNetworkAddress implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public byte[] code = null;
-	public static class E1634Address implements BerType, Serializable {
+	public static class E1634Address implements BerSequenceSet, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -46,6 +48,43 @@ public class ExtendedNetworkAddress implements BerType, Serializable {
 			this.subAddress = subAddress;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "number":
+					return number;
+				case "sub-address":
+					return subAddress;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "number":
+					return BerNumericString.class;
+				case "sub-address":
+					return BerNumericString.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "number":
+					number = (BerNumericString) value;
+					break;
+				case "sub-address":
+					subAddress = (BerNumericString) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 			return encode(reverseOS, true);
 		}
@@ -234,6 +273,43 @@ public class ExtendedNetworkAddress implements BerType, Serializable {
 		this.psapAddress = psapAddress;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "e163-4-address":
+				return e1634Address;
+			case "psap-address":
+				return psapAddress;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "e163-4-address":
+				return E1634Address.class;
+			case "psap-address":
+				return PresentationAddress.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "e163-4-address":
+				e1634Address = (E1634Address) value;
+				break;
+			case "psap-address":
+				psapAddress = (PresentationAddress) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class PendingNotification implements BerType, Serializable {
+public class PendingNotification implements BerChoice, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,6 +45,43 @@ public class PendingNotification implements BerType, Serializable {
 		this.otherSignedNotification = otherSignedNotification;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "profileInstallationResult":
+				return profileInstallationResult;
+			case "otherSignedNotification":
+				return otherSignedNotification;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "profileInstallationResult":
+				return ProfileInstallationResult.class;
+			case "otherSignedNotification":
+				return OtherSignedNotification.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "profileInstallationResult":
+				profileInstallationResult = (ProfileInstallationResult) value;
+				break;
+			case "otherSignedNotification":
+				otherSignedNotification = (OtherSignedNotification) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 
 		if (code != null) {

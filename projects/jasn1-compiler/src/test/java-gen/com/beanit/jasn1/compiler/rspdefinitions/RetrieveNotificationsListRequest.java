@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Arrays;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.io.Serializable;
@@ -23,11 +25,11 @@ import com.beanit.jasn1.compiler.pkix1explicit88.CertificateList;
 import com.beanit.jasn1.compiler.pkix1explicit88.Time;
 import com.beanit.jasn1.compiler.pkix1implicit88.SubjectKeyIdentifier;
 
-public class RetrieveNotificationsListRequest implements BerType, Serializable {
+public class RetrieveNotificationsListRequest implements BerSequenceSet, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static class SearchCriteria implements BerType, Serializable {
+	public static class SearchCriteria implements BerChoice, Serializable {
 
 		private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,43 @@ public class RetrieveNotificationsListRequest implements BerType, Serializable {
 			this.profileManagementOperation = profileManagementOperation;
 		}
 
+		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		));
+		public List<String> getFields() {
+			return FIELDS;
+		}
+		public BerType getField(String fieldName) {
+			switch(fieldName) {
+				case "seqNumber":
+					return seqNumber;
+				case "profileManagementOperation":
+					return profileManagementOperation;
+				default:
+					return null;
+			}
+		}
+		public Class<? extends BerType> getFieldClass(String fieldName) {
+			switch(fieldName) {
+				case "seqNumber":
+					return BerInteger.class;
+				case "profileManagementOperation":
+					return NotificationEvent.class;
+				default:
+					return null;
+			}
+		}
+		public void setField(String fieldName, BerType value) {
+			switch(fieldName) {
+				case "seqNumber":
+					seqNumber = (BerInteger) value;
+					break;
+				case "profileManagementOperation":
+					profileManagementOperation = (NotificationEvent) value;
+					break;
+				default:
+					throw new IllegalArgumentException("Unknown field " + fieldName);
+			}
+		}
 		public int encode(OutputStream reverseOS) throws IOException {
 
 			if (code != null) {
@@ -154,6 +193,36 @@ public class RetrieveNotificationsListRequest implements BerType, Serializable {
 		this.searchCriteria = searchCriteria;
 	}
 
+	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	));
+	public List<String> getFields() {
+		return FIELDS;
+	}
+	public BerType getField(String fieldName) {
+		switch(fieldName) {
+			case "searchCriteria":
+				return searchCriteria;
+			default:
+				return null;
+		}
+	}
+	public Class<? extends BerType> getFieldClass(String fieldName) {
+		switch(fieldName) {
+			case "searchCriteria":
+				return SearchCriteria.class;
+			default:
+				return null;
+		}
+	}
+	public void setField(String fieldName, BerType value) {
+		switch(fieldName) {
+			case "searchCriteria":
+				searchCriteria = (SearchCriteria) value;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown field " + fieldName);
+		}
+	}
 	public int encode(OutputStream reverseOS) throws IOException {
 		return encode(reverseOS, true);
 	}
