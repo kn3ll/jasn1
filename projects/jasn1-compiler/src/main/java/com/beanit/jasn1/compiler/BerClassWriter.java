@@ -55,6 +55,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class BerClassWriter {
 
@@ -121,7 +122,9 @@ public class BerClassWriter {
   private boolean insertVersion;
   private AsnModule module;
   private File outputDirectory;
-  private String berTypeInterfaceString = "BerType, ";
+  private String berSequenceSetInterfaceString = "BerSequenceSet, ";
+  private String berSequenceOfInterfaceString = "BerSequenceOf, ";
+  private String berChoiceInterfaceString = "BerChoice, ";
 
   BerClassWriter(
       HashMap<String, AsnModule> modulesByName,
@@ -137,7 +140,9 @@ public class BerClassWriter {
     this.outputBaseDir = new File(outputBaseDir);
 
     if (disableBerTypeInterface) {
-      berTypeInterfaceString = "";
+      berSequenceSetInterfaceString = "";
+      berSequenceOfInterfaceString = "";
+      berChoiceInterfaceString = "";
     }
 
     insertVersion = !disableWritingVersion;
@@ -556,7 +561,7 @@ public class BerClassWriter {
             + " class "
             + className
             + " implements "
-            + berTypeInterfaceString
+            + berChoiceInterfaceString
             + "Serializable {\n");
 
     write("private static final long serialVersionUID = 1L;\n");
@@ -607,6 +612,7 @@ public class BerClassWriter {
     if (jaxbMode) {
       writeGetterAndSetter(componentTypes);
     }
+    writeDynamicGetterAndSetterForSeqChoice(componentTypes);
 
     writeChoiceEncodeFunction(componentTypes, tag != null);
 
@@ -758,7 +764,7 @@ public class BerClassWriter {
             + " class "
             + className
             + " implements "
-            + berTypeInterfaceString
+            + berSequenceSetInterfaceString
             + "Serializable {\n");
 
     write("private static final long serialVersionUID = 1L;\n");
@@ -821,6 +827,7 @@ public class BerClassWriter {
     if (jaxbMode) {
       writeGetterAndSetter(componentTypes);
     }
+    writeDynamicGetterAndSetterForSeqChoice(componentTypes);
 
     boolean hasExplicitTag = (tag != null) && (tag.type == TagType.EXPLICIT);
 
@@ -886,7 +893,7 @@ public class BerClassWriter {
             + " class "
             + className
             + " implements "
-            + berTypeInterfaceString
+            + berSequenceOfInterfaceString
             + "Serializable {\n");
 
     write("private static final long serialVersionUID = 1L;\n");
@@ -939,6 +946,7 @@ public class BerClassWriter {
     if (jaxbMode) {
       writeGetterForSeqOf(referencedTypeName);
     }
+    writeDynamicGetterAndSetterForSeqOf(referencedTypeName);
 
     boolean hasExplicitTag = (tag != null) && (tag.type == TagType.EXPLICIT);
 
@@ -2449,6 +2457,69 @@ public class BerClassWriter {
     }
   }
 
+  private void writeDynamicGetterAndSetterForSeqChoice(List<AsnElementType> componentTypes) throws IOException {
+    // List<String> getFields();
+    write("private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(");
+    componentTypes.stream().map(c -> c.name).collect(Collectors.joining(",\t"));
+    write("));");
+    write("public List<String> getFields() {");
+    write("return FIELDS;");
+    write("}");
+
+    // BerType getField(String fieldName);
+    write("public BerType getField(String fieldName) {");
+    write("switch(fieldName) {");
+    for (AsnElementType element : componentTypes) {
+      String variableName = cleanUpName(element.name);
+      write("case \"" + element.name + "\":");
+      write("\treturn " + variableName + ";");
+    }
+    write("default:");
+    write("\treturn null;");
+    write("}");
+    write("}");
+
+    // Class<BerType> getFieldClass(String fieldName);
+    write("public Class<? extends BerType> getFieldClass(String fieldName) {");
+    write("switch(fieldName) {");
+    for (AsnElementType element : componentTypes) {
+      String typeName = getClassNameOfComponent(element);
+      write("case \"" + element.name + "\":");
+      write("\treturn " + typeName + ".class;");
+    }
+    write("default:");
+    write("\treturn null;");
+    write("}");
+    write("}");
+
+    // void setField(BerType value, String fieldName);
+    write("public void setField(BerType value, String fieldName) {");
+    write("switch(fieldName) {");
+    for (AsnElementType element : componentTypes) {
+      String variableName = cleanUpName(element.name);
+      String typeName = getClassNameOfComponent(element);
+      write("case \"" + element.name + "\":");
+      write(String.format("\t%s = (%s) value;", variableName, typeName));
+      write("\tbreak;");
+    }
+    write("default:");
+    write("\tthrow new IllegalArgumentException(\"Unknown field \" + fieldName);");
+    write("}");
+    write("}");
+  }
+
+  private void writeDynamicGetterAndSetterForSeqOf(String referencedTypeName) throws IOException {
+    // List<? extends BerType> getSeqOf();
+    write("public List<? extends BerType> getSeqOf() {");
+    write("return seqOf;");
+    write("}");
+
+    // Class<? extends BerType> getSeqOfElementClass();
+    write("public Class<? extends BerType> getSeqOfElementClass() {");
+    write("return " + referencedTypeName + ".class;");
+    write("}");
+  }
+
   private void writeGetterForSeqOf(String referencedTypeName) throws IOException {
     write(
         "public List<"
@@ -2755,6 +2826,8 @@ public class BerClassWriter {
     write("import java.util.List;");
     write("import java.util.ArrayList;");
     write("import java.util.Iterator;");
+    write("import java.util.Collections;");
+    write("import java.util.Arrays;");
     write("import java.io.UnsupportedEncodingException;");
     write("import java.math.BigInteger;");
     write("import java.io.Serializable;");
