@@ -62,6 +62,15 @@ public class GeneralName implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"otherName",
+		"rfc822Name",
+		"dNSName",
+		"x400Address",
+		"directoryName",
+		"ediPartyName",
+		"uniformResourceIdentifier",
+		"iPAddress",
+		"registeredID"
 	));
 	public List<String> getFields() {
 		return FIELDS;

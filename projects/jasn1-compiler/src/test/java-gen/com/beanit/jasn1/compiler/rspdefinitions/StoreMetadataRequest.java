@@ -213,6 +213,15 @@ public class StoreMetadataRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"iccid",
+		"serviceProviderName",
+		"profileName",
+		"iconType",
+		"icon",
+		"profileClass",
+		"notificationConfigurationInfo",
+		"profileOwner",
+		"profilePolicyRules"
 	));
 	public List<String> getFields() {
 		return FIELDS;

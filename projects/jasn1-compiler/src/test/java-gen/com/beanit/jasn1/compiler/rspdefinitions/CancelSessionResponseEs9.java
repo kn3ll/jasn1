@@ -48,6 +48,8 @@ public class CancelSessionResponseEs9 implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"cancelSessionOk",
+		"cancelSessionError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -223,6 +223,12 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"name",
+		"title",
+		"number",
+		"dateOfHire",
+		"nameOfSpouse",
+		"children"
 	));
 	public List<String> getFields() {
 		return FIELDS;

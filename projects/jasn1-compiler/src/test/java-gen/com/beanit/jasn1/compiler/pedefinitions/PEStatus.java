@@ -48,6 +48,10 @@ public class PEStatus implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"status",
+		"identification",
+		"additional-information",
+		"offset"
 	));
 	public List<String> getFields() {
 		return FIELDS;

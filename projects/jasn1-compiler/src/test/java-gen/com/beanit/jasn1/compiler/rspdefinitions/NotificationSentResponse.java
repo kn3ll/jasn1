@@ -46,6 +46,7 @@ public class NotificationSentResponse implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"deleteNotificationStatus"
 	));
 	public List<String> getFields() {
 		return FIELDS;

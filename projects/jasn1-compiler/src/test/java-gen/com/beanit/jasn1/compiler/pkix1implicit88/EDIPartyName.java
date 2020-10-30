@@ -50,6 +50,8 @@ public class EDIPartyName implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"nameAssigner",
+		"partyName"
 	));
 	public List<String> getFields() {
 		return FIELDS;

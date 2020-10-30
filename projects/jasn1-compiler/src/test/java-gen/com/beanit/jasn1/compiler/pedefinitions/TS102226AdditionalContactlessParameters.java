@@ -42,6 +42,7 @@ public class TS102226AdditionalContactlessParameters implements BerSequenceSet, 
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"protocolParameterData"
 	));
 	public List<String> getFields() {
 		return FIELDS;

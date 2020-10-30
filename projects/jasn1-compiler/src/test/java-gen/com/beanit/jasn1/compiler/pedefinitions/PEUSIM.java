@@ -92,6 +92,32 @@ public class PEUSIM implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"usim-header",
+		"templateID",
+		"adf-usim",
+		"ef-imsi",
+		"ef-arr",
+		"ef-keys",
+		"ef-keysPS",
+		"ef-hpplmn",
+		"ef-ust",
+		"ef-fdn",
+		"ef-sms",
+		"ef-smsp",
+		"ef-smss",
+		"ef-spn",
+		"ef-est",
+		"ef-start-hfn",
+		"ef-threshold",
+		"ef-psloci",
+		"ef-acc",
+		"ef-fplmn",
+		"ef-loci",
+		"ef-ad",
+		"ef-ecc",
+		"ef-netpar",
+		"ef-epsloci",
+		"ef-epsnsc"
 	));
 	public List<String> getFields() {
 		return FIELDS;

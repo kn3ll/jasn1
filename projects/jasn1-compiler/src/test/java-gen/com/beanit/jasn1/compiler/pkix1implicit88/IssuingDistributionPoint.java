@@ -58,6 +58,12 @@ public class IssuingDistributionPoint implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"distributionPoint",
+		"onlyContainsUserCerts",
+		"onlyContainsCACerts",
+		"onlySomeReasons",
+		"indirectCRL",
+		"onlyContainsAttributeCerts"
 	));
 	public List<String> getFields() {
 		return FIELDS;

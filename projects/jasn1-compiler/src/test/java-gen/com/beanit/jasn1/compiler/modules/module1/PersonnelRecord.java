@@ -205,6 +205,7 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"employeeNumber-z"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -341,6 +342,8 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 			}
 
 			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+				"test1",
+				"test2"
 			));
 			public List<String> getFields() {
 				return FIELDS;
@@ -866,6 +869,24 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"name",
+		"title",
+		"number",
+		"dateOfHire",
+		"nameOfSpouse",
+		"children",
+		"testBitString",
+		"test",
+		"test2",
+		"test3",
+		"test4",
+		"test5",
+		"test6",
+		"employeeNumber-z",
+		"code",
+		"testSequenceOf",
+		"testSequenceOf2",
+		"embeddedPdv"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -100,6 +100,13 @@ public class Item implements Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"itemCode",
+		"itemDescription",
+		"feature",
+		"quantity",
+		"unitPrice",
+		"itemTotal",
+		"isTaxable"
 	));
 	public List<String> getFields() {
 		return FIELDS;

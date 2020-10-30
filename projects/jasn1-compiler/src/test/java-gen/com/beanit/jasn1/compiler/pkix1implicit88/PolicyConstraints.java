@@ -50,6 +50,8 @@ public class PolicyConstraints implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"requireExplicitPolicy",
+		"inhibitPolicyMapping"
 	));
 	public List<String> getFields() {
 		return FIELDS;

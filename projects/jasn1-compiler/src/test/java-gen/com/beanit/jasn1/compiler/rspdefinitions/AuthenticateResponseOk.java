@@ -52,6 +52,10 @@ public class AuthenticateResponseOk implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"euiccSigned1",
+		"euiccSignature1",
+		"euiccCertificate",
+		"eumCertificate"
 	));
 	public List<String> getFields() {
 		return FIELDS;

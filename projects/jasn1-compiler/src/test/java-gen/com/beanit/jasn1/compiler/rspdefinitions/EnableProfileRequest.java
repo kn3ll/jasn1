@@ -50,6 +50,8 @@ public class EnableProfileRequest implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"isdpAid",
+			"iccid"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -193,6 +195,8 @@ public class EnableProfileRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"profileIdentifier",
+		"refreshFlag"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -197,6 +197,8 @@ public class PEPINCodes implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"pinconfig",
+			"filePath"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -344,6 +346,8 @@ public class PEPINCodes implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"pin-Header",
+		"pinCodes"
 	));
 	public List<String> getFields() {
 		return FIELDS;

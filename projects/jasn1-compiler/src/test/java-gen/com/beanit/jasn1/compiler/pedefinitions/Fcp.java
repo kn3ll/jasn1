@@ -60,6 +60,16 @@ public class Fcp implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"fileDescriptor",
+		"fileID",
+		"dfName",
+		"lcsi",
+		"securityAttributesReferenced",
+		"efFileSize",
+		"pinStatusTemplateDO",
+		"shortEFID",
+		"proprietaryEFInfo",
+		"linkPath"
 	));
 	public List<String> getFields() {
 		return FIELDS;

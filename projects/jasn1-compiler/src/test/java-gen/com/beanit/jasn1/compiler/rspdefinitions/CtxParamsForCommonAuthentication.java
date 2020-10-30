@@ -48,6 +48,8 @@ public class CtxParamsForCommonAuthentication implements BerSequenceSet, Seriali
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"matchingId",
+		"deviceInfo"
 	));
 	public List<String> getFields() {
 		return FIELDS;

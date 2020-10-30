@@ -48,6 +48,8 @@ public class CancelSessionResponseOk implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"euiccCancelSessionSigned",
+		"euiccCancelSessionSignature"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -46,6 +46,8 @@ public class PendingNotification implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"profileInstallationResult",
+		"otherSignedNotification"
 	));
 	public List<String> getFields() {
 		return FIELDS;

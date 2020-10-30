@@ -52,6 +52,10 @@ public class DisplayText implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"ia5String",
+		"visibleString",
+		"bmpString",
+		"utf8String"
 	));
 	public List<String> getFields() {
 		return FIELDS;

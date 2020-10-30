@@ -48,6 +48,8 @@ public class PrepareDownloadResponse implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"downloadResponseOk",
+		"downloadResponseError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -48,6 +48,10 @@ public class TeletexPersonalName implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"surname",
+		"given-name",
+		"initials",
+		"generation-qualifier"
 	));
 	public List<String> getFields() {
 		return FIELDS;

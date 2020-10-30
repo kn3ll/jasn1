@@ -53,6 +53,8 @@ public class UntaggedChoice implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"myInteger",
+		"myBoolean"
 	));
 	public List<String> getFields() {
 		return FIELDS;

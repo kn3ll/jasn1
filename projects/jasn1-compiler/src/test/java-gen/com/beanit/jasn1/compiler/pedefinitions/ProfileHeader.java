@@ -203,6 +203,8 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 			}
 
 			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+				"aid",
+				"version"
 			));
 			public List<String> getFields() {
 				return FIELDS;
@@ -590,6 +592,15 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"major-version",
+		"minor-version",
+		"profileType",
+		"iccid",
+		"pol",
+		"eUICC-Mandatory-services",
+		"eUICC-Mandatory-GFSTEList",
+		"connectivityParameters",
+		"eUICC-Mandatory-AIDs"
 	));
 	public List<String> getFields() {
 		return FIELDS;

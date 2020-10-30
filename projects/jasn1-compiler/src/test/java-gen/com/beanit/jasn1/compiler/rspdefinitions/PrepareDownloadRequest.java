@@ -52,6 +52,10 @@ public class PrepareDownloadRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"smdpSigned2",
+		"smdpSignature2",
+		"hashCc",
+		"smdpCertificate"
 	));
 	public List<String> getFields() {
 		return FIELDS;

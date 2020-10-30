@@ -42,6 +42,8 @@ public class MyChoice implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"my-choice2",
+		"myboolean"
 	));
 	public List<String> getFields() {
 		return FIELDS;

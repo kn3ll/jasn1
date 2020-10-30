@@ -197,6 +197,7 @@ public class LoadCRLResponseOk implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"missingParts"
 	));
 	public List<String> getFields() {
 		return FIELDS;

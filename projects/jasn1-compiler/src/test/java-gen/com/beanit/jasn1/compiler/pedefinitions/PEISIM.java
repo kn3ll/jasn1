@@ -58,6 +58,15 @@ public class PEISIM implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"isim-header",
+		"templateID",
+		"adf-isim",
+		"ef-impi",
+		"ef-impu",
+		"ef-domain",
+		"ef-ist",
+		"ef-ad",
+		"ef-arr"
 	));
 	public List<String> getFields() {
 		return FIELDS;

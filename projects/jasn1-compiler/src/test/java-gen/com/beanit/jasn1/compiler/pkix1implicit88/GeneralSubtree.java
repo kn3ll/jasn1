@@ -52,6 +52,9 @@ public class GeneralSubtree implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"base",
+		"minimum",
+		"maximum"
 	));
 	public List<String> getFields() {
 		return FIELDS;

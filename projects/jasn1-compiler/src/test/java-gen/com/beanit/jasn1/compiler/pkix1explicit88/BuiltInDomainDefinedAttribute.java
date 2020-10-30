@@ -44,6 +44,8 @@ public class BuiltInDomainDefinedAttribute implements BerSequenceSet, Serializab
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"type",
+		"value"
 	));
 	public List<String> getFields() {
 		return FIELDS;

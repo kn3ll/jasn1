@@ -54,6 +54,11 @@ public class RemoteProfileProvisioningRequest implements BerChoice, Serializable
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"initiateAuthenticationRequest",
+		"authenticateClientRequest",
+		"getBoundProfilePackageRequest",
+		"cancelSessionRequestEs9",
+		"handleNotification"
 	));
 	public List<String> getFields() {
 		return FIELDS;

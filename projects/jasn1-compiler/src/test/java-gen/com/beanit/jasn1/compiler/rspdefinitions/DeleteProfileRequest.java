@@ -48,6 +48,8 @@ public class DeleteProfileRequest implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"isdpAid",
+		"iccid"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -42,6 +42,7 @@ public class ModeSelector implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"mode_value"
 	));
 	public List<String> getFields() {
 		return FIELDS;

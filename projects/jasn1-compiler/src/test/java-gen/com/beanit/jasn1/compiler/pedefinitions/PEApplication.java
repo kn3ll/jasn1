@@ -197,6 +197,9 @@ public class PEApplication implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"app-Header",
+		"loadBlock",
+		"instanceList"
 	));
 	public List<String> getFields() {
 		return FIELDS;

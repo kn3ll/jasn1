@@ -52,6 +52,10 @@ public class NotificationMetadata implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"seqNumber",
+		"profileManagementOperation",
+		"notificationAddress",
+		"iccid"
 	));
 	public List<String> getFields() {
 		return FIELDS;

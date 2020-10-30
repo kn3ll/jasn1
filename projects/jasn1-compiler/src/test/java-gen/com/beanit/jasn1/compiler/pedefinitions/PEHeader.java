@@ -44,6 +44,8 @@ public class PEHeader implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"mandated",
+		"identification"
 	));
 	public List<String> getFields() {
 		return FIELDS;

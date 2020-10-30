@@ -50,6 +50,8 @@ public class AnotherName implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"type-id",
+		"value"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -199,6 +199,8 @@ public class RetrieveNotificationsListResponse implements BerChoice, Serializabl
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"notificationList",
+		"notificationsListResultError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -50,6 +50,9 @@ public class ErrorResult implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"bppCommandId",
+		"errorReason",
+		"simaResponse"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -54,6 +54,11 @@ public class AuthenticateClientOk implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transactionId",
+		"profileMetaData",
+		"smdpSigned2",
+		"smdpSignature2",
+		"smdpCertificate"
 	));
 	public List<String> getFields() {
 		return FIELDS;

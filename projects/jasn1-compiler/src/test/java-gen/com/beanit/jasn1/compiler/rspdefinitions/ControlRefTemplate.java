@@ -50,6 +50,9 @@ public class ControlRefTemplate implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"keyType",
+		"keyLen",
+		"hostId"
 	));
 	public List<String> getFields() {
 		return FIELDS;

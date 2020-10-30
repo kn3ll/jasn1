@@ -46,6 +46,7 @@ public class GetRatResponse implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"rat"
 	));
 	public List<String> getFields() {
 		return FIELDS;

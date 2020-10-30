@@ -55,6 +55,8 @@ public class Attributes implements Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"attributeId",
+		"attributeValue"
 	));
 	public List<String> getFields() {
 		return FIELDS;

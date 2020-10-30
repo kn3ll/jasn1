@@ -48,6 +48,9 @@ public class PDVList implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"single_ASN1_type",
+			"octet_aligned",
+			"arbitrary"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -236,6 +239,9 @@ public class PDVList implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transfer_syntax_name",
+		"presentation_context_identifier",
+		"presentation_data_values"
 	));
 	public List<String> getFields() {
 		return FIELDS;

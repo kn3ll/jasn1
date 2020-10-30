@@ -50,6 +50,8 @@ public class AccessDescription implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"accessMethod",
+		"accessLocation"
 	));
 	public List<String> getFields() {
 		return FIELDS;

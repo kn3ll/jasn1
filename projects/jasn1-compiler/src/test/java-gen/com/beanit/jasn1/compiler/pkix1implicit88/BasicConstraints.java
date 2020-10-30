@@ -50,6 +50,8 @@ public class BasicConstraints implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"cA",
+		"pathLenConstraint"
 	));
 	public List<String> getFields() {
 		return FIELDS;

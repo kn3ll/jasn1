@@ -211,6 +211,16 @@ public class ApplicationInstance implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"applicationLoadPackageAID",
+		"classAID",
+		"instanceAID",
+		"extraditeSecurityDomainAID",
+		"applicationPrivileges",
+		"lifeCycleState",
+		"applicationSpecificParametersC9",
+		"systemSpecificParameters",
+		"applicationParameters",
+		"processData"
 	));
 	public List<String> getFields() {
 		return FIELDS;

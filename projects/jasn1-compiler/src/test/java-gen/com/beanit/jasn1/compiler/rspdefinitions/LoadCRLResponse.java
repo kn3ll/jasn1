@@ -48,6 +48,8 @@ public class LoadCRLResponse implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"loadCRLResponseOk",
+		"loadCRLResponseError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

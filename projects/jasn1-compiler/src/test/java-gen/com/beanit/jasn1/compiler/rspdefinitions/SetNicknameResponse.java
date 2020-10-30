@@ -46,6 +46,7 @@ public class SetNicknameResponse implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"setNicknameResult"
 	));
 	public List<String> getFields() {
 		return FIELDS;

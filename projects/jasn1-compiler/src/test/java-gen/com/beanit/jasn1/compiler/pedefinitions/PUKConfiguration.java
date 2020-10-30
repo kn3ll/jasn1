@@ -46,6 +46,9 @@ public class PUKConfiguration implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"keyReference",
+		"pukValue",
+		"maxNumOfAttemps-retryNumLeft"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -45,6 +45,7 @@ public class MyChoice2 implements BerChoice, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"test"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -164,6 +165,8 @@ public class MyChoice2 implements BerChoice, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"test",
+			"test2"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -305,6 +308,10 @@ public class MyChoice2 implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"element1",
+		"element2",
+		"myboolean",
+		"element4"
 	));
 	public List<String> getFields() {
 		return FIELDS;

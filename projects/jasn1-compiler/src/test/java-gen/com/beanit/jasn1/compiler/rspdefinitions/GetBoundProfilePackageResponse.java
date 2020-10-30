@@ -48,6 +48,8 @@ public class GetBoundProfilePackageResponse implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"getBoundProfilePackageOk",
+		"getBoundProfilePackageError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -199,6 +199,8 @@ public class ListNotificationResponse implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"notificationMetadataList",
+		"listNotificationsResultError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

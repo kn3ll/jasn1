@@ -42,6 +42,8 @@ public class PostalCode implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"numeric-code",
+		"printable-code"
 	));
 	public List<String> getFields() {
 		return FIELDS;

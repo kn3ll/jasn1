@@ -54,6 +54,11 @@ public class InitialiseSecureChannelRequest implements BerSequenceSet, Serializa
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"remoteOpId",
+		"transactionId",
+		"controlRefTemplate",
+		"smdpOtpk",
+		"smdpSign"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -58,6 +58,8 @@ public class ChoiceOfDirectTypes implements BerChoice, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"myInteger",
+			"myBoolean"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -217,6 +219,8 @@ public class ChoiceOfDirectTypes implements BerChoice, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"myInteger",
+			"myBoolean"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -376,6 +380,8 @@ public class ChoiceOfDirectTypes implements BerChoice, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"myInteger",
+			"myBoolean"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -575,6 +581,13 @@ public class ChoiceOfDirectTypes implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"untaggedInt",
+		"explicitlyTaggedInt",
+		"implicitlyTaggedInt",
+		"untaggedChoice",
+		"taggedChoice",
+		"taggedAny",
+		"untaggedChoice2"
 	));
 	public List<String> getFields() {
 		return FIELDS;

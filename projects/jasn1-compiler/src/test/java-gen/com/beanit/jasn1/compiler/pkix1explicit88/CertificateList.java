@@ -46,6 +46,9 @@ public class CertificateList implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"tbsCertList",
+		"signatureAlgorithm",
+		"signature"
 	));
 	public List<String> getFields() {
 		return FIELDS;

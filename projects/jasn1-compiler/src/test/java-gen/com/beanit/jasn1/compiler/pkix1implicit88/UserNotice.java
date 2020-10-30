@@ -50,6 +50,8 @@ public class UserNotice implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"noticeRef",
+		"explicitText"
 	));
 	public List<String> getFields() {
 		return FIELDS;

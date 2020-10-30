@@ -94,6 +94,34 @@ public class ProfileElement implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"header",
+		"genericFileManagement",
+		"pinCodes",
+		"pukCodes",
+		"akaParameter",
+		"cdmaParameter",
+		"securityDomain",
+		"rfm",
+		"application",
+		"nonStandard",
+		"end",
+		"rfu1",
+		"rfu2",
+		"rfu3",
+		"rfu4",
+		"rfu5",
+		"mf",
+		"cd",
+		"telecom",
+		"usim",
+		"opt-usim",
+		"isim",
+		"opt-isim",
+		"phonebook",
+		"gsm-access",
+		"csim",
+		"opt-csim",
+		"eap"
 	));
 	public List<String> getFields() {
 		return FIELDS;

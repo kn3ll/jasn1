@@ -50,6 +50,8 @@ public class ProfileInstallationResultData implements BerSequenceSet, Serializab
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"successResult",
+			"errorResult"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -202,6 +204,10 @@ public class ProfileInstallationResultData implements BerSequenceSet, Serializab
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transactionId",
+		"notificationMetadata",
+		"smdpOid",
+		"finalResult"
 	));
 	public List<String> getFields() {
 		return FIELDS;

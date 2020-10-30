@@ -46,6 +46,7 @@ public class SetDefaultDpAddressResponse implements BerSequenceSet, Serializable
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"setDefaultDpAddressResult"
 	));
 	public List<String> getFields() {
 		return FIELDS;

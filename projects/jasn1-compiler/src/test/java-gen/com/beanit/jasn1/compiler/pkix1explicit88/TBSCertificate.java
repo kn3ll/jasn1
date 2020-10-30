@@ -60,6 +60,16 @@ public class TBSCertificate implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"version",
+		"serialNumber",
+		"signature",
+		"issuer",
+		"validity",
+		"subject",
+		"subjectPublicKeyInfo",
+		"issuerUniqueID",
+		"subjectUniqueID",
+		"extensions"
 	));
 	public List<String> getFields() {
 		return FIELDS;

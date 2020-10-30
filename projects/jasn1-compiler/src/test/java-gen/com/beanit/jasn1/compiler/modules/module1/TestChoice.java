@@ -56,6 +56,8 @@ public class TestChoice implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"choiceElement1",
+		"choiceElement2"
 	));
 	public List<String> getFields() {
 		return FIELDS;

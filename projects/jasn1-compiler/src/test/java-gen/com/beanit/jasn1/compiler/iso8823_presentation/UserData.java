@@ -42,6 +42,8 @@ public class UserData implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"simply_encoded_data",
+		"fully_encoded_data"
 	));
 	public List<String> getFields() {
 		return FIELDS;

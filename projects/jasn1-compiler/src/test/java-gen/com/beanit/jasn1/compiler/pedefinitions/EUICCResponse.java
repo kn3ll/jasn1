@@ -197,6 +197,9 @@ public class EUICCResponse implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"peStatus",
+		"profileInstallationAborted",
+		"statusMessage"
 	));
 	public List<String> getFields() {
 		return FIELDS;

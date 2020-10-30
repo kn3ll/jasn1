@@ -54,6 +54,9 @@ public class KeyObject implements BerSequenceSet, Serializable {
 			}
 
 			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+				"keyType",
+				"keyData",
+				"macLength"
 			));
 			public List<String> getFields() {
 				return FIELDS;
@@ -485,6 +488,12 @@ public class KeyObject implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"keyUsageQualifier",
+		"keyAccess",
+		"keyIdentifier",
+		"keyVersionNumber",
+		"keyCounterValue",
+		"keyCompontents"
 	));
 	public List<String> getFields() {
 		return FIELDS;

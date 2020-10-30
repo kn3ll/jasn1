@@ -52,6 +52,9 @@ public class ProfileInfoListRequest implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"isdpAid",
+			"iccid",
+			"profileClass"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -221,6 +224,8 @@ public class ProfileInfoListRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"searchCriteria",
+		"tagList"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -48,6 +48,8 @@ public class PrepareDownloadResponseError implements BerSequenceSet, Serializabl
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transactionId",
+		"downloadErrorCode"
 	));
 	public List<String> getFields() {
 		return FIELDS;

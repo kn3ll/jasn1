@@ -58,6 +58,15 @@ public class BuiltInStandardAttributes implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"country-name",
+		"administration-domain-name",
+		"network-address",
+		"terminal-identifier",
+		"private-domain-name",
+		"organization-name",
+		"numeric-user-identifier",
+		"personal-name",
+		"organizational-unit-names"
 	));
 	public List<String> getFields() {
 		return FIELDS;

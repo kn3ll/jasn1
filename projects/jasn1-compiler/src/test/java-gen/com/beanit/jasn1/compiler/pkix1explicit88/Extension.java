@@ -46,6 +46,9 @@ public class Extension implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"extnID",
+		"critical",
+		"extnValue"
 	));
 	public List<String> getFields() {
 		return FIELDS;

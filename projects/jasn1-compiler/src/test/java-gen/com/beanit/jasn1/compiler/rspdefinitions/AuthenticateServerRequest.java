@@ -54,6 +54,11 @@ public class AuthenticateServerRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"serverSigned1",
+		"serverSignature1",
+		"euiccCiPKIdToBeUsed",
+		"serverCertificate",
+		"ctxParams1"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -55,6 +55,8 @@ public class RegionalExtension implements Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"regionId",
+		"regExtValue"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -674,6 +674,11 @@ public class BoundProfilePackage implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"initialiseSecureChannelRequest",
+		"firstSequenceOf87",
+		"sequenceOf88",
+		"secondSequenceOf87",
+		"sequenceOf86"
 	));
 	public List<String> getFields() {
 		return FIELDS;

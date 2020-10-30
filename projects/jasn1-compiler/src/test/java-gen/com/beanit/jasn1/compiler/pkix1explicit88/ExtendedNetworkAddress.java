@@ -49,6 +49,8 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"number",
+			"sub-address"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -274,6 +276,8 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"e163-4-address",
+		"psap-address"
 	));
 	public List<String> getFields() {
 		return FIELDS;

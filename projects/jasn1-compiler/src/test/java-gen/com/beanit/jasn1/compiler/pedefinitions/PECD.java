@@ -50,6 +50,11 @@ public class PECD implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"cd-header",
+		"templateID",
+		"df-cd",
+		"ef-launchpad",
+		"ef-icon"
 	));
 	public List<String> getFields() {
 		return FIELDS;

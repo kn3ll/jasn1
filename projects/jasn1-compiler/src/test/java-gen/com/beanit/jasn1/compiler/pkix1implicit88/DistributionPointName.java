@@ -48,6 +48,8 @@ public class DistributionPointName implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"fullName",
+		"nameRelativeToCRLIssuer"
 	));
 	public List<String> getFields() {
 		return FIELDS;

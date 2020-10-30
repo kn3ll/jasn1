@@ -46,6 +46,7 @@ public class LpaeActivationRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"lpaeOption"
 	));
 	public List<String> getFields() {
 		return FIELDS;

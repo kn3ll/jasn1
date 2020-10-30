@@ -48,6 +48,8 @@ public class CancelSessionResponse implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"cancelSessionResponseOk",
+		"cancelSessionResponseError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

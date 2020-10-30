@@ -46,6 +46,9 @@ public class PENonStandard implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"nonStandard-header",
+		"issuerID",
+		"content"
 	));
 	public List<String> getFields() {
 		return FIELDS;

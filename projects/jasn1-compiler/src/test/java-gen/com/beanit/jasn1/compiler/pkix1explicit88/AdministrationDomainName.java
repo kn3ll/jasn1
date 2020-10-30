@@ -44,6 +44,8 @@ public class AdministrationDomainName implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"numeric",
+		"printable"
 	));
 	public List<String> getFields() {
 		return FIELDS;

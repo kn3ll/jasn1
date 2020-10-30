@@ -54,6 +54,11 @@ public class InitiateAuthenticationOkEs9 implements BerSequenceSet, Serializable
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transactionId",
+		"serverSigned1",
+		"serverSignature1",
+		"euiccCiPKIdToBeUsed",
+		"serverCertificate"
 	));
 	public List<String> getFields() {
 		return FIELDS;

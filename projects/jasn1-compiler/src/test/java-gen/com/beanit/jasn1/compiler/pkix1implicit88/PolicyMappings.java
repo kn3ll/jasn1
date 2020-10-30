@@ -54,6 +54,8 @@ public class PolicyMappings implements BerSequenceOf, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"issuerDomainPolicy",
+			"subjectDomainPolicy"
 		));
 		public List<String> getFields() {
 			return FIELDS;

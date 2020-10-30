@@ -60,6 +60,14 @@ public class CPType implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"protocol_version",
+			"calling_presentation_selector",
+			"called_presentation_selector",
+			"presentation_context_definition_list",
+			"default_context_name",
+			"presentation_requirements",
+			"user_session_requirements",
+			"user_data"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -604,6 +612,8 @@ public class CPType implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"mode_selector",
+		"normal_mode_parameters"
 	));
 	public List<String> getFields() {
 		return FIELDS;

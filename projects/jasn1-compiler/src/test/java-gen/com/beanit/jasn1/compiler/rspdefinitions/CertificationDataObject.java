@@ -48,6 +48,8 @@ public class CertificationDataObject implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"platformLabel",
+		"discoveryBaseURL"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -46,6 +46,7 @@ public class DeleteProfileResponse implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"deleteResult"
 	));
 	public List<String> getFields() {
 		return FIELDS;

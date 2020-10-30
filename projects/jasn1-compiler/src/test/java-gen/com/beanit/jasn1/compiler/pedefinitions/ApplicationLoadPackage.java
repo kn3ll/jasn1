@@ -54,6 +54,13 @@ public class ApplicationLoadPackage implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"loadPackageAID",
+		"securityDomainAID",
+		"nonVolatileCodeLimitC6",
+		"volatileDataLimitC7",
+		"nonVolatileDataLimitC8",
+		"hashValue",
+		"loadBlockObject"
 	));
 	public List<String> getFields() {
 		return FIELDS;

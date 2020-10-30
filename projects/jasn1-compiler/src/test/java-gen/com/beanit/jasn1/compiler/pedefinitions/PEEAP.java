@@ -60,6 +60,16 @@ public class PEEAP implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"eap-header",
+		"templateID",
+		"df-eap",
+		"ef-eapkeys",
+		"ef-eapstatus",
+		"ef-puid",
+		"ef-ps",
+		"ef-curid",
+		"ef-reid",
+		"ef-realm"
 	));
 	public List<String> getFields() {
 		return FIELDS;

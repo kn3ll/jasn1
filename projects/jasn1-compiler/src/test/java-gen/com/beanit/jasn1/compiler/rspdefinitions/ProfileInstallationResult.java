@@ -48,6 +48,8 @@ public class ProfileInstallationResult implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"profileInstallationResultData",
+		"euiccSignPIR"
 	));
 	public List<String> getFields() {
 		return FIELDS;

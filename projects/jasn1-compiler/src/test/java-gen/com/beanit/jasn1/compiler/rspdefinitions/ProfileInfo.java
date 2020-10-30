@@ -221,6 +221,19 @@ public class ProfileInfo implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"iccid",
+		"isdpAid",
+		"profileState",
+		"profileNickname",
+		"serviceProviderName",
+		"profileName",
+		"iconType",
+		"icon",
+		"profileClass",
+		"notificationConfigurationInfo",
+		"profileOwner",
+		"dpProprietaryData",
+		"profilePolicyRules"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -48,6 +48,8 @@ public class AuthenticateClientRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transactionId",
+		"authenticateServerResponse"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -46,6 +46,9 @@ public class ORAddress implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"built-in-standard-attributes",
+		"built-in-domain-defined-attributes",
+		"extension-attributes"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -350,6 +350,8 @@ public class PESecurityDomain implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"restrictParameter",
+			"contactlessProtocolParameters"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -583,6 +585,8 @@ public class PESecurityDomain implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"catTpMaxSduSize",
+			"catTpMaxPduSize"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -817,6 +821,12 @@ public class PESecurityDomain implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"sd-Header",
+		"instance",
+		"keyList",
+		"sdPersoData",
+		"openPersoData",
+		"catTpParameters"
 	));
 	public List<String> getFields() {
 		return FIELDS;

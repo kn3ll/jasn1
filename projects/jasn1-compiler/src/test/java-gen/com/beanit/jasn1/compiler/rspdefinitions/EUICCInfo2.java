@@ -376,6 +376,21 @@ public class EUICCInfo2 implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"profileVersion",
+		"svn",
+		"euiccFirmwareVer",
+		"extCardResource",
+		"uiccCapability",
+		"ts102241Version",
+		"globalplatformVersion",
+		"rspCapability",
+		"euiccCiPKIdListForVerification",
+		"euiccCiPKIdListForSigning",
+		"euiccCategory",
+		"forbiddenProfilePolicyRules",
+		"ppVersion",
+		"sasAcreditationNumber",
+		"certificationDataObject"
 	));
 	public List<String> getFields() {
 		return FIELDS;

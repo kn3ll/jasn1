@@ -201,6 +201,9 @@ public class ProfilePolicyAuthorisationRule implements BerSequenceSet, Serializa
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"pprIds",
+		"allowedOperators",
+		"pprFlags"
 	));
 	public List<String> getFields() {
 		return FIELDS;

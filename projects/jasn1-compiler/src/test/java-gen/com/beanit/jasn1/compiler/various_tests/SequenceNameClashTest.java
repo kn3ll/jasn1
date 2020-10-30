@@ -197,6 +197,8 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"myInteger",
+			"myBoolean"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -376,6 +378,8 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 			}
 
 			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+				"myInteger",
+				"myBoolean"
 			));
 			public List<String> getFields() {
 				return FIELDS;
@@ -552,6 +556,8 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 			}
 
 			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+				"myInteger",
+				"myBoolean"
 			));
 			public List<String> getFields() {
 				return FIELDS;
@@ -940,6 +946,10 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"myInteger",
+			"myChoice2",
+			"mySequence",
+			"myseqof"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -1195,6 +1205,8 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"myInteger",
+			"myBoolean"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -1435,6 +1447,10 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"myseqof",
+		"untaggedInteger",
+		"myChoice",
+		"sequenceNameClashTest"
 	));
 	public List<String> getFields() {
 		return FIELDS;

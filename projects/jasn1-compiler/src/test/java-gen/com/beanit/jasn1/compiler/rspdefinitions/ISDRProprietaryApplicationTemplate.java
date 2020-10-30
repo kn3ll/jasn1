@@ -48,6 +48,8 @@ public class ISDRProprietaryApplicationTemplate implements BerSequenceSet, Seria
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"svn",
+		"lpaeSupport"
 	));
 	public List<String> getFields() {
 		return FIELDS;

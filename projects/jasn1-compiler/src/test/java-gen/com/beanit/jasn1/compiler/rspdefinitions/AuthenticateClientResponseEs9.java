@@ -48,6 +48,8 @@ public class AuthenticateClientResponseEs9 implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"authenticateClientOk",
+		"authenticateClientError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

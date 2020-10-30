@@ -199,6 +199,8 @@ public class ProfileInfoListResponse implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"profileInfoListOk",
+		"profileInfoListError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

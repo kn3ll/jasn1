@@ -114,6 +114,43 @@ public class PECSIM implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"csim-header",
+		"templateID",
+		"adf-csim",
+		"ef-arr",
+		"ef-call-count",
+		"ef-imsi-m",
+		"ef-imsi-t",
+		"ef-tmsi",
+		"ef-ah",
+		"ef-aop",
+		"ef-aloc",
+		"ef-cdmahome",
+		"ef-znregi",
+		"ef-snregi",
+		"ef-distregi",
+		"ef-accolc",
+		"ef-term",
+		"ef-acp",
+		"ef-prl",
+		"ef-ruimid",
+		"ef-csim-st",
+		"ef-spc",
+		"ef-otapaspc",
+		"ef-namlock",
+		"ef-ota",
+		"ef-sp",
+		"ef-esn-meid-me",
+		"ef-li",
+		"ef-usgind",
+		"ef-ad",
+		"ef-max-prl",
+		"ef-spcs",
+		"ef-mecrp",
+		"ef-home-tag",
+		"ef-group-tag",
+		"ef-specific-tag",
+		"ef-call-prompt"
 	));
 	public List<String> getFields() {
 		return FIELDS;

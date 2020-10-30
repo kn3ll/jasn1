@@ -48,6 +48,8 @@ public class GetBoundProfilePackageRequest implements BerSequenceSet, Serializab
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transactionId",
+		"prepareDownloadResponse"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -195,6 +195,8 @@ public class UnformattedPostalAddress implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"printable-address",
+		"teletex-string"
 	));
 	public List<String> getFields() {
 		return FIELDS;

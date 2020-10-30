@@ -54,6 +54,11 @@ public class UpdateMetadataRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"serviceProviderName",
+		"profileName",
+		"iconType",
+		"icon",
+		"profilePolicyRules"
 	));
 	public List<String> getFields() {
 		return FIELDS;

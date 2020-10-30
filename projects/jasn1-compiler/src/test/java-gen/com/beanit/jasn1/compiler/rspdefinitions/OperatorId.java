@@ -50,6 +50,9 @@ public class OperatorId implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"mccMnc",
+		"gid1",
+		"gid2"
 	));
 	public List<String> getFields() {
 		return FIELDS;

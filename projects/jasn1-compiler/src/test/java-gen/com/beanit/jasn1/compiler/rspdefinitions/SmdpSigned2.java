@@ -50,6 +50,9 @@ public class SmdpSigned2 implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transactionId",
+		"ccRequiredFlag",
+		"bppEuiccOtpk"
 	));
 	public List<String> getFields() {
 		return FIELDS;

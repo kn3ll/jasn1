@@ -62,6 +62,17 @@ public class PEOPTISIM implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"optisim-header",
+		"templateID",
+		"ef-pcscf",
+		"ef-sms",
+		"ef-smsp",
+		"ef-smss",
+		"ef-smsr",
+		"ef-gbabp",
+		"ef-gbanl",
+		"ef-nafkca",
+		"ef-uicciari"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -54,6 +54,13 @@ public class PEGSMACCESS implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"gsm-access-header",
+		"templateID",
+		"df-gsm-access",
+		"ef-kc",
+		"ef-kcgprs",
+		"ef-cpbcch",
+		"ef-invscan"
 	));
 	public List<String> getFields() {
 		return FIELDS;

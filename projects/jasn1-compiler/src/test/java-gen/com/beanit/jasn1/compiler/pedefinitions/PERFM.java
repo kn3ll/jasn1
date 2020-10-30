@@ -207,6 +207,14 @@ public class PERFM implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"rfm-header",
+		"instanceAID",
+		"securityDomainAID",
+		"tarList",
+		"minimumSecurityLevel",
+		"uiccAccessDomain",
+		"uiccAdminAccessDomain",
+		"adfRFMAccess"
 	));
 	public List<String> getFields() {
 		return FIELDS;

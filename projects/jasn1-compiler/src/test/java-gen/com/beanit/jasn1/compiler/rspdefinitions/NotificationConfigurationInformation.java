@@ -48,6 +48,8 @@ public class NotificationConfigurationInformation implements BerSequenceSet, Ser
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"profileManagementOperation",
+		"notificationAddress"
 	));
 	public List<String> getFields() {
 		return FIELDS;

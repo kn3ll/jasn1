@@ -48,6 +48,8 @@ public class CancelSessionRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transactionId",
+		"reason"
 	));
 	public List<String> getFields() {
 		return FIELDS;

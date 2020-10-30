@@ -46,6 +46,9 @@ public class ADFRFMAccess implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"adfAID",
+		"adfAccessDomain",
+		"adfAdminAccessDomain"
 	));
 	public List<String> getFields() {
 		return FIELDS;

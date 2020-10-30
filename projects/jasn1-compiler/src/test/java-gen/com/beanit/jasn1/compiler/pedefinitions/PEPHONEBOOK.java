@@ -80,6 +80,26 @@ public class PEPHONEBOOK implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"phonebook-header",
+		"templateID",
+		"df-phonebook",
+		"ef-pbr",
+		"ef-ext1",
+		"ef-aas",
+		"ef-gas",
+		"ef-psc",
+		"ef-cc",
+		"ef-puid",
+		"ef-iap",
+		"ef-adn",
+		"ef-pbc",
+		"ef-anr",
+		"ef-puri",
+		"ef-email",
+		"ef-sne",
+		"ef-uid",
+		"ef-grp",
+		"ef-ccp1"
 	));
 	public List<String> getFields() {
 		return FIELDS;

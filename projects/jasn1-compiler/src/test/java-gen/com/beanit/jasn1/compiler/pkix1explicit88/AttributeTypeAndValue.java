@@ -44,6 +44,8 @@ public class AttributeTypeAndValue implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"type",
+		"value"
 	));
 	public List<String> getFields() {
 		return FIELDS;

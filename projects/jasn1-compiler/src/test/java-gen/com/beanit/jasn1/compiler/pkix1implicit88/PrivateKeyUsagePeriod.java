@@ -50,6 +50,8 @@ public class PrivateKeyUsagePeriod implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"notBefore",
+		"notAfter"
 	));
 	public List<String> getFields() {
 		return FIELDS;

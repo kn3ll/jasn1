@@ -55,6 +55,8 @@ public class ChildInformationz implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"name",
+		"dateOfBirth"
 	));
 	public List<String> getFields() {
 		return FIELDS;

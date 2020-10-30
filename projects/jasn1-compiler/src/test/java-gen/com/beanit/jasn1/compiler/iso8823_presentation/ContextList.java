@@ -201,6 +201,9 @@ public class ContextList implements BerSequenceOf, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"presentation_context_identifier",
+			"abstract_syntax_name",
+			"transfer_syntax_name_list"
 		));
 		public List<String> getFields() {
 			return FIELDS;

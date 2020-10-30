@@ -44,6 +44,8 @@ public class CountryName implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"x121-dcc-code",
+		"iso-3166-alpha2-code"
 	));
 	public List<String> getFields() {
 		return FIELDS;

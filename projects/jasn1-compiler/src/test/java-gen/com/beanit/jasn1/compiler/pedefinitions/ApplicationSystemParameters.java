@@ -64,6 +64,18 @@ public class ApplicationSystemParameters implements BerSequenceSet, Serializable
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"volatileMemoryQuotaC7",
+		"nonVolatileMemoryQuotaC8",
+		"globalServiceParameters",
+		"implicitSelectionParameter",
+		"volatileReservedMemory",
+		"nonVolatileReservedMemory",
+		"ts102226SIMFileAccessToolkitParameter",
+		"ts102226AdditionalContactlessParameters",
+		"contactlessProtocolParameters",
+		"userInteractionContactlessParameters",
+		"cumulativeGrantedVolatileMemory",
+		"cumulativeGrantedNonVolatileMemory"
 	));
 	public List<String> getFields() {
 		return FIELDS;

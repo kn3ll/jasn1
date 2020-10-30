@@ -82,6 +82,27 @@ public class ServicesList implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"contactless",
+		"usim",
+		"isim",
+		"csim",
+		"milenage",
+		"tuak128",
+		"cave",
+		"gba-usim",
+		"gba-isim",
+		"mbms",
+		"eap",
+		"javacard",
+		"multos",
+		"multiple-usim",
+		"multiple-isim",
+		"multiple-csim",
+		"tuak256",
+		"usim-test-algorithm",
+		"ber-tlv",
+		"dfLink",
+		"cat-tp"
 	));
 	public List<String> getFields() {
 		return FIELDS;

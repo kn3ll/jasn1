@@ -60,6 +60,14 @@ public class DeviceCapabilities implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"gsmSupportedRelease",
+		"utranSupportedRelease",
+		"cdma2000onexSupportedRelease",
+		"cdma2000hrpdSupportedRelease",
+		"cdma2000ehrpdSupportedRelease",
+		"eutranSupportedRelease",
+		"contactlessSupportedRelease",
+		"rspCrlSupportedVersion"
 	));
 	public List<String> getFields() {
 		return FIELDS;

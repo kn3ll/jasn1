@@ -201,6 +201,8 @@ public class NoticeReference implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"organization",
+		"noticeNumbers"
 	));
 	public List<String> getFields() {
 		return FIELDS;

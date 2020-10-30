@@ -50,6 +50,11 @@ public class PINConfiguration implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"keyReference",
+		"pinValue",
+		"unblockingPINReference",
+		"pinAttributes",
+		"maxNumOfAttemps-retryNumLeft"
 	));
 	public List<String> getFields() {
 		return FIELDS;

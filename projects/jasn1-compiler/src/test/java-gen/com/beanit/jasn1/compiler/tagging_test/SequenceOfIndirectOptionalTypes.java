@@ -181,6 +181,22 @@ public class SequenceOfIndirectOptionalTypes implements BerSequenceSet, Serializ
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"untaggedInt",
+		"untaggedInt2",
+		"untaggedInt3",
+		"explicitlyTaggedInt",
+		"explicitlyTaggedInt2",
+		"explicitlyTaggedInt3",
+		"implicitlyTaggedInt",
+		"implicitlyTaggedInt2",
+		"implicitlyTaggedInt3",
+		"untaggedChoice",
+		"untaggedChoice2",
+		"taggedChoice",
+		"taggedChoice2",
+		"untaggedAny",
+		"taggedAny",
+		"taggedAny2"
 	));
 	public List<String> getFields() {
 		return FIELDS;

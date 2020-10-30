@@ -48,6 +48,8 @@ public class AuthenticateServerResponse implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"authenticateResponseOk",
+		"authenticateResponseError"
 	));
 	public List<String> getFields() {
 		return FIELDS;

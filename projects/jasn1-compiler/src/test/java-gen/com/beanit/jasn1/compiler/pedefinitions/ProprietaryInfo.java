@@ -46,6 +46,9 @@ public class ProprietaryInfo implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"specialFileInformation",
+		"fillPattern",
+		"repeatPattern"
 	));
 	public List<String> getFields() {
 		return FIELDS;

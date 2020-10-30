@@ -195,6 +195,8 @@ public class PEGenericFileManagement implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"gfm-header",
+		"fileManagementCMD"
 	));
 	public List<String> getFields() {
 		return FIELDS;

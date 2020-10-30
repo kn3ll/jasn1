@@ -104,6 +104,38 @@ public class SequenceOfAll implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"myInteger",
+		"myInteger2",
+		"myBoolean",
+		"bitString",
+		"enumerated",
+		"generalizedTime",
+		"myNull",
+		"objectIdentifier",
+		"octetString",
+		"real",
+		"testIntegerWithValues",
+		"testOctetStringWithSize",
+		"testSequenceWithSize",
+		"time",
+		"date2",
+		"timeOfDay",
+		"dateTime",
+		"duration",
+		"bmpString",
+		"generalString",
+		"graphicString",
+		"iA5String",
+		"numericString",
+		"printableString",
+		"teletexString",
+		"universalString",
+		"utf8String",
+		"videotexString",
+		"visibleString",
+		"any",
+		"my-sequence",
+		"my-choice"
 	));
 	public List<String> getFields() {
 		return FIELDS;

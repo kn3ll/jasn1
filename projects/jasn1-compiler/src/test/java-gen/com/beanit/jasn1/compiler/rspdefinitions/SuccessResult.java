@@ -48,6 +48,8 @@ public class SuccessResult implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"aid",
+		"simaResponse"
 	));
 	public List<String> getFields() {
 		return FIELDS;

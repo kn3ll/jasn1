@@ -50,6 +50,10 @@ public class FileManagement implements BerSequenceOf, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"filePath",
+			"createFCP",
+			"fillFileOffset",
+			"fillFileContent"
 		));
 		public List<String> getFields() {
 			return FIELDS;

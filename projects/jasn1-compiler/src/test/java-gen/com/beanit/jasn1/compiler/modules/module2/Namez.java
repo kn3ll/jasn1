@@ -64,6 +64,9 @@ public class Namez implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"givenName",
+		"initial",
+		"familyName"
 	));
 	public List<String> getFields() {
 		return FIELDS;

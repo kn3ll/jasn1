@@ -44,6 +44,8 @@ public class ExtensionAttribute implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"extension-attribute-type",
+		"extension-attribute-value"
 	));
 	public List<String> getFields() {
 		return FIELDS;

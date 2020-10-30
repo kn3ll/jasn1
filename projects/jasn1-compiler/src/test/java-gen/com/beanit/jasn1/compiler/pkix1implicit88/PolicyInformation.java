@@ -201,6 +201,8 @@ public class PolicyInformation implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"policyIdentifier",
+		"policyQualifiers"
 	));
 	public List<String> getFields() {
 		return FIELDS;

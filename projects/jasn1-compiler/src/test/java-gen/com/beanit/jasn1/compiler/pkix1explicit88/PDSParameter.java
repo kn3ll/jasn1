@@ -44,6 +44,8 @@ public class PDSParameter implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"printable-string",
+		"teletex-string"
 	));
 	public List<String> getFields() {
 		return FIELDS;

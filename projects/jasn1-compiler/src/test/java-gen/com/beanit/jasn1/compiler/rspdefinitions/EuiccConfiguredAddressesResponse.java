@@ -48,6 +48,8 @@ public class EuiccConfiguredAddressesResponse implements BerSequenceSet, Seriali
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"defaultDpAddress",
+		"rootDsAddress"
 	));
 	public List<String> getFields() {
 		return FIELDS;

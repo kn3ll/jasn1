@@ -56,6 +56,14 @@ public class PEMF implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"mf-header",
+		"templateID",
+		"mf",
+		"ef-pl",
+		"ef-iccid",
+		"ef-dir",
+		"ef-arr",
+		"ef-umpc"
 	));
 	public List<String> getFields() {
 		return FIELDS;

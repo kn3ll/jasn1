@@ -64,6 +64,9 @@ public class ManagedExtension2 implements Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"identifier",
+		"property",
+		"information"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -50,6 +50,9 @@ public class InitiateAuthenticationRequest implements BerSequenceSet, Serializab
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"euiccChallenge",
+		"smdpAddress",
+		"euiccInfo1"
 	));
 	public List<String> getFields() {
 		return FIELDS;

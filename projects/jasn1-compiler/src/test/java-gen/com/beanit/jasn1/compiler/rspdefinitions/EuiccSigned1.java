@@ -54,6 +54,11 @@ public class EuiccSigned1 implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"transactionId",
+		"serverAddress",
+		"serverChallenge",
+		"euiccInfo2",
+		"ctxParams1"
 	));
 	public List<String> getFields() {
 		return FIELDS;

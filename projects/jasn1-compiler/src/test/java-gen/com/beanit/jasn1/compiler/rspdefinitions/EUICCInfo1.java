@@ -352,6 +352,9 @@ public class EUICCInfo1 implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"svn",
+		"euiccCiPKIdListForVerification",
+		"euiccCiPKIdListForSigning"
 	));
 	public List<String> getFields() {
 		return FIELDS;

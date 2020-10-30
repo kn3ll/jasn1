@@ -46,6 +46,8 @@ public class PEAKAParameter implements BerSequenceSet, Serializable {
 		}
 
 		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			"mappingParameter",
+			"algoParameter"
 		));
 		public List<String> getFields() {
 			return FIELDS;
@@ -353,6 +355,12 @@ public class PEAKAParameter implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"aka-header",
+		"algoConfiguration",
+		"sqnOptions",
+		"sqnDelta",
+		"sqnAgeLimit",
+		"sqnInit"
 	));
 	public List<String> getFields() {
 		return FIELDS;

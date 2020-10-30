@@ -48,6 +48,11 @@ public class X520name implements BerChoice, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"teletexString",
+		"printableString",
+		"universalString",
+		"utf8String",
+		"bmpString"
 	));
 	public List<String> getFields() {
 		return FIELDS;

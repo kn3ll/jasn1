@@ -50,6 +50,9 @@ public class ReplaceSessionKeysRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"initialMacChainingValue",
+		"ppkEnc",
+		"ppkCmac"
 	));
 	public List<String> getFields() {
 		return FIELDS;

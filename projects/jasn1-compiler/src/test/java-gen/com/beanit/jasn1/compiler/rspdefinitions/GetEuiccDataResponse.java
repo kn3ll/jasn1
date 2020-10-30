@@ -46,6 +46,7 @@ public class GetEuiccDataResponse implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"eidValue"
 	));
 	public List<String> getFields() {
 		return FIELDS;

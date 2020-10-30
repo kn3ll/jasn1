@@ -52,6 +52,12 @@ public class PECDMAParameter implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"cdma-header",
+		"authenticationKey",
+		"ssd",
+		"hrpdAccessAuthenticationData",
+		"simpleIPAuthenticationData",
+		"mobileIPAuthenticationData"
 	));
 	public List<String> getFields() {
 		return FIELDS;

@@ -46,6 +46,7 @@ public class ListNotificationRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"profileManagementOperation"
 	));
 	public List<String> getFields() {
 		return FIELDS;

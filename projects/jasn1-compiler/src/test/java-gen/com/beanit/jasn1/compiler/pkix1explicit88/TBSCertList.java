@@ -54,6 +54,9 @@ public class TBSCertList implements BerSequenceSet, Serializable {
 			}
 
 			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+				"userCertificate",
+				"revocationDate",
+				"crlEntryExtensions"
 			));
 			public List<String> getFields() {
 				return FIELDS;
@@ -488,6 +491,13 @@ public class TBSCertList implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"version",
+		"signature",
+		"issuer",
+		"thisUpdate",
+		"nextUpdate",
+		"revokedCertificates",
+		"crlExtensions"
 	));
 	public List<String> getFields() {
 		return FIELDS;

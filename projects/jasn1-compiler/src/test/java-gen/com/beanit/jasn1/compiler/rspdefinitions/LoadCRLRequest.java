@@ -46,6 +46,7 @@ public class LoadCRLRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"crl"
 	));
 	public List<String> getFields() {
 		return FIELDS;

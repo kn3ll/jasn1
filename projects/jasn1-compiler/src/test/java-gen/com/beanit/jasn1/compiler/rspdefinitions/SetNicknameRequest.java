@@ -48,6 +48,8 @@ public class SetNicknameRequest implements BerSequenceSet, Serializable {
 	}
 
 	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		"iccid",
+		"profileNickname"
 	));
 	public List<String> getFields() {
 		return FIELDS;
