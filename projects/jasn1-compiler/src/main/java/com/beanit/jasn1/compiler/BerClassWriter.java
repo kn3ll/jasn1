@@ -2460,7 +2460,13 @@ public class BerClassWriter {
   private void writeDynamicGetterAndSetterForSeqChoice(List<AsnElementType> componentTypes) throws IOException {
     // List<String> getFields();
     write("private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(");
-    componentTypes.stream().map(c -> c.name).collect(Collectors.joining(",\t"));
+    for (int i = 0; i < componentTypes.size(); i++) {
+      if (i != componentTypes.size() - 1) {
+        write("\t\"" + componentTypes.get(i).name + "\",");
+      } else {
+        write("\t\"" + componentTypes.get(i).name + "\"");
+      }
+    }
     write("));");
     write("public List<String> getFields() {");
     write("return FIELDS;");
