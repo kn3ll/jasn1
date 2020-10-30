@@ -2459,7 +2459,7 @@ public class BerClassWriter {
 
   private void writeDynamicGetterAndSetterForSeqChoice(List<AsnElementType> componentTypes) throws IOException {
     // List<String> getFields();
-    write("private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(");
+    write("private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(");
     for (int i = 0; i < componentTypes.size(); i++) {
       if (i != componentTypes.size() - 1) {
         write("\t\"" + componentTypes.get(i).name + "\",");
@@ -2478,6 +2478,9 @@ public class BerClassWriter {
     for (AsnElementType element : componentTypes) {
       String variableName = cleanUpName(element.name);
       write("case \"" + element.name + "\":");
+      if (!element.name.equals(variableName)) {
+        write("case \"" + variableName + "\":");
+      }
       write("\treturn " + variableName + ";");
     }
     write("default:");
@@ -2490,7 +2493,11 @@ public class BerClassWriter {
     write("switch(fieldName) {");
     for (AsnElementType element : componentTypes) {
       String typeName = getClassNameOfComponent(element);
+      String variableName = cleanUpName(element.name);
       write("case \"" + element.name + "\":");
+      if (!element.name.equals(variableName)) {
+        write("case \"" + variableName + "\":");
+      }
       write("\treturn " + typeName + ".class;");
     }
     write("default:");
@@ -2505,6 +2512,9 @@ public class BerClassWriter {
       String variableName = cleanUpName(element.name);
       String typeName = getClassNameOfComponent(element);
       write("case \"" + element.name + "\":");
+      if (!element.name.equals(variableName)) {
+        write("case \"" + variableName + "\":");
+      }
       write(String.format("\t%s = (%s) value;", variableName, typeName));
       write("\tbreak;");
     }
