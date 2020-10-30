@@ -47,7 +47,7 @@ public class GetBoundProfilePackageResponse implements BerChoice, Serializable {
 		this.getBoundProfilePackageError = getBoundProfilePackageError;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"getBoundProfilePackageOk",
 		"getBoundProfilePackageError"
 	));

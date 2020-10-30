@@ -198,7 +198,7 @@ public class AuthenticateClientOkEs11 implements BerSequenceSet, Serializable {
 		this.eventEntries = eventEntries;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"eventEntries"
 	));

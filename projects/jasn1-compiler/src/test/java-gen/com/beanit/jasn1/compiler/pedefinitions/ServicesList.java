@@ -81,7 +81,7 @@ public class ServicesList implements BerSequenceSet, Serializable {
 		this.catTp = catTp;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"contactless",
 		"usim",
 		"isim",
@@ -124,8 +124,10 @@ public class ServicesList implements BerSequenceSet, Serializable {
 			case "cave":
 				return cave;
 			case "gba-usim":
+			case "gbaUsim":
 				return gbaUsim;
 			case "gba-isim":
+			case "gbaIsim":
 				return gbaIsim;
 			case "mbms":
 				return mbms;
@@ -136,20 +138,26 @@ public class ServicesList implements BerSequenceSet, Serializable {
 			case "multos":
 				return multos;
 			case "multiple-usim":
+			case "multipleUsim":
 				return multipleUsim;
 			case "multiple-isim":
+			case "multipleIsim":
 				return multipleIsim;
 			case "multiple-csim":
+			case "multipleCsim":
 				return multipleCsim;
 			case "tuak256":
 				return tuak256;
 			case "usim-test-algorithm":
+			case "usimTestAlgorithm":
 				return usimTestAlgorithm;
 			case "ber-tlv":
+			case "berTlv":
 				return berTlv;
 			case "dfLink":
 				return dfLink;
 			case "cat-tp":
+			case "catTp":
 				return catTp;
 			default:
 				return null;
@@ -172,8 +180,10 @@ public class ServicesList implements BerSequenceSet, Serializable {
 			case "cave":
 				return BerNull.class;
 			case "gba-usim":
+			case "gbaUsim":
 				return BerNull.class;
 			case "gba-isim":
+			case "gbaIsim":
 				return BerNull.class;
 			case "mbms":
 				return BerNull.class;
@@ -184,20 +194,26 @@ public class ServicesList implements BerSequenceSet, Serializable {
 			case "multos":
 				return BerNull.class;
 			case "multiple-usim":
+			case "multipleUsim":
 				return BerNull.class;
 			case "multiple-isim":
+			case "multipleIsim":
 				return BerNull.class;
 			case "multiple-csim":
+			case "multipleCsim":
 				return BerNull.class;
 			case "tuak256":
 				return BerNull.class;
 			case "usim-test-algorithm":
+			case "usimTestAlgorithm":
 				return BerNull.class;
 			case "ber-tlv":
+			case "berTlv":
 				return BerNull.class;
 			case "dfLink":
 				return BerNull.class;
 			case "cat-tp":
+			case "catTp":
 				return BerNull.class;
 			default:
 				return null;
@@ -227,9 +243,11 @@ public class ServicesList implements BerSequenceSet, Serializable {
 				cave = (BerNull) value;
 				break;
 			case "gba-usim":
+			case "gbaUsim":
 				gbaUsim = (BerNull) value;
 				break;
 			case "gba-isim":
+			case "gbaIsim":
 				gbaIsim = (BerNull) value;
 				break;
 			case "mbms":
@@ -245,27 +263,33 @@ public class ServicesList implements BerSequenceSet, Serializable {
 				multos = (BerNull) value;
 				break;
 			case "multiple-usim":
+			case "multipleUsim":
 				multipleUsim = (BerNull) value;
 				break;
 			case "multiple-isim":
+			case "multipleIsim":
 				multipleIsim = (BerNull) value;
 				break;
 			case "multiple-csim":
+			case "multipleCsim":
 				multipleCsim = (BerNull) value;
 				break;
 			case "tuak256":
 				tuak256 = (BerNull) value;
 				break;
 			case "usim-test-algorithm":
+			case "usimTestAlgorithm":
 				usimTestAlgorithm = (BerNull) value;
 				break;
 			case "ber-tlv":
+			case "berTlv":
 				berTlv = (BerNull) value;
 				break;
 			case "dfLink":
 				dfLink = (BerNull) value;
 				break;
 			case "cat-tp":
+			case "catTp":
 				catTp = (BerNull) value;
 				break;
 			default:

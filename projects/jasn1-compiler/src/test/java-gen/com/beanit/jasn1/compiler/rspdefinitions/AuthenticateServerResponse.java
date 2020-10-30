@@ -47,7 +47,7 @@ public class AuthenticateServerResponse implements BerChoice, Serializable {
 		this.authenticateResponseError = authenticateResponseError;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"authenticateResponseOk",
 		"authenticateResponseError"
 	));

@@ -59,7 +59,7 @@ public class PEEAP implements BerSequenceSet, Serializable {
 		this.efRealm = efRealm;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"eap-header",
 		"templateID",
 		"df-eap",
@@ -77,24 +77,33 @@ public class PEEAP implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "eap-header":
+			case "eapHeader":
 				return eapHeader;
 			case "templateID":
 				return templateID;
 			case "df-eap":
+			case "dfEap":
 				return dfEap;
 			case "ef-eapkeys":
+			case "efEapkeys":
 				return efEapkeys;
 			case "ef-eapstatus":
+			case "efEapstatus":
 				return efEapstatus;
 			case "ef-puid":
+			case "efPuid":
 				return efPuid;
 			case "ef-ps":
+			case "efPs":
 				return efPs;
 			case "ef-curid":
+			case "efCurid":
 				return efCurid;
 			case "ef-reid":
+			case "efReid":
 				return efReid;
 			case "ef-realm":
+			case "efRealm":
 				return efRealm;
 			default:
 				return null;
@@ -103,24 +112,33 @@ public class PEEAP implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "eap-header":
+			case "eapHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "df-eap":
+			case "dfEap":
 				return File.class;
 			case "ef-eapkeys":
+			case "efEapkeys":
 				return File.class;
 			case "ef-eapstatus":
+			case "efEapstatus":
 				return File.class;
 			case "ef-puid":
+			case "efPuid":
 				return File.class;
 			case "ef-ps":
+			case "efPs":
 				return File.class;
 			case "ef-curid":
+			case "efCurid":
 				return File.class;
 			case "ef-reid":
+			case "efReid":
 				return File.class;
 			case "ef-realm":
+			case "efRealm":
 				return File.class;
 			default:
 				return null;
@@ -129,33 +147,42 @@ public class PEEAP implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "eap-header":
+			case "eapHeader":
 				eapHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "df-eap":
+			case "dfEap":
 				dfEap = (File) value;
 				break;
 			case "ef-eapkeys":
+			case "efEapkeys":
 				efEapkeys = (File) value;
 				break;
 			case "ef-eapstatus":
+			case "efEapstatus":
 				efEapstatus = (File) value;
 				break;
 			case "ef-puid":
+			case "efPuid":
 				efPuid = (File) value;
 				break;
 			case "ef-ps":
+			case "efPs":
 				efPs = (File) value;
 				break;
 			case "ef-curid":
+			case "efCurid":
 				efCurid = (File) value;
 				break;
 			case "ef-reid":
+			case "efReid":
 				efReid = (File) value;
 				break;
 			case "ef-realm":
+			case "efRealm":
 				efRealm = (File) value;
 				break;
 			default:

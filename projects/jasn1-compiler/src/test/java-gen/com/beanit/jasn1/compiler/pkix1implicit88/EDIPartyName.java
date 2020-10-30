@@ -49,7 +49,7 @@ public class EDIPartyName implements BerSequenceSet, Serializable {
 		this.partyName = partyName;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"nameAssigner",
 		"partyName"
 	));

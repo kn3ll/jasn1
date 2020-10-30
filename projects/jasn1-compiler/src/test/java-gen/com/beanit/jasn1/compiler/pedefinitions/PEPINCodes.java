@@ -196,7 +196,7 @@ public class PEPINCodes implements BerSequenceSet, Serializable {
 			this.filePath = filePath;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"pinconfig",
 			"filePath"
 		));
@@ -345,7 +345,7 @@ public class PEPINCodes implements BerSequenceSet, Serializable {
 		this.pinCodes = pinCodes;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"pin-Header",
 		"pinCodes"
 	));
@@ -355,6 +355,7 @@ public class PEPINCodes implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "pin-Header":
+			case "pinHeader":
 				return pinHeader;
 			case "pinCodes":
 				return pinCodes;
@@ -365,6 +366,7 @@ public class PEPINCodes implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "pin-Header":
+			case "pinHeader":
 				return PEHeader.class;
 			case "pinCodes":
 				return PinCodes.class;
@@ -375,6 +377,7 @@ public class PEPINCodes implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "pin-Header":
+			case "pinHeader":
 				pinHeader = (PEHeader) value;
 				break;
 			case "pinCodes":

@@ -39,7 +39,7 @@ public class Name implements BerChoice, Serializable {
 		this.rdnSequence = rdnSequence;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"rdnSequence"
 	));
 	public List<String> getFields() {

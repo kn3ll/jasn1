@@ -47,7 +47,7 @@ public class GetBoundProfilePackageRequest implements BerSequenceSet, Serializab
 		this.prepareDownloadResponse = prepareDownloadResponse;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"prepareDownloadResponse"
 	));

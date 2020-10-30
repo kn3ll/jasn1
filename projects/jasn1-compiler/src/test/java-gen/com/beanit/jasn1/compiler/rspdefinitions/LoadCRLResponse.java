@@ -47,7 +47,7 @@ public class LoadCRLResponse implements BerChoice, Serializable {
 		this.loadCRLResponseError = loadCRLResponseError;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"loadCRLResponseOk",
 		"loadCRLResponseError"
 	));

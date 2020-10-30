@@ -45,7 +45,7 @@ public class ConfigureISDPRequest implements BerSequenceSet, Serializable {
 		this.dpProprietaryData = dpProprietaryData;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"dpProprietaryData"
 	));
 	public List<String> getFields() {

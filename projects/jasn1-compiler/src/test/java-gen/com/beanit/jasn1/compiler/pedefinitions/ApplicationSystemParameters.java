@@ -63,7 +63,7 @@ public class ApplicationSystemParameters implements BerSequenceSet, Serializable
 		this.cumulativeGrantedNonVolatileMemory = cumulativeGrantedNonVolatileMemory;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"volatileMemoryQuotaC7",
 		"nonVolatileMemoryQuotaC8",
 		"globalServiceParameters",

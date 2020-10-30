@@ -200,7 +200,7 @@ public class ContextList implements BerSequenceOf, Serializable {
 			this.transferSyntaxNameList = transferSyntaxNameList;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"presentation_context_identifier",
 			"abstract_syntax_name",
 			"transfer_syntax_name_list"
@@ -211,10 +211,13 @@ public class ContextList implements BerSequenceOf, Serializable {
 		public BerType getField(String fieldName) {
 			switch(fieldName) {
 				case "presentation_context_identifier":
+				case "presentationContextIdentifier":
 					return presentationContextIdentifier;
 				case "abstract_syntax_name":
+				case "abstractSyntaxName":
 					return abstractSyntaxName;
 				case "transfer_syntax_name_list":
+				case "transferSyntaxNameList":
 					return transferSyntaxNameList;
 				default:
 					return null;
@@ -223,10 +226,13 @@ public class ContextList implements BerSequenceOf, Serializable {
 		public Class<? extends BerType> getFieldClass(String fieldName) {
 			switch(fieldName) {
 				case "presentation_context_identifier":
+				case "presentationContextIdentifier":
 					return PresentationContextIdentifier.class;
 				case "abstract_syntax_name":
+				case "abstractSyntaxName":
 					return AbstractSyntaxName.class;
 				case "transfer_syntax_name_list":
+				case "transferSyntaxNameList":
 					return TransferSyntaxNameList.class;
 				default:
 					return null;
@@ -235,12 +241,15 @@ public class ContextList implements BerSequenceOf, Serializable {
 		public void setField(String fieldName, BerType value) {
 			switch(fieldName) {
 				case "presentation_context_identifier":
+				case "presentationContextIdentifier":
 					presentationContextIdentifier = (PresentationContextIdentifier) value;
 					break;
 				case "abstract_syntax_name":
+				case "abstractSyntaxName":
 					abstractSyntaxName = (AbstractSyntaxName) value;
 					break;
 				case "transfer_syntax_name_list":
+				case "transferSyntaxNameList":
 					transferSyntaxNameList = (TransferSyntaxNameList) value;
 					break;
 				default:

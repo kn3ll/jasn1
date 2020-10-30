@@ -49,7 +49,7 @@ public class EuiccCancelSessionSigned implements BerSequenceSet, Serializable {
 		this.reason = reason;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"smdpOid",
 		"reason"

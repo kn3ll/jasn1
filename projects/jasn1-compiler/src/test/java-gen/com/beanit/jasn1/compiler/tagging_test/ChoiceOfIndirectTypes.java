@@ -178,7 +178,7 @@ public class ChoiceOfIndirectTypes implements BerChoice, Serializable {
 		return taggedAny2;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"untaggedInt",
 		"untaggedInt2",
 		"untaggedInt3",

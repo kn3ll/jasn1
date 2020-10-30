@@ -55,7 +55,7 @@ public class PEMF implements BerSequenceSet, Serializable {
 		this.efUmpc = efUmpc;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"mf-header",
 		"templateID",
 		"mf",
@@ -71,20 +71,26 @@ public class PEMF implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "mf-header":
+			case "mfHeader":
 				return mfHeader;
 			case "templateID":
 				return templateID;
 			case "mf":
 				return mf;
 			case "ef-pl":
+			case "efPl":
 				return efPl;
 			case "ef-iccid":
+			case "efIccid":
 				return efIccid;
 			case "ef-dir":
+			case "efDir":
 				return efDir;
 			case "ef-arr":
+			case "efArr":
 				return efArr;
 			case "ef-umpc":
+			case "efUmpc":
 				return efUmpc;
 			default:
 				return null;
@@ -93,20 +99,26 @@ public class PEMF implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "mf-header":
+			case "mfHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "mf":
 				return File.class;
 			case "ef-pl":
+			case "efPl":
 				return File.class;
 			case "ef-iccid":
+			case "efIccid":
 				return File.class;
 			case "ef-dir":
+			case "efDir":
 				return File.class;
 			case "ef-arr":
+			case "efArr":
 				return File.class;
 			case "ef-umpc":
+			case "efUmpc":
 				return File.class;
 			default:
 				return null;
@@ -115,6 +127,7 @@ public class PEMF implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "mf-header":
+			case "mfHeader":
 				mfHeader = (PEHeader) value;
 				break;
 			case "templateID":
@@ -124,18 +137,23 @@ public class PEMF implements BerSequenceSet, Serializable {
 				mf = (File) value;
 				break;
 			case "ef-pl":
+			case "efPl":
 				efPl = (File) value;
 				break;
 			case "ef-iccid":
+			case "efIccid":
 				efIccid = (File) value;
 				break;
 			case "ef-dir":
+			case "efDir":
 				efDir = (File) value;
 				break;
 			case "ef-arr":
+			case "efArr":
 				efArr = (File) value;
 				break;
 			case "ef-umpc":
+			case "efUmpc":
 				efUmpc = (File) value;
 				break;
 			default:

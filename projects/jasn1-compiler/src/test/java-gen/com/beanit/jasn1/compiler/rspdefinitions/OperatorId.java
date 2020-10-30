@@ -49,7 +49,7 @@ public class OperatorId implements BerSequenceSet, Serializable {
 		this.gid2 = gid2;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"mccMnc",
 		"gid1",
 		"gid2"

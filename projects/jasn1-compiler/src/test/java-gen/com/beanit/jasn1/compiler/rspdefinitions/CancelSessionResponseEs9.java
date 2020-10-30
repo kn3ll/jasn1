@@ -47,7 +47,7 @@ public class CancelSessionResponseEs9 implements BerChoice, Serializable {
 		this.cancelSessionError = cancelSessionError;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"cancelSessionOk",
 		"cancelSessionError"
 	));

@@ -63,7 +63,7 @@ public class ManagedExtension2 implements Serializable {
 		return information;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"identifier",
 		"property",
 		"information"

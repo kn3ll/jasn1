@@ -45,7 +45,7 @@ public class DpProprietaryData implements BerSequenceSet, Serializable {
 		this.dpOid = dpOid;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"dpOid"
 	));
 	public List<String> getFields() {

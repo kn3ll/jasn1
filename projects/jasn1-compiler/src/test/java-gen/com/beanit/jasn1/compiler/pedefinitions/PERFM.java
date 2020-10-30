@@ -206,7 +206,7 @@ public class PERFM implements BerSequenceSet, Serializable {
 		this.adfRFMAccess = adfRFMAccess;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"rfm-header",
 		"instanceAID",
 		"securityDomainAID",
@@ -222,6 +222,7 @@ public class PERFM implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "rfm-header":
+			case "rfmHeader":
 				return rfmHeader;
 			case "instanceAID":
 				return instanceAID;
@@ -244,6 +245,7 @@ public class PERFM implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "rfm-header":
+			case "rfmHeader":
 				return PEHeader.class;
 			case "instanceAID":
 				return ApplicationIdentifier.class;
@@ -266,6 +268,7 @@ public class PERFM implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "rfm-header":
+			case "rfmHeader":
 				rfmHeader = (PEHeader) value;
 				break;
 			case "instanceAID":

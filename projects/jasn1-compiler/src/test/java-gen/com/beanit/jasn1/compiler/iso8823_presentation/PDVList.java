@@ -47,7 +47,7 @@ public class PDVList implements BerSequenceSet, Serializable {
 			this.arbitrary = arbitrary;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"single_ASN1_type",
 			"octet_aligned",
 			"arbitrary"
@@ -58,8 +58,10 @@ public class PDVList implements BerSequenceSet, Serializable {
 		public BerType getField(String fieldName) {
 			switch(fieldName) {
 				case "single_ASN1_type":
+				case "singleASN1Type":
 					return singleASN1Type;
 				case "octet_aligned":
+				case "octetAligned":
 					return octetAligned;
 				case "arbitrary":
 					return arbitrary;
@@ -70,8 +72,10 @@ public class PDVList implements BerSequenceSet, Serializable {
 		public Class<? extends BerType> getFieldClass(String fieldName) {
 			switch(fieldName) {
 				case "single_ASN1_type":
+				case "singleASN1Type":
 					return BerAny.class;
 				case "octet_aligned":
+				case "octetAligned":
 					return BerOctetString.class;
 				case "arbitrary":
 					return BerBitString.class;
@@ -82,9 +86,11 @@ public class PDVList implements BerSequenceSet, Serializable {
 		public void setField(String fieldName, BerType value) {
 			switch(fieldName) {
 				case "single_ASN1_type":
+				case "singleASN1Type":
 					singleASN1Type = (BerAny) value;
 					break;
 				case "octet_aligned":
+				case "octetAligned":
 					octetAligned = (BerOctetString) value;
 					break;
 				case "arbitrary":
@@ -238,7 +244,7 @@ public class PDVList implements BerSequenceSet, Serializable {
 		this.presentationDataValues = presentationDataValues;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transfer_syntax_name",
 		"presentation_context_identifier",
 		"presentation_data_values"
@@ -249,10 +255,13 @@ public class PDVList implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "transfer_syntax_name":
+			case "transferSyntaxName":
 				return transferSyntaxName;
 			case "presentation_context_identifier":
+			case "presentationContextIdentifier":
 				return presentationContextIdentifier;
 			case "presentation_data_values":
+			case "presentationDataValues":
 				return presentationDataValues;
 			default:
 				return null;
@@ -261,10 +270,13 @@ public class PDVList implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "transfer_syntax_name":
+			case "transferSyntaxName":
 				return TransferSyntaxName.class;
 			case "presentation_context_identifier":
+			case "presentationContextIdentifier":
 				return PresentationContextIdentifier.class;
 			case "presentation_data_values":
+			case "presentationDataValues":
 				return PresentationDataValues.class;
 			default:
 				return null;
@@ -273,12 +285,15 @@ public class PDVList implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "transfer_syntax_name":
+			case "transferSyntaxName":
 				transferSyntaxName = (TransferSyntaxName) value;
 				break;
 			case "presentation_context_identifier":
+			case "presentationContextIdentifier":
 				presentationContextIdentifier = (PresentationContextIdentifier) value;
 				break;
 			case "presentation_data_values":
+			case "presentationDataValues":
 				presentationDataValues = (PresentationDataValues) value;
 				break;
 			default:

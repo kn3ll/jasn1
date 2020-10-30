@@ -53,7 +53,7 @@ public class AuthenticateServerRequest implements BerSequenceSet, Serializable {
 		this.ctxParams1 = ctxParams1;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"serverSigned1",
 		"serverSignature1",
 		"euiccCiPKIdToBeUsed",

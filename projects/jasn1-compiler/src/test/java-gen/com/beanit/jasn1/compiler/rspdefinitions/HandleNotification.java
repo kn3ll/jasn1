@@ -45,7 +45,7 @@ public class HandleNotification implements BerSequenceSet, Serializable {
 		this.pendingNotification = pendingNotification;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"pendingNotification"
 	));
 	public List<String> getFields() {

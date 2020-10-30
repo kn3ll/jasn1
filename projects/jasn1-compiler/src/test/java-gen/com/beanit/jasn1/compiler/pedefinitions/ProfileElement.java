@@ -93,7 +93,7 @@ public class ProfileElement implements BerChoice, Serializable {
 		this.eap = eap;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"header",
 		"genericFileManagement",
 		"pinCodes",
@@ -169,18 +169,22 @@ public class ProfileElement implements BerChoice, Serializable {
 			case "usim":
 				return usim;
 			case "opt-usim":
+			case "optUsim":
 				return optUsim;
 			case "isim":
 				return isim;
 			case "opt-isim":
+			case "optIsim":
 				return optIsim;
 			case "phonebook":
 				return phonebook;
 			case "gsm-access":
+			case "gsmAccess":
 				return gsmAccess;
 			case "csim":
 				return csim;
 			case "opt-csim":
+			case "optCsim":
 				return optCsim;
 			case "eap":
 				return eap;
@@ -231,18 +235,22 @@ public class ProfileElement implements BerChoice, Serializable {
 			case "usim":
 				return PEUSIM.class;
 			case "opt-usim":
+			case "optUsim":
 				return PEOPTUSIM.class;
 			case "isim":
 				return PEISIM.class;
 			case "opt-isim":
+			case "optIsim":
 				return PEOPTISIM.class;
 			case "phonebook":
 				return PEPHONEBOOK.class;
 			case "gsm-access":
+			case "gsmAccess":
 				return PEGSMACCESS.class;
 			case "csim":
 				return PECSIM.class;
 			case "opt-csim":
+			case "optCsim":
 				return PEOPTCSIM.class;
 			case "eap":
 				return PEEAP.class;
@@ -313,24 +321,28 @@ public class ProfileElement implements BerChoice, Serializable {
 				usim = (PEUSIM) value;
 				break;
 			case "opt-usim":
+			case "optUsim":
 				optUsim = (PEOPTUSIM) value;
 				break;
 			case "isim":
 				isim = (PEISIM) value;
 				break;
 			case "opt-isim":
+			case "optIsim":
 				optIsim = (PEOPTISIM) value;
 				break;
 			case "phonebook":
 				phonebook = (PEPHONEBOOK) value;
 				break;
 			case "gsm-access":
+			case "gsmAccess":
 				gsmAccess = (PEGSMACCESS) value;
 				break;
 			case "csim":
 				csim = (PECSIM) value;
 				break;
 			case "opt-csim":
+			case "optCsim":
 				optCsim = (PEOPTCSIM) value;
 				break;
 			case "eap":

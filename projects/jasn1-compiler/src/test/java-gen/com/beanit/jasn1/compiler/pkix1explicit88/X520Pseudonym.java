@@ -47,7 +47,7 @@ public class X520Pseudonym implements BerChoice, Serializable {
 		this.bmpString = bmpString;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"teletexString",
 		"printableString",
 		"universalString",

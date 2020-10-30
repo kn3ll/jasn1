@@ -53,7 +53,7 @@ public class PEGSMACCESS implements BerSequenceSet, Serializable {
 		this.efInvscan = efInvscan;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"gsm-access-header",
 		"templateID",
 		"df-gsm-access",
@@ -68,18 +68,24 @@ public class PEGSMACCESS implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "gsm-access-header":
+			case "gsmAccessHeader":
 				return gsmAccessHeader;
 			case "templateID":
 				return templateID;
 			case "df-gsm-access":
+			case "dfGsmAccess":
 				return dfGsmAccess;
 			case "ef-kc":
+			case "efKc":
 				return efKc;
 			case "ef-kcgprs":
+			case "efKcgprs":
 				return efKcgprs;
 			case "ef-cpbcch":
+			case "efCpbcch":
 				return efCpbcch;
 			case "ef-invscan":
+			case "efInvscan":
 				return efInvscan;
 			default:
 				return null;
@@ -88,18 +94,24 @@ public class PEGSMACCESS implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "gsm-access-header":
+			case "gsmAccessHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "df-gsm-access":
+			case "dfGsmAccess":
 				return File.class;
 			case "ef-kc":
+			case "efKc":
 				return File.class;
 			case "ef-kcgprs":
+			case "efKcgprs":
 				return File.class;
 			case "ef-cpbcch":
+			case "efCpbcch":
 				return File.class;
 			case "ef-invscan":
+			case "efInvscan":
 				return File.class;
 			default:
 				return null;
@@ -108,24 +120,30 @@ public class PEGSMACCESS implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "gsm-access-header":
+			case "gsmAccessHeader":
 				gsmAccessHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "df-gsm-access":
+			case "dfGsmAccess":
 				dfGsmAccess = (File) value;
 				break;
 			case "ef-kc":
+			case "efKc":
 				efKc = (File) value;
 				break;
 			case "ef-kcgprs":
+			case "efKcgprs":
 				efKcgprs = (File) value;
 				break;
 			case "ef-cpbcch":
+			case "efCpbcch":
 				efCpbcch = (File) value;
 				break;
 			case "ef-invscan":
+			case "efInvscan":
 				efInvscan = (File) value;
 				break;
 			default:

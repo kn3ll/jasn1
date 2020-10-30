@@ -47,7 +47,7 @@ public class InitiateAuthenticationResponse implements BerChoice, Serializable {
 		this.initiateAuthenticationError = initiateAuthenticationError;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"initiateAuthenticationOk",
 		"initiateAuthenticationError"
 	));

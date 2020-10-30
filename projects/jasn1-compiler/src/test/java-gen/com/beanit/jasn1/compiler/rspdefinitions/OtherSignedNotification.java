@@ -51,7 +51,7 @@ public class OtherSignedNotification implements BerSequenceSet, Serializable {
 		this.eumCertificate = eumCertificate;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"tbsOtherNotification",
 		"euiccNotificationSignature",
 		"euiccCertificate",

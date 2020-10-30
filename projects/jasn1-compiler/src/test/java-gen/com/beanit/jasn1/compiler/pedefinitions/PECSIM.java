@@ -113,7 +113,7 @@ public class PECSIM implements BerSequenceSet, Serializable {
 		this.efCallPrompt = efCallPrompt;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"csim-header",
 		"templateID",
 		"adf-csim",
@@ -158,78 +158,114 @@ public class PECSIM implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "csim-header":
+			case "csimHeader":
 				return csimHeader;
 			case "templateID":
 				return templateID;
 			case "adf-csim":
+			case "adfCsim":
 				return adfCsim;
 			case "ef-arr":
+			case "efArr":
 				return efArr;
 			case "ef-call-count":
+			case "efCallCount":
 				return efCallCount;
 			case "ef-imsi-m":
+			case "efImsiM":
 				return efImsiM;
 			case "ef-imsi-t":
+			case "efImsiT":
 				return efImsiT;
 			case "ef-tmsi":
+			case "efTmsi":
 				return efTmsi;
 			case "ef-ah":
+			case "efAh":
 				return efAh;
 			case "ef-aop":
+			case "efAop":
 				return efAop;
 			case "ef-aloc":
+			case "efAloc":
 				return efAloc;
 			case "ef-cdmahome":
+			case "efCdmahome":
 				return efCdmahome;
 			case "ef-znregi":
+			case "efZnregi":
 				return efZnregi;
 			case "ef-snregi":
+			case "efSnregi":
 				return efSnregi;
 			case "ef-distregi":
+			case "efDistregi":
 				return efDistregi;
 			case "ef-accolc":
+			case "efAccolc":
 				return efAccolc;
 			case "ef-term":
+			case "efTerm":
 				return efTerm;
 			case "ef-acp":
+			case "efAcp":
 				return efAcp;
 			case "ef-prl":
+			case "efPrl":
 				return efPrl;
 			case "ef-ruimid":
+			case "efRuimid":
 				return efRuimid;
 			case "ef-csim-st":
+			case "efCsimSt":
 				return efCsimSt;
 			case "ef-spc":
+			case "efSpc":
 				return efSpc;
 			case "ef-otapaspc":
+			case "efOtapaspc":
 				return efOtapaspc;
 			case "ef-namlock":
+			case "efNamlock":
 				return efNamlock;
 			case "ef-ota":
+			case "efOta":
 				return efOta;
 			case "ef-sp":
+			case "efSp":
 				return efSp;
 			case "ef-esn-meid-me":
+			case "efEsnMeidMe":
 				return efEsnMeidMe;
 			case "ef-li":
+			case "efLi":
 				return efLi;
 			case "ef-usgind":
+			case "efUsgind":
 				return efUsgind;
 			case "ef-ad":
+			case "efAd":
 				return efAd;
 			case "ef-max-prl":
+			case "efMaxPrl":
 				return efMaxPrl;
 			case "ef-spcs":
+			case "efSpcs":
 				return efSpcs;
 			case "ef-mecrp":
+			case "efMecrp":
 				return efMecrp;
 			case "ef-home-tag":
+			case "efHomeTag":
 				return efHomeTag;
 			case "ef-group-tag":
+			case "efGroupTag":
 				return efGroupTag;
 			case "ef-specific-tag":
+			case "efSpecificTag":
 				return efSpecificTag;
 			case "ef-call-prompt":
+			case "efCallPrompt":
 				return efCallPrompt;
 			default:
 				return null;
@@ -238,78 +274,114 @@ public class PECSIM implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "csim-header":
+			case "csimHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "adf-csim":
+			case "adfCsim":
 				return File.class;
 			case "ef-arr":
+			case "efArr":
 				return File.class;
 			case "ef-call-count":
+			case "efCallCount":
 				return File.class;
 			case "ef-imsi-m":
+			case "efImsiM":
 				return File.class;
 			case "ef-imsi-t":
+			case "efImsiT":
 				return File.class;
 			case "ef-tmsi":
+			case "efTmsi":
 				return File.class;
 			case "ef-ah":
+			case "efAh":
 				return File.class;
 			case "ef-aop":
+			case "efAop":
 				return File.class;
 			case "ef-aloc":
+			case "efAloc":
 				return File.class;
 			case "ef-cdmahome":
+			case "efCdmahome":
 				return File.class;
 			case "ef-znregi":
+			case "efZnregi":
 				return File.class;
 			case "ef-snregi":
+			case "efSnregi":
 				return File.class;
 			case "ef-distregi":
+			case "efDistregi":
 				return File.class;
 			case "ef-accolc":
+			case "efAccolc":
 				return File.class;
 			case "ef-term":
+			case "efTerm":
 				return File.class;
 			case "ef-acp":
+			case "efAcp":
 				return File.class;
 			case "ef-prl":
+			case "efPrl":
 				return File.class;
 			case "ef-ruimid":
+			case "efRuimid":
 				return File.class;
 			case "ef-csim-st":
+			case "efCsimSt":
 				return File.class;
 			case "ef-spc":
+			case "efSpc":
 				return File.class;
 			case "ef-otapaspc":
+			case "efOtapaspc":
 				return File.class;
 			case "ef-namlock":
+			case "efNamlock":
 				return File.class;
 			case "ef-ota":
+			case "efOta":
 				return File.class;
 			case "ef-sp":
+			case "efSp":
 				return File.class;
 			case "ef-esn-meid-me":
+			case "efEsnMeidMe":
 				return File.class;
 			case "ef-li":
+			case "efLi":
 				return File.class;
 			case "ef-usgind":
+			case "efUsgind":
 				return File.class;
 			case "ef-ad":
+			case "efAd":
 				return File.class;
 			case "ef-max-prl":
+			case "efMaxPrl":
 				return File.class;
 			case "ef-spcs":
+			case "efSpcs":
 				return File.class;
 			case "ef-mecrp":
+			case "efMecrp":
 				return File.class;
 			case "ef-home-tag":
+			case "efHomeTag":
 				return File.class;
 			case "ef-group-tag":
+			case "efGroupTag":
 				return File.class;
 			case "ef-specific-tag":
+			case "efSpecificTag":
 				return File.class;
 			case "ef-call-prompt":
+			case "efCallPrompt":
 				return File.class;
 			default:
 				return null;
@@ -318,114 +390,150 @@ public class PECSIM implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "csim-header":
+			case "csimHeader":
 				csimHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "adf-csim":
+			case "adfCsim":
 				adfCsim = (File) value;
 				break;
 			case "ef-arr":
+			case "efArr":
 				efArr = (File) value;
 				break;
 			case "ef-call-count":
+			case "efCallCount":
 				efCallCount = (File) value;
 				break;
 			case "ef-imsi-m":
+			case "efImsiM":
 				efImsiM = (File) value;
 				break;
 			case "ef-imsi-t":
+			case "efImsiT":
 				efImsiT = (File) value;
 				break;
 			case "ef-tmsi":
+			case "efTmsi":
 				efTmsi = (File) value;
 				break;
 			case "ef-ah":
+			case "efAh":
 				efAh = (File) value;
 				break;
 			case "ef-aop":
+			case "efAop":
 				efAop = (File) value;
 				break;
 			case "ef-aloc":
+			case "efAloc":
 				efAloc = (File) value;
 				break;
 			case "ef-cdmahome":
+			case "efCdmahome":
 				efCdmahome = (File) value;
 				break;
 			case "ef-znregi":
+			case "efZnregi":
 				efZnregi = (File) value;
 				break;
 			case "ef-snregi":
+			case "efSnregi":
 				efSnregi = (File) value;
 				break;
 			case "ef-distregi":
+			case "efDistregi":
 				efDistregi = (File) value;
 				break;
 			case "ef-accolc":
+			case "efAccolc":
 				efAccolc = (File) value;
 				break;
 			case "ef-term":
+			case "efTerm":
 				efTerm = (File) value;
 				break;
 			case "ef-acp":
+			case "efAcp":
 				efAcp = (File) value;
 				break;
 			case "ef-prl":
+			case "efPrl":
 				efPrl = (File) value;
 				break;
 			case "ef-ruimid":
+			case "efRuimid":
 				efRuimid = (File) value;
 				break;
 			case "ef-csim-st":
+			case "efCsimSt":
 				efCsimSt = (File) value;
 				break;
 			case "ef-spc":
+			case "efSpc":
 				efSpc = (File) value;
 				break;
 			case "ef-otapaspc":
+			case "efOtapaspc":
 				efOtapaspc = (File) value;
 				break;
 			case "ef-namlock":
+			case "efNamlock":
 				efNamlock = (File) value;
 				break;
 			case "ef-ota":
+			case "efOta":
 				efOta = (File) value;
 				break;
 			case "ef-sp":
+			case "efSp":
 				efSp = (File) value;
 				break;
 			case "ef-esn-meid-me":
+			case "efEsnMeidMe":
 				efEsnMeidMe = (File) value;
 				break;
 			case "ef-li":
+			case "efLi":
 				efLi = (File) value;
 				break;
 			case "ef-usgind":
+			case "efUsgind":
 				efUsgind = (File) value;
 				break;
 			case "ef-ad":
+			case "efAd":
 				efAd = (File) value;
 				break;
 			case "ef-max-prl":
+			case "efMaxPrl":
 				efMaxPrl = (File) value;
 				break;
 			case "ef-spcs":
+			case "efSpcs":
 				efSpcs = (File) value;
 				break;
 			case "ef-mecrp":
+			case "efMecrp":
 				efMecrp = (File) value;
 				break;
 			case "ef-home-tag":
+			case "efHomeTag":
 				efHomeTag = (File) value;
 				break;
 			case "ef-group-tag":
+			case "efGroupTag":
 				efGroupTag = (File) value;
 				break;
 			case "ef-specific-tag":
+			case "efSpecificTag":
 				efSpecificTag = (File) value;
 				break;
 			case "ef-call-prompt":
+			case "efCallPrompt":
 				efCallPrompt = (File) value;
 				break;
 			default:

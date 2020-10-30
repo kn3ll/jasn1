@@ -51,7 +51,7 @@ public class NotificationMetadata implements BerSequenceSet, Serializable {
 		this.iccid = iccid;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"seqNumber",
 		"profileManagementOperation",
 		"notificationAddress",

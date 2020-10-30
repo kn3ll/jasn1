@@ -43,7 +43,7 @@ public class SubjectPublicKeyInfo implements BerSequenceSet, Serializable {
 		this.subjectPublicKey = subjectPublicKey;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"algorithm",
 		"subjectPublicKey"
 	));

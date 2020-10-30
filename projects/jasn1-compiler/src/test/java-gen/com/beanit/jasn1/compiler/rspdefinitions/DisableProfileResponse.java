@@ -45,7 +45,7 @@ public class DisableProfileResponse implements BerSequenceSet, Serializable {
 		this.disableResult = disableResult;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"disableResult"
 	));
 	public List<String> getFields() {

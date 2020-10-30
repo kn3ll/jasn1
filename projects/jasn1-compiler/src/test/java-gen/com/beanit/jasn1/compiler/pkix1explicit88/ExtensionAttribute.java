@@ -43,7 +43,7 @@ public class ExtensionAttribute implements BerSequenceSet, Serializable {
 		this.extensionAttributeValue = extensionAttributeValue;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"extension-attribute-type",
 		"extension-attribute-value"
 	));
@@ -53,8 +53,10 @@ public class ExtensionAttribute implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "extension-attribute-type":
+			case "extensionAttributeType":
 				return extensionAttributeType;
 			case "extension-attribute-value":
+			case "extensionAttributeValue":
 				return extensionAttributeValue;
 			default:
 				return null;
@@ -63,8 +65,10 @@ public class ExtensionAttribute implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "extension-attribute-type":
+			case "extensionAttributeType":
 				return BerInteger.class;
 			case "extension-attribute-value":
+			case "extensionAttributeValue":
 				return BerAny.class;
 			default:
 				return null;
@@ -73,9 +77,11 @@ public class ExtensionAttribute implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "extension-attribute-type":
+			case "extensionAttributeType":
 				extensionAttributeType = (BerInteger) value;
 				break;
 			case "extension-attribute-value":
+			case "extensionAttributeValue":
 				extensionAttributeValue = (BerAny) value;
 				break;
 			default:

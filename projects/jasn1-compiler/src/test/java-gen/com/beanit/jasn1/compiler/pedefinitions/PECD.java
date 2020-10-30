@@ -49,7 +49,7 @@ public class PECD implements BerSequenceSet, Serializable {
 		this.efIcon = efIcon;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"cd-header",
 		"templateID",
 		"df-cd",
@@ -62,14 +62,18 @@ public class PECD implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "cd-header":
+			case "cdHeader":
 				return cdHeader;
 			case "templateID":
 				return templateID;
 			case "df-cd":
+			case "dfCd":
 				return dfCd;
 			case "ef-launchpad":
+			case "efLaunchpad":
 				return efLaunchpad;
 			case "ef-icon":
+			case "efIcon":
 				return efIcon;
 			default:
 				return null;
@@ -78,14 +82,18 @@ public class PECD implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "cd-header":
+			case "cdHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "df-cd":
+			case "dfCd":
 				return File.class;
 			case "ef-launchpad":
+			case "efLaunchpad":
 				return File.class;
 			case "ef-icon":
+			case "efIcon":
 				return File.class;
 			default:
 				return null;
@@ -94,18 +102,22 @@ public class PECD implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "cd-header":
+			case "cdHeader":
 				cdHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "df-cd":
+			case "dfCd":
 				dfCd = (File) value;
 				break;
 			case "ef-launchpad":
+			case "efLaunchpad":
 				efLaunchpad = (File) value;
 				break;
 			case "ef-icon":
+			case "efIcon":
 				efIcon = (File) value;
 				break;
 			default:

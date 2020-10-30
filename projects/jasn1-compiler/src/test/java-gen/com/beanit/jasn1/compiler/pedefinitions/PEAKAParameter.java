@@ -45,7 +45,7 @@ public class PEAKAParameter implements BerSequenceSet, Serializable {
 			this.algoParameter = algoParameter;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"mappingParameter",
 			"algoParameter"
 		));
@@ -354,7 +354,7 @@ public class PEAKAParameter implements BerSequenceSet, Serializable {
 		this.sqnInit = sqnInit;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"aka-header",
 		"algoConfiguration",
 		"sqnOptions",
@@ -368,6 +368,7 @@ public class PEAKAParameter implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "aka-header":
+			case "akaHeader":
 				return akaHeader;
 			case "algoConfiguration":
 				return algoConfiguration;
@@ -386,6 +387,7 @@ public class PEAKAParameter implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "aka-header":
+			case "akaHeader":
 				return PEHeader.class;
 			case "algoConfiguration":
 				return AlgoConfiguration.class;
@@ -404,6 +406,7 @@ public class PEAKAParameter implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "aka-header":
+			case "akaHeader":
 				akaHeader = (PEHeader) value;
 				break;
 			case "algoConfiguration":

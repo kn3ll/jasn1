@@ -49,7 +49,7 @@ public class DisableProfileRequest implements BerSequenceSet, Serializable {
 			this.iccid = iccid;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"isdpAid",
 			"iccid"
 		));
@@ -194,7 +194,7 @@ public class DisableProfileRequest implements BerSequenceSet, Serializable {
 		this.refreshFlag = refreshFlag;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"profileIdentifier",
 		"refreshFlag"
 	));

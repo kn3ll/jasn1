@@ -49,7 +49,7 @@ public class AnotherName implements BerSequenceSet, Serializable {
 		this.value = value;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"type-id",
 		"value"
 	));
@@ -59,6 +59,7 @@ public class AnotherName implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "type-id":
+			case "typeId":
 				return typeId;
 			case "value":
 				return value;
@@ -69,6 +70,7 @@ public class AnotherName implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "type-id":
+			case "typeId":
 				return BerObjectIdentifier.class;
 			case "value":
 				return BerAny.class;
@@ -79,6 +81,7 @@ public class AnotherName implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "type-id":
+			case "typeId":
 				typeId = (BerObjectIdentifier) value;
 				break;
 			case "value":

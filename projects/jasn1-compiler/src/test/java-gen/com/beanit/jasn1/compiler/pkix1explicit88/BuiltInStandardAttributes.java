@@ -57,7 +57,7 @@ public class BuiltInStandardAttributes implements BerSequenceSet, Serializable {
 		this.organizationalUnitNames = organizationalUnitNames;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"country-name",
 		"administration-domain-name",
 		"network-address",
@@ -74,22 +74,31 @@ public class BuiltInStandardAttributes implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "country-name":
+			case "countryName":
 				return countryName;
 			case "administration-domain-name":
+			case "administrationDomainName":
 				return administrationDomainName;
 			case "network-address":
+			case "networkAddress":
 				return networkAddress;
 			case "terminal-identifier":
+			case "terminalIdentifier":
 				return terminalIdentifier;
 			case "private-domain-name":
+			case "privateDomainName":
 				return privateDomainName;
 			case "organization-name":
+			case "organizationName":
 				return organizationName;
 			case "numeric-user-identifier":
+			case "numericUserIdentifier":
 				return numericUserIdentifier;
 			case "personal-name":
+			case "personalName":
 				return personalName;
 			case "organizational-unit-names":
+			case "organizationalUnitNames":
 				return organizationalUnitNames;
 			default:
 				return null;
@@ -98,22 +107,31 @@ public class BuiltInStandardAttributes implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "country-name":
+			case "countryName":
 				return CountryName.class;
 			case "administration-domain-name":
+			case "administrationDomainName":
 				return AdministrationDomainName.class;
 			case "network-address":
+			case "networkAddress":
 				return NetworkAddress.class;
 			case "terminal-identifier":
+			case "terminalIdentifier":
 				return TerminalIdentifier.class;
 			case "private-domain-name":
+			case "privateDomainName":
 				return PrivateDomainName.class;
 			case "organization-name":
+			case "organizationName":
 				return OrganizationName.class;
 			case "numeric-user-identifier":
+			case "numericUserIdentifier":
 				return NumericUserIdentifier.class;
 			case "personal-name":
+			case "personalName":
 				return PersonalName.class;
 			case "organizational-unit-names":
+			case "organizationalUnitNames":
 				return OrganizationalUnitNames.class;
 			default:
 				return null;
@@ -122,30 +140,39 @@ public class BuiltInStandardAttributes implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "country-name":
+			case "countryName":
 				countryName = (CountryName) value;
 				break;
 			case "administration-domain-name":
+			case "administrationDomainName":
 				administrationDomainName = (AdministrationDomainName) value;
 				break;
 			case "network-address":
+			case "networkAddress":
 				networkAddress = (NetworkAddress) value;
 				break;
 			case "terminal-identifier":
+			case "terminalIdentifier":
 				terminalIdentifier = (TerminalIdentifier) value;
 				break;
 			case "private-domain-name":
+			case "privateDomainName":
 				privateDomainName = (PrivateDomainName) value;
 				break;
 			case "organization-name":
+			case "organizationName":
 				organizationName = (OrganizationName) value;
 				break;
 			case "numeric-user-identifier":
+			case "numericUserIdentifier":
 				numericUserIdentifier = (NumericUserIdentifier) value;
 				break;
 			case "personal-name":
+			case "personalName":
 				personalName = (PersonalName) value;
 				break;
 			case "organizational-unit-names":
+			case "organizationalUnitNames":
 				organizationalUnitNames = (OrganizationalUnitNames) value;
 				break;
 			default:

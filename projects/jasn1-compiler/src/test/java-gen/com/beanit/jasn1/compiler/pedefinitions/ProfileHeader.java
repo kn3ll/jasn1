@@ -202,7 +202,7 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 				this.version = version;
 			}
 
-			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 				"aid",
 				"version"
 			));
@@ -591,7 +591,7 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 		this.eUICCMandatoryAIDs = eUICCMandatoryAIDs;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"major-version",
 		"minor-version",
 		"profileType",
@@ -608,8 +608,10 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "major-version":
+			case "majorVersion":
 				return majorVersion;
 			case "minor-version":
+			case "minorVersion":
 				return minorVersion;
 			case "profileType":
 				return profileType;
@@ -618,12 +620,15 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 			case "pol":
 				return pol;
 			case "eUICC-Mandatory-services":
+			case "eUICCMandatoryServices":
 				return eUICCMandatoryServices;
 			case "eUICC-Mandatory-GFSTEList":
+			case "eUICCMandatoryGFSTEList":
 				return eUICCMandatoryGFSTEList;
 			case "connectivityParameters":
 				return connectivityParameters;
 			case "eUICC-Mandatory-AIDs":
+			case "eUICCMandatoryAIDs":
 				return eUICCMandatoryAIDs;
 			default:
 				return null;
@@ -632,8 +637,10 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "major-version":
+			case "majorVersion":
 				return UInt8.class;
 			case "minor-version":
+			case "minorVersion":
 				return UInt8.class;
 			case "profileType":
 				return BerUTF8String.class;
@@ -642,12 +649,15 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 			case "pol":
 				return BerOctetString.class;
 			case "eUICC-Mandatory-services":
+			case "eUICCMandatoryServices":
 				return ServicesList.class;
 			case "eUICC-Mandatory-GFSTEList":
+			case "eUICCMandatoryGFSTEList":
 				return EUICCMandatoryGFSTEList.class;
 			case "connectivityParameters":
 				return BerOctetString.class;
 			case "eUICC-Mandatory-AIDs":
+			case "eUICCMandatoryAIDs":
 				return EUICCMandatoryAIDs.class;
 			default:
 				return null;
@@ -656,9 +666,11 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "major-version":
+			case "majorVersion":
 				majorVersion = (UInt8) value;
 				break;
 			case "minor-version":
+			case "minorVersion":
 				minorVersion = (UInt8) value;
 				break;
 			case "profileType":
@@ -671,15 +683,18 @@ public class ProfileHeader implements BerSequenceSet, Serializable {
 				pol = (BerOctetString) value;
 				break;
 			case "eUICC-Mandatory-services":
+			case "eUICCMandatoryServices":
 				eUICCMandatoryServices = (ServicesList) value;
 				break;
 			case "eUICC-Mandatory-GFSTEList":
+			case "eUICCMandatoryGFSTEList":
 				eUICCMandatoryGFSTEList = (EUICCMandatoryGFSTEList) value;
 				break;
 			case "connectivityParameters":
 				connectivityParameters = (BerOctetString) value;
 				break;
 			case "eUICC-Mandatory-AIDs":
+			case "eUICCMandatoryAIDs":
 				eUICCMandatoryAIDs = (EUICCMandatoryAIDs) value;
 				break;
 			default:

@@ -47,7 +47,7 @@ public class DeleteProfileRequest implements BerChoice, Serializable {
 		this.iccid = iccid;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"isdpAid",
 		"iccid"
 	));

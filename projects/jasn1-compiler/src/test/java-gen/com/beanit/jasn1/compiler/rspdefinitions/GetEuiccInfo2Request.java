@@ -40,7 +40,7 @@ public class GetEuiccInfo2Request implements BerSequenceSet, Serializable {
 		this.code = code;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 	));
 	public List<String> getFields() {
 		return FIELDS;

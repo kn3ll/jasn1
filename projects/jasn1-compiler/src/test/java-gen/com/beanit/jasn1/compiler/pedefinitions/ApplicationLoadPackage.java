@@ -53,7 +53,7 @@ public class ApplicationLoadPackage implements BerSequenceSet, Serializable {
 		this.loadBlockObject = loadBlockObject;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"loadPackageAID",
 		"securityDomainAID",
 		"nonVolatileCodeLimitC6",

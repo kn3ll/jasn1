@@ -43,7 +43,7 @@ public class Validity implements BerSequenceSet, Serializable {
 		this.notAfter = notAfter;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"notBefore",
 		"notAfter"
 	));

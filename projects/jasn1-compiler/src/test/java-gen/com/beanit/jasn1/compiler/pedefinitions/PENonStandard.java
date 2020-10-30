@@ -45,7 +45,7 @@ public class PENonStandard implements BerSequenceSet, Serializable {
 		this.content = content;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"nonStandard-header",
 		"issuerID",
 		"content"
@@ -56,6 +56,7 @@ public class PENonStandard implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "nonStandard-header":
+			case "nonStandardHeader":
 				return nonStandardHeader;
 			case "issuerID":
 				return issuerID;
@@ -68,6 +69,7 @@ public class PENonStandard implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "nonStandard-header":
+			case "nonStandardHeader":
 				return PEHeader.class;
 			case "issuerID":
 				return BerObjectIdentifier.class;
@@ -80,6 +82,7 @@ public class PENonStandard implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "nonStandard-header":
+			case "nonStandardHeader":
 				nonStandardHeader = (PEHeader) value;
 				break;
 			case "issuerID":

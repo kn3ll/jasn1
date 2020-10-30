@@ -53,7 +53,7 @@ public class InitialiseSecureChannelRequest implements BerSequenceSet, Serializa
 		this.smdpSign = smdpSign;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"remoteOpId",
 		"transactionId",
 		"controlRefTemplate",

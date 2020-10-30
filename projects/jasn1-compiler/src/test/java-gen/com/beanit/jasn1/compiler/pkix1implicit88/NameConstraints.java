@@ -49,7 +49,7 @@ public class NameConstraints implements BerSequenceSet, Serializable {
 		this.excludedSubtrees = excludedSubtrees;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"permittedSubtrees",
 		"excludedSubtrees"
 	));

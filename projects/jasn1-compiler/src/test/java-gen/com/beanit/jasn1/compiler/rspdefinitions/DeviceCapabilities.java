@@ -59,7 +59,7 @@ public class DeviceCapabilities implements BerSequenceSet, Serializable {
 		this.rspCrlSupportedVersion = rspCrlSupportedVersion;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"gsmSupportedRelease",
 		"utranSupportedRelease",
 		"cdma2000onexSupportedRelease",

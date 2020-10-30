@@ -47,7 +47,7 @@ public class CancelSessionRequestEs9 implements BerSequenceSet, Serializable {
 		this.cancelSessionResponse = cancelSessionResponse;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"cancelSessionResponse"
 	));

@@ -45,7 +45,7 @@ public class LpaeActivationRequest implements BerSequenceSet, Serializable {
 		this.lpaeOption = lpaeOption;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"lpaeOption"
 	));
 	public List<String> getFields() {

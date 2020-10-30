@@ -43,7 +43,7 @@ public class MappingParameter implements BerSequenceSet, Serializable {
 		this.mappingSource = mappingSource;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"mappingOptions",
 		"mappingSource"
 	));

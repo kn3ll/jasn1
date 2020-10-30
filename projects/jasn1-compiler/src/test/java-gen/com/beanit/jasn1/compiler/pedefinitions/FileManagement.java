@@ -49,7 +49,7 @@ public class FileManagement implements BerSequenceOf, Serializable {
 			this.fillFileContent = fillFileContent;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"filePath",
 			"createFCP",
 			"fillFileOffset",

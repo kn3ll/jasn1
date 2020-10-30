@@ -43,7 +43,7 @@ public class PEHeader implements BerSequenceSet, Serializable {
 		this.identification = identification;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"mandated",
 		"identification"
 	));

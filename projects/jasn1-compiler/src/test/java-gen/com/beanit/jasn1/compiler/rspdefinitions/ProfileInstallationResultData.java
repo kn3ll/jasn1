@@ -49,7 +49,7 @@ public class ProfileInstallationResultData implements BerSequenceSet, Serializab
 			this.errorResult = errorResult;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"successResult",
 			"errorResult"
 		));
@@ -203,7 +203,7 @@ public class ProfileInstallationResultData implements BerSequenceSet, Serializab
 		this.finalResult = finalResult;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"notificationMetadata",
 		"smdpOid",

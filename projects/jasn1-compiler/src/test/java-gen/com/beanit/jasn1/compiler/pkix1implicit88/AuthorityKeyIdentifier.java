@@ -51,7 +51,7 @@ public class AuthorityKeyIdentifier implements BerSequenceSet, Serializable {
 		this.authorityCertSerialNumber = authorityCertSerialNumber;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"keyIdentifier",
 		"authorityCertIssuer",
 		"authorityCertSerialNumber"

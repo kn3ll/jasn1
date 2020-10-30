@@ -54,7 +54,7 @@ public class TaggedChoice implements BerChoice, Serializable {
 		return myBoolean;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"myInteger",
 		"myBoolean"
 	));

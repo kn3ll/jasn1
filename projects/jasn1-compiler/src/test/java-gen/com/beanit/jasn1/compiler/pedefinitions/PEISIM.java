@@ -57,7 +57,7 @@ public class PEISIM implements BerSequenceSet, Serializable {
 		this.efArr = efArr;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"isim-header",
 		"templateID",
 		"adf-isim",
@@ -74,22 +74,30 @@ public class PEISIM implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "isim-header":
+			case "isimHeader":
 				return isimHeader;
 			case "templateID":
 				return templateID;
 			case "adf-isim":
+			case "adfIsim":
 				return adfIsim;
 			case "ef-impi":
+			case "efImpi":
 				return efImpi;
 			case "ef-impu":
+			case "efImpu":
 				return efImpu;
 			case "ef-domain":
+			case "efDomain":
 				return efDomain;
 			case "ef-ist":
+			case "efIst":
 				return efIst;
 			case "ef-ad":
+			case "efAd":
 				return efAd;
 			case "ef-arr":
+			case "efArr":
 				return efArr;
 			default:
 				return null;
@@ -98,22 +106,30 @@ public class PEISIM implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "isim-header":
+			case "isimHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "adf-isim":
+			case "adfIsim":
 				return File.class;
 			case "ef-impi":
+			case "efImpi":
 				return File.class;
 			case "ef-impu":
+			case "efImpu":
 				return File.class;
 			case "ef-domain":
+			case "efDomain":
 				return File.class;
 			case "ef-ist":
+			case "efIst":
 				return File.class;
 			case "ef-ad":
+			case "efAd":
 				return File.class;
 			case "ef-arr":
+			case "efArr":
 				return File.class;
 			default:
 				return null;
@@ -122,30 +138,38 @@ public class PEISIM implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "isim-header":
+			case "isimHeader":
 				isimHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "adf-isim":
+			case "adfIsim":
 				adfIsim = (File) value;
 				break;
 			case "ef-impi":
+			case "efImpi":
 				efImpi = (File) value;
 				break;
 			case "ef-impu":
+			case "efImpu":
 				efImpu = (File) value;
 				break;
 			case "ef-domain":
+			case "efDomain":
 				efDomain = (File) value;
 				break;
 			case "ef-ist":
+			case "efIst":
 				efIst = (File) value;
 				break;
 			case "ef-ad":
+			case "efAd":
 				efAd = (File) value;
 				break;
 			case "ef-arr":
+			case "efArr":
 				efArr = (File) value;
 				break;
 			default:

@@ -40,7 +40,7 @@ public class EuiccConfiguredAddressesRequest implements BerSequenceSet, Serializ
 		this.code = code;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 	));
 	public List<String> getFields() {
 		return FIELDS;

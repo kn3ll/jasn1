@@ -49,7 +49,7 @@ public class DeviceInfo implements BerSequenceSet, Serializable {
 		this.imei = imei;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"tac",
 		"deviceCapabilities",
 		"imei"

@@ -220,7 +220,7 @@ public class ProfileInfo implements BerSequenceSet, Serializable {
 		this.profilePolicyRules = profilePolicyRules;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"iccid",
 		"isdpAid",
 		"profileState",

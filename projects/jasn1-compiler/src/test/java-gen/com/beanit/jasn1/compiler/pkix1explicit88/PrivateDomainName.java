@@ -41,7 +41,7 @@ public class PrivateDomainName implements BerChoice, Serializable {
 		this.printable = printable;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"numeric",
 		"printable"
 	));

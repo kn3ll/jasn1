@@ -200,7 +200,7 @@ public class NoticeReference implements BerSequenceSet, Serializable {
 		this.noticeNumbers = noticeNumbers;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"organization",
 		"noticeNumbers"
 	));

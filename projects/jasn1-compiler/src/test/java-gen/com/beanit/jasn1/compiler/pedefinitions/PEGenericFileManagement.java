@@ -194,7 +194,7 @@ public class PEGenericFileManagement implements BerSequenceSet, Serializable {
 		this.fileManagementCMD = fileManagementCMD;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"gfm-header",
 		"fileManagementCMD"
 	));
@@ -204,6 +204,7 @@ public class PEGenericFileManagement implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "gfm-header":
+			case "gfmHeader":
 				return gfmHeader;
 			case "fileManagementCMD":
 				return fileManagementCMD;
@@ -214,6 +215,7 @@ public class PEGenericFileManagement implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "gfm-header":
+			case "gfmHeader":
 				return PEHeader.class;
 			case "fileManagementCMD":
 				return FileManagementCMD.class;
@@ -224,6 +226,7 @@ public class PEGenericFileManagement implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "gfm-header":
+			case "gfmHeader":
 				gfmHeader = (PEHeader) value;
 				break;
 			case "fileManagementCMD":

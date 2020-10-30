@@ -54,7 +54,7 @@ public class RegionalExtension implements Serializable {
 		return regExtValue;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"regionId",
 		"regExtValue"
 	));

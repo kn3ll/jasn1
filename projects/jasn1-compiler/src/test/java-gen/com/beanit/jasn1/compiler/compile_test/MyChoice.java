@@ -41,7 +41,7 @@ public class MyChoice implements BerChoice, Serializable {
 		this.myboolean = myboolean;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"my-choice2",
 		"myboolean"
 	));
@@ -51,6 +51,7 @@ public class MyChoice implements BerChoice, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "my-choice2":
+			case "myChoice2":
 				return myChoice2;
 			case "myboolean":
 				return myboolean;
@@ -61,6 +62,7 @@ public class MyChoice implements BerChoice, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "my-choice2":
+			case "myChoice2":
 				return MyChoice2.class;
 			case "myboolean":
 				return BerBoolean.class;
@@ -71,6 +73,7 @@ public class MyChoice implements BerChoice, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "my-choice2":
+			case "myChoice2":
 				myChoice2 = (MyChoice2) value;
 				break;
 			case "myboolean":

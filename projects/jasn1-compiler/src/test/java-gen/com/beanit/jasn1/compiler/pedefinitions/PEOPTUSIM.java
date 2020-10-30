@@ -191,7 +191,7 @@ public class PEOPTUSIM implements BerSequenceSet, Serializable {
 		this.efIpd = efIpd;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"optusim-header",
 		"templateID",
 		"ef-li",
@@ -275,156 +275,231 @@ public class PEOPTUSIM implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "optusim-header":
+			case "optusimHeader":
 				return optusimHeader;
 			case "templateID":
 				return templateID;
 			case "ef-li":
+			case "efLi":
 				return efLi;
 			case "ef-acmax":
+			case "efAcmax":
 				return efAcmax;
 			case "ef-acm":
+			case "efAcm":
 				return efAcm;
 			case "ef-gid1":
+			case "efGid1":
 				return efGid1;
 			case "ef-gid2":
+			case "efGid2":
 				return efGid2;
 			case "ef-msisdn":
+			case "efMsisdn":
 				return efMsisdn;
 			case "ef-puct":
+			case "efPuct":
 				return efPuct;
 			case "ef-cbmi":
+			case "efCbmi":
 				return efCbmi;
 			case "ef-cbmid":
+			case "efCbmid":
 				return efCbmid;
 			case "ef-sdn":
+			case "efSdn":
 				return efSdn;
 			case "ef-ext2":
+			case "efExt2":
 				return efExt2;
 			case "ef-ext3":
+			case "efExt3":
 				return efExt3;
 			case "ef-cbmir":
+			case "efCbmir":
 				return efCbmir;
 			case "ef-plmnwact":
+			case "efPlmnwact":
 				return efPlmnwact;
 			case "ef-oplmnwact":
+			case "efOplmnwact":
 				return efOplmnwact;
 			case "ef-hplmnwact":
+			case "efHplmnwact":
 				return efHplmnwact;
 			case "ef-dck":
+			case "efDck":
 				return efDck;
 			case "ef-cnl":
+			case "efCnl":
 				return efCnl;
 			case "ef-smsr":
+			case "efSmsr":
 				return efSmsr;
 			case "ef-bdn":
+			case "efBdn":
 				return efBdn;
 			case "ef-ext5":
+			case "efExt5":
 				return efExt5;
 			case "ef-ccp2":
+			case "efCcp2":
 				return efCcp2;
 			case "ef-ext4":
+			case "efExt4":
 				return efExt4;
 			case "ef-acl":
+			case "efAcl":
 				return efAcl;
 			case "ef-cmi":
+			case "efCmi":
 				return efCmi;
 			case "ef-ici":
+			case "efIci":
 				return efIci;
 			case "ef-oci":
+			case "efOci":
 				return efOci;
 			case "ef-ict":
+			case "efIct":
 				return efIct;
 			case "ef-oct":
+			case "efOct":
 				return efOct;
 			case "ef-vgcs":
+			case "efVgcs":
 				return efVgcs;
 			case "ef-vgcss":
+			case "efVgcss":
 				return efVgcss;
 			case "ef-vbs":
+			case "efVbs":
 				return efVbs;
 			case "ef-vbss":
+			case "efVbss":
 				return efVbss;
 			case "ef-emlpp":
+			case "efEmlpp":
 				return efEmlpp;
 			case "ef-aaem":
+			case "efAaem":
 				return efAaem;
 			case "ef-hiddenkey":
+			case "efHiddenkey":
 				return efHiddenkey;
 			case "ef-pnn":
+			case "efPnn":
 				return efPnn;
 			case "ef-opl":
+			case "efOpl":
 				return efOpl;
 			case "ef-mbdn":
+			case "efMbdn":
 				return efMbdn;
 			case "ef-ext6":
+			case "efExt6":
 				return efExt6;
 			case "ef-mbi":
+			case "efMbi":
 				return efMbi;
 			case "ef-mwis":
+			case "efMwis":
 				return efMwis;
 			case "ef-cfis":
+			case "efCfis":
 				return efCfis;
 			case "ef-ext7":
+			case "efExt7":
 				return efExt7;
 			case "ef-spdi":
+			case "efSpdi":
 				return efSpdi;
 			case "ef-mmsn":
+			case "efMmsn":
 				return efMmsn;
 			case "ef-ext8":
+			case "efExt8":
 				return efExt8;
 			case "ef-mmsicp":
+			case "efMmsicp":
 				return efMmsicp;
 			case "ef-mmsup":
+			case "efMmsup":
 				return efMmsup;
 			case "ef-mmsucp":
+			case "efMmsucp":
 				return efMmsucp;
 			case "ef-nia":
+			case "efNia":
 				return efNia;
 			case "ef-vgcsca":
+			case "efVgcsca":
 				return efVgcsca;
 			case "ef-vbsca":
+			case "efVbsca":
 				return efVbsca;
 			case "ef-gbabp":
+			case "efGbabp":
 				return efGbabp;
 			case "ef-msk":
+			case "efMsk":
 				return efMsk;
 			case "ef-muk":
+			case "efMuk":
 				return efMuk;
 			case "ef-ehplmn":
+			case "efEhplmn":
 				return efEhplmn;
 			case "ef-gbanl":
+			case "efGbanl":
 				return efGbanl;
 			case "ef-ehplmnpi":
+			case "efEhplmnpi":
 				return efEhplmnpi;
 			case "ef-lrplmnsi":
+			case "efLrplmnsi":
 				return efLrplmnsi;
 			case "ef-nafkca":
+			case "efNafkca":
 				return efNafkca;
 			case "ef-spni":
+			case "efSpni":
 				return efSpni;
 			case "ef-pnni":
+			case "efPnni":
 				return efPnni;
 			case "ef-ncp-ip":
+			case "efNcpIp":
 				return efNcpIp;
 			case "ef-ufc":
+			case "efUfc":
 				return efUfc;
 			case "ef-nasconfig":
+			case "efNasconfig":
 				return efNasconfig;
 			case "ef-uicciari":
+			case "efUicciari":
 				return efUicciari;
 			case "ef-pws":
+			case "efPws":
 				return efPws;
 			case "ef-fdnuri":
+			case "efFdnuri":
 				return efFdnuri;
 			case "ef-bdnuri":
+			case "efBdnuri":
 				return efBdnuri;
 			case "ef-sdnuri":
+			case "efSdnuri":
 				return efSdnuri;
 			case "ef-iwl":
+			case "efIwl":
 				return efIwl;
 			case "ef-ips":
+			case "efIps":
 				return efIps;
 			case "ef-ipd":
+			case "efIpd":
 				return efIpd;
 			default:
 				return null;
@@ -433,156 +508,231 @@ public class PEOPTUSIM implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "optusim-header":
+			case "optusimHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "ef-li":
+			case "efLi":
 				return File.class;
 			case "ef-acmax":
+			case "efAcmax":
 				return File.class;
 			case "ef-acm":
+			case "efAcm":
 				return File.class;
 			case "ef-gid1":
+			case "efGid1":
 				return File.class;
 			case "ef-gid2":
+			case "efGid2":
 				return File.class;
 			case "ef-msisdn":
+			case "efMsisdn":
 				return File.class;
 			case "ef-puct":
+			case "efPuct":
 				return File.class;
 			case "ef-cbmi":
+			case "efCbmi":
 				return File.class;
 			case "ef-cbmid":
+			case "efCbmid":
 				return File.class;
 			case "ef-sdn":
+			case "efSdn":
 				return File.class;
 			case "ef-ext2":
+			case "efExt2":
 				return File.class;
 			case "ef-ext3":
+			case "efExt3":
 				return File.class;
 			case "ef-cbmir":
+			case "efCbmir":
 				return File.class;
 			case "ef-plmnwact":
+			case "efPlmnwact":
 				return File.class;
 			case "ef-oplmnwact":
+			case "efOplmnwact":
 				return File.class;
 			case "ef-hplmnwact":
+			case "efHplmnwact":
 				return File.class;
 			case "ef-dck":
+			case "efDck":
 				return File.class;
 			case "ef-cnl":
+			case "efCnl":
 				return File.class;
 			case "ef-smsr":
+			case "efSmsr":
 				return File.class;
 			case "ef-bdn":
+			case "efBdn":
 				return File.class;
 			case "ef-ext5":
+			case "efExt5":
 				return File.class;
 			case "ef-ccp2":
+			case "efCcp2":
 				return File.class;
 			case "ef-ext4":
+			case "efExt4":
 				return File.class;
 			case "ef-acl":
+			case "efAcl":
 				return File.class;
 			case "ef-cmi":
+			case "efCmi":
 				return File.class;
 			case "ef-ici":
+			case "efIci":
 				return File.class;
 			case "ef-oci":
+			case "efOci":
 				return File.class;
 			case "ef-ict":
+			case "efIct":
 				return File.class;
 			case "ef-oct":
+			case "efOct":
 				return File.class;
 			case "ef-vgcs":
+			case "efVgcs":
 				return File.class;
 			case "ef-vgcss":
+			case "efVgcss":
 				return File.class;
 			case "ef-vbs":
+			case "efVbs":
 				return File.class;
 			case "ef-vbss":
+			case "efVbss":
 				return File.class;
 			case "ef-emlpp":
+			case "efEmlpp":
 				return File.class;
 			case "ef-aaem":
+			case "efAaem":
 				return File.class;
 			case "ef-hiddenkey":
+			case "efHiddenkey":
 				return File.class;
 			case "ef-pnn":
+			case "efPnn":
 				return File.class;
 			case "ef-opl":
+			case "efOpl":
 				return File.class;
 			case "ef-mbdn":
+			case "efMbdn":
 				return File.class;
 			case "ef-ext6":
+			case "efExt6":
 				return File.class;
 			case "ef-mbi":
+			case "efMbi":
 				return File.class;
 			case "ef-mwis":
+			case "efMwis":
 				return File.class;
 			case "ef-cfis":
+			case "efCfis":
 				return File.class;
 			case "ef-ext7":
+			case "efExt7":
 				return File.class;
 			case "ef-spdi":
+			case "efSpdi":
 				return File.class;
 			case "ef-mmsn":
+			case "efMmsn":
 				return File.class;
 			case "ef-ext8":
+			case "efExt8":
 				return File.class;
 			case "ef-mmsicp":
+			case "efMmsicp":
 				return File.class;
 			case "ef-mmsup":
+			case "efMmsup":
 				return File.class;
 			case "ef-mmsucp":
+			case "efMmsucp":
 				return File.class;
 			case "ef-nia":
+			case "efNia":
 				return File.class;
 			case "ef-vgcsca":
+			case "efVgcsca":
 				return File.class;
 			case "ef-vbsca":
+			case "efVbsca":
 				return File.class;
 			case "ef-gbabp":
+			case "efGbabp":
 				return File.class;
 			case "ef-msk":
+			case "efMsk":
 				return File.class;
 			case "ef-muk":
+			case "efMuk":
 				return File.class;
 			case "ef-ehplmn":
+			case "efEhplmn":
 				return File.class;
 			case "ef-gbanl":
+			case "efGbanl":
 				return File.class;
 			case "ef-ehplmnpi":
+			case "efEhplmnpi":
 				return File.class;
 			case "ef-lrplmnsi":
+			case "efLrplmnsi":
 				return File.class;
 			case "ef-nafkca":
+			case "efNafkca":
 				return File.class;
 			case "ef-spni":
+			case "efSpni":
 				return File.class;
 			case "ef-pnni":
+			case "efPnni":
 				return File.class;
 			case "ef-ncp-ip":
+			case "efNcpIp":
 				return File.class;
 			case "ef-ufc":
+			case "efUfc":
 				return File.class;
 			case "ef-nasconfig":
+			case "efNasconfig":
 				return File.class;
 			case "ef-uicciari":
+			case "efUicciari":
 				return File.class;
 			case "ef-pws":
+			case "efPws":
 				return File.class;
 			case "ef-fdnuri":
+			case "efFdnuri":
 				return File.class;
 			case "ef-bdnuri":
+			case "efBdnuri":
 				return File.class;
 			case "ef-sdnuri":
+			case "efSdnuri":
 				return File.class;
 			case "ef-iwl":
+			case "efIwl":
 				return File.class;
 			case "ef-ips":
+			case "efIps":
 				return File.class;
 			case "ef-ipd":
+			case "efIpd":
 				return File.class;
 			default:
 				return null;
@@ -591,231 +741,306 @@ public class PEOPTUSIM implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "optusim-header":
+			case "optusimHeader":
 				optusimHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "ef-li":
+			case "efLi":
 				efLi = (File) value;
 				break;
 			case "ef-acmax":
+			case "efAcmax":
 				efAcmax = (File) value;
 				break;
 			case "ef-acm":
+			case "efAcm":
 				efAcm = (File) value;
 				break;
 			case "ef-gid1":
+			case "efGid1":
 				efGid1 = (File) value;
 				break;
 			case "ef-gid2":
+			case "efGid2":
 				efGid2 = (File) value;
 				break;
 			case "ef-msisdn":
+			case "efMsisdn":
 				efMsisdn = (File) value;
 				break;
 			case "ef-puct":
+			case "efPuct":
 				efPuct = (File) value;
 				break;
 			case "ef-cbmi":
+			case "efCbmi":
 				efCbmi = (File) value;
 				break;
 			case "ef-cbmid":
+			case "efCbmid":
 				efCbmid = (File) value;
 				break;
 			case "ef-sdn":
+			case "efSdn":
 				efSdn = (File) value;
 				break;
 			case "ef-ext2":
+			case "efExt2":
 				efExt2 = (File) value;
 				break;
 			case "ef-ext3":
+			case "efExt3":
 				efExt3 = (File) value;
 				break;
 			case "ef-cbmir":
+			case "efCbmir":
 				efCbmir = (File) value;
 				break;
 			case "ef-plmnwact":
+			case "efPlmnwact":
 				efPlmnwact = (File) value;
 				break;
 			case "ef-oplmnwact":
+			case "efOplmnwact":
 				efOplmnwact = (File) value;
 				break;
 			case "ef-hplmnwact":
+			case "efHplmnwact":
 				efHplmnwact = (File) value;
 				break;
 			case "ef-dck":
+			case "efDck":
 				efDck = (File) value;
 				break;
 			case "ef-cnl":
+			case "efCnl":
 				efCnl = (File) value;
 				break;
 			case "ef-smsr":
+			case "efSmsr":
 				efSmsr = (File) value;
 				break;
 			case "ef-bdn":
+			case "efBdn":
 				efBdn = (File) value;
 				break;
 			case "ef-ext5":
+			case "efExt5":
 				efExt5 = (File) value;
 				break;
 			case "ef-ccp2":
+			case "efCcp2":
 				efCcp2 = (File) value;
 				break;
 			case "ef-ext4":
+			case "efExt4":
 				efExt4 = (File) value;
 				break;
 			case "ef-acl":
+			case "efAcl":
 				efAcl = (File) value;
 				break;
 			case "ef-cmi":
+			case "efCmi":
 				efCmi = (File) value;
 				break;
 			case "ef-ici":
+			case "efIci":
 				efIci = (File) value;
 				break;
 			case "ef-oci":
+			case "efOci":
 				efOci = (File) value;
 				break;
 			case "ef-ict":
+			case "efIct":
 				efIct = (File) value;
 				break;
 			case "ef-oct":
+			case "efOct":
 				efOct = (File) value;
 				break;
 			case "ef-vgcs":
+			case "efVgcs":
 				efVgcs = (File) value;
 				break;
 			case "ef-vgcss":
+			case "efVgcss":
 				efVgcss = (File) value;
 				break;
 			case "ef-vbs":
+			case "efVbs":
 				efVbs = (File) value;
 				break;
 			case "ef-vbss":
+			case "efVbss":
 				efVbss = (File) value;
 				break;
 			case "ef-emlpp":
+			case "efEmlpp":
 				efEmlpp = (File) value;
 				break;
 			case "ef-aaem":
+			case "efAaem":
 				efAaem = (File) value;
 				break;
 			case "ef-hiddenkey":
+			case "efHiddenkey":
 				efHiddenkey = (File) value;
 				break;
 			case "ef-pnn":
+			case "efPnn":
 				efPnn = (File) value;
 				break;
 			case "ef-opl":
+			case "efOpl":
 				efOpl = (File) value;
 				break;
 			case "ef-mbdn":
+			case "efMbdn":
 				efMbdn = (File) value;
 				break;
 			case "ef-ext6":
+			case "efExt6":
 				efExt6 = (File) value;
 				break;
 			case "ef-mbi":
+			case "efMbi":
 				efMbi = (File) value;
 				break;
 			case "ef-mwis":
+			case "efMwis":
 				efMwis = (File) value;
 				break;
 			case "ef-cfis":
+			case "efCfis":
 				efCfis = (File) value;
 				break;
 			case "ef-ext7":
+			case "efExt7":
 				efExt7 = (File) value;
 				break;
 			case "ef-spdi":
+			case "efSpdi":
 				efSpdi = (File) value;
 				break;
 			case "ef-mmsn":
+			case "efMmsn":
 				efMmsn = (File) value;
 				break;
 			case "ef-ext8":
+			case "efExt8":
 				efExt8 = (File) value;
 				break;
 			case "ef-mmsicp":
+			case "efMmsicp":
 				efMmsicp = (File) value;
 				break;
 			case "ef-mmsup":
+			case "efMmsup":
 				efMmsup = (File) value;
 				break;
 			case "ef-mmsucp":
+			case "efMmsucp":
 				efMmsucp = (File) value;
 				break;
 			case "ef-nia":
+			case "efNia":
 				efNia = (File) value;
 				break;
 			case "ef-vgcsca":
+			case "efVgcsca":
 				efVgcsca = (File) value;
 				break;
 			case "ef-vbsca":
+			case "efVbsca":
 				efVbsca = (File) value;
 				break;
 			case "ef-gbabp":
+			case "efGbabp":
 				efGbabp = (File) value;
 				break;
 			case "ef-msk":
+			case "efMsk":
 				efMsk = (File) value;
 				break;
 			case "ef-muk":
+			case "efMuk":
 				efMuk = (File) value;
 				break;
 			case "ef-ehplmn":
+			case "efEhplmn":
 				efEhplmn = (File) value;
 				break;
 			case "ef-gbanl":
+			case "efGbanl":
 				efGbanl = (File) value;
 				break;
 			case "ef-ehplmnpi":
+			case "efEhplmnpi":
 				efEhplmnpi = (File) value;
 				break;
 			case "ef-lrplmnsi":
+			case "efLrplmnsi":
 				efLrplmnsi = (File) value;
 				break;
 			case "ef-nafkca":
+			case "efNafkca":
 				efNafkca = (File) value;
 				break;
 			case "ef-spni":
+			case "efSpni":
 				efSpni = (File) value;
 				break;
 			case "ef-pnni":
+			case "efPnni":
 				efPnni = (File) value;
 				break;
 			case "ef-ncp-ip":
+			case "efNcpIp":
 				efNcpIp = (File) value;
 				break;
 			case "ef-ufc":
+			case "efUfc":
 				efUfc = (File) value;
 				break;
 			case "ef-nasconfig":
+			case "efNasconfig":
 				efNasconfig = (File) value;
 				break;
 			case "ef-uicciari":
+			case "efUicciari":
 				efUicciari = (File) value;
 				break;
 			case "ef-pws":
+			case "efPws":
 				efPws = (File) value;
 				break;
 			case "ef-fdnuri":
+			case "efFdnuri":
 				efFdnuri = (File) value;
 				break;
 			case "ef-bdnuri":
+			case "efBdnuri":
 				efBdnuri = (File) value;
 				break;
 			case "ef-sdnuri":
+			case "efSdnuri":
 				efSdnuri = (File) value;
 				break;
 			case "ef-iwl":
+			case "efIwl":
 				efIwl = (File) value;
 				break;
 			case "ef-ips":
+			case "efIps":
 				efIps = (File) value;
 				break;
 			case "ef-ipd":
+			case "efIpd":
 				efIpd = (File) value;
 				break;
 			default:

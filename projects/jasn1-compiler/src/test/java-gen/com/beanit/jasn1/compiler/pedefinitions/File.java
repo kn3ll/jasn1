@@ -49,7 +49,7 @@ public class File implements BerSequenceOf, Serializable {
 			this.fillFileContent = fillFileContent;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"doNotCreate",
 			"fileDescriptor",
 			"fillFileOffset",

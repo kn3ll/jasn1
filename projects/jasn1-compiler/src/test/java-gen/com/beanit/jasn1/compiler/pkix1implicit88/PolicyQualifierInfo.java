@@ -49,7 +49,7 @@ public class PolicyQualifierInfo implements BerSequenceSet, Serializable {
 		this.qualifier = qualifier;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"policyQualifierId",
 		"qualifier"
 	));

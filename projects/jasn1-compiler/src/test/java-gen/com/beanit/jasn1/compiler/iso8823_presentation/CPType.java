@@ -59,7 +59,7 @@ public class CPType implements BerSequenceSet, Serializable {
 			this.userData = userData;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"protocol_version",
 			"calling_presentation_selector",
 			"called_presentation_selector",
@@ -75,20 +75,28 @@ public class CPType implements BerSequenceSet, Serializable {
 		public BerType getField(String fieldName) {
 			switch(fieldName) {
 				case "protocol_version":
+				case "protocolVersion":
 					return protocolVersion;
 				case "calling_presentation_selector":
+				case "callingPresentationSelector":
 					return callingPresentationSelector;
 				case "called_presentation_selector":
+				case "calledPresentationSelector":
 					return calledPresentationSelector;
 				case "presentation_context_definition_list":
+				case "presentationContextDefinitionList":
 					return presentationContextDefinitionList;
 				case "default_context_name":
+				case "defaultContextName":
 					return defaultContextName;
 				case "presentation_requirements":
+				case "presentationRequirements":
 					return presentationRequirements;
 				case "user_session_requirements":
+				case "userSessionRequirements":
 					return userSessionRequirements;
 				case "user_data":
+				case "userData":
 					return userData;
 				default:
 					return null;
@@ -97,20 +105,28 @@ public class CPType implements BerSequenceSet, Serializable {
 		public Class<? extends BerType> getFieldClass(String fieldName) {
 			switch(fieldName) {
 				case "protocol_version":
+				case "protocolVersion":
 					return ProtocolVersion.class;
 				case "calling_presentation_selector":
+				case "callingPresentationSelector":
 					return CallingPresentationSelector.class;
 				case "called_presentation_selector":
+				case "calledPresentationSelector":
 					return CalledPresentationSelector.class;
 				case "presentation_context_definition_list":
+				case "presentationContextDefinitionList":
 					return PresentationContextDefinitionList.class;
 				case "default_context_name":
+				case "defaultContextName":
 					return DefaultContextName.class;
 				case "presentation_requirements":
+				case "presentationRequirements":
 					return PresentationRequirements.class;
 				case "user_session_requirements":
+				case "userSessionRequirements":
 					return UserSessionRequirements.class;
 				case "user_data":
+				case "userData":
 					return UserData.class;
 				default:
 					return null;
@@ -119,27 +135,35 @@ public class CPType implements BerSequenceSet, Serializable {
 		public void setField(String fieldName, BerType value) {
 			switch(fieldName) {
 				case "protocol_version":
+				case "protocolVersion":
 					protocolVersion = (ProtocolVersion) value;
 					break;
 				case "calling_presentation_selector":
+				case "callingPresentationSelector":
 					callingPresentationSelector = (CallingPresentationSelector) value;
 					break;
 				case "called_presentation_selector":
+				case "calledPresentationSelector":
 					calledPresentationSelector = (CalledPresentationSelector) value;
 					break;
 				case "presentation_context_definition_list":
+				case "presentationContextDefinitionList":
 					presentationContextDefinitionList = (PresentationContextDefinitionList) value;
 					break;
 				case "default_context_name":
+				case "defaultContextName":
 					defaultContextName = (DefaultContextName) value;
 					break;
 				case "presentation_requirements":
+				case "presentationRequirements":
 					presentationRequirements = (PresentationRequirements) value;
 					break;
 				case "user_session_requirements":
+				case "userSessionRequirements":
 					userSessionRequirements = (UserSessionRequirements) value;
 					break;
 				case "user_data":
+				case "userData":
 					userData = (UserData) value;
 					break;
 				default:
@@ -611,7 +635,7 @@ public class CPType implements BerSequenceSet, Serializable {
 		this.normalModeParameters = normalModeParameters;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"mode_selector",
 		"normal_mode_parameters"
 	));
@@ -621,8 +645,10 @@ public class CPType implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "mode_selector":
+			case "modeSelector":
 				return modeSelector;
 			case "normal_mode_parameters":
+			case "normalModeParameters":
 				return normalModeParameters;
 			default:
 				return null;
@@ -631,8 +657,10 @@ public class CPType implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "mode_selector":
+			case "modeSelector":
 				return ModeSelector.class;
 			case "normal_mode_parameters":
+			case "normalModeParameters":
 				return NormalModeParameters.class;
 			default:
 				return null;
@@ -641,9 +669,11 @@ public class CPType implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "mode_selector":
+			case "modeSelector":
 				modeSelector = (ModeSelector) value;
 				break;
 			case "normal_mode_parameters":
+			case "normalModeParameters":
 				normalModeParameters = (NormalModeParameters) value;
 				break;
 			default:

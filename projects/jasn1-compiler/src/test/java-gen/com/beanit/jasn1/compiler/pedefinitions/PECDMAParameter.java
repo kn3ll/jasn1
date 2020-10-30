@@ -51,7 +51,7 @@ public class PECDMAParameter implements BerSequenceSet, Serializable {
 		this.mobileIPAuthenticationData = mobileIPAuthenticationData;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"cdma-header",
 		"authenticationKey",
 		"ssd",
@@ -65,6 +65,7 @@ public class PECDMAParameter implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "cdma-header":
+			case "cdmaHeader":
 				return cdmaHeader;
 			case "authenticationKey":
 				return authenticationKey;
@@ -83,6 +84,7 @@ public class PECDMAParameter implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "cdma-header":
+			case "cdmaHeader":
 				return PEHeader.class;
 			case "authenticationKey":
 				return BerOctetString.class;
@@ -101,6 +103,7 @@ public class PECDMAParameter implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "cdma-header":
+			case "cdmaHeader":
 				cdmaHeader = (PEHeader) value;
 				break;
 			case "authenticationKey":

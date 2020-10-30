@@ -45,7 +45,7 @@ public class Extension implements BerSequenceSet, Serializable {
 		this.extnValue = extnValue;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"extnID",
 		"critical",
 		"extnValue"

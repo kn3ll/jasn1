@@ -45,7 +45,7 @@ public class GetEuiccDataRequest implements BerSequenceSet, Serializable {
 		this.tagList = tagList;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"tagList"
 	));
 	public List<String> getFields() {

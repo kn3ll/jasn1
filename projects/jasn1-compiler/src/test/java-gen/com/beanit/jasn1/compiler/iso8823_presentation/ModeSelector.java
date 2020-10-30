@@ -41,7 +41,7 @@ public class ModeSelector implements BerSequenceSet, Serializable {
 		this.modeValue = modeValue;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"mode_value"
 	));
 	public List<String> getFields() {
@@ -50,6 +50,7 @@ public class ModeSelector implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "mode_value":
+			case "modeValue":
 				return modeValue;
 			default:
 				return null;
@@ -58,6 +59,7 @@ public class ModeSelector implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "mode_value":
+			case "modeValue":
 				return BerInteger.class;
 			default:
 				return null;
@@ -66,6 +68,7 @@ public class ModeSelector implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "mode_value":
+			case "modeValue":
 				modeValue = (BerInteger) value;
 				break;
 			default:

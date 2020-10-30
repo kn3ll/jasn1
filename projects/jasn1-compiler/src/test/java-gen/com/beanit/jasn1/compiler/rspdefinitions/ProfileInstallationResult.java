@@ -47,7 +47,7 @@ public class ProfileInstallationResult implements BerSequenceSet, Serializable {
 		this.euiccSignPIR = euiccSignPIR;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"profileInstallationResultData",
 		"euiccSignPIR"
 	));

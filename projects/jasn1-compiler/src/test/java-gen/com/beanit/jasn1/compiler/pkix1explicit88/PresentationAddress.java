@@ -198,7 +198,7 @@ public class PresentationAddress implements BerSequenceSet, Serializable {
 		this.nAddresses = nAddresses;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"pSelector",
 		"sSelector",
 		"tSelector",

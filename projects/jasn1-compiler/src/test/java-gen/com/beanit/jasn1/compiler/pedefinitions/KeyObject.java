@@ -53,7 +53,7 @@ public class KeyObject implements BerSequenceSet, Serializable {
 				this.macLength = macLength;
 			}
 
-			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 				"keyType",
 				"keyData",
 				"macLength"
@@ -487,7 +487,7 @@ public class KeyObject implements BerSequenceSet, Serializable {
 		this.keyCompontents = keyCompontents;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"keyUsageQualifier",
 		"keyAccess",
 		"keyIdentifier",

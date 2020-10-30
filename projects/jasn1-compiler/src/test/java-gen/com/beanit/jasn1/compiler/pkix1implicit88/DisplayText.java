@@ -51,7 +51,7 @@ public class DisplayText implements BerChoice, Serializable {
 		this.utf8String = utf8String;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"ia5String",
 		"visibleString",
 		"bmpString",

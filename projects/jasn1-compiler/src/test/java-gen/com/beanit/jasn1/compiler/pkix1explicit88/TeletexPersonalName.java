@@ -47,7 +47,7 @@ public class TeletexPersonalName implements BerSequenceSet, Serializable {
 		this.generationQualifier = generationQualifier;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"surname",
 		"given-name",
 		"initials",
@@ -61,10 +61,12 @@ public class TeletexPersonalName implements BerSequenceSet, Serializable {
 			case "surname":
 				return surname;
 			case "given-name":
+			case "givenName":
 				return givenName;
 			case "initials":
 				return initials;
 			case "generation-qualifier":
+			case "generationQualifier":
 				return generationQualifier;
 			default:
 				return null;
@@ -75,10 +77,12 @@ public class TeletexPersonalName implements BerSequenceSet, Serializable {
 			case "surname":
 				return BerTeletexString.class;
 			case "given-name":
+			case "givenName":
 				return BerTeletexString.class;
 			case "initials":
 				return BerTeletexString.class;
 			case "generation-qualifier":
+			case "generationQualifier":
 				return BerTeletexString.class;
 			default:
 				return null;
@@ -90,12 +94,14 @@ public class TeletexPersonalName implements BerSequenceSet, Serializable {
 				surname = (BerTeletexString) value;
 				break;
 			case "given-name":
+			case "givenName":
 				givenName = (BerTeletexString) value;
 				break;
 			case "initials":
 				initials = (BerTeletexString) value;
 				break;
 			case "generation-qualifier":
+			case "generationQualifier":
 				generationQualifier = (BerTeletexString) value;
 				break;
 			default:

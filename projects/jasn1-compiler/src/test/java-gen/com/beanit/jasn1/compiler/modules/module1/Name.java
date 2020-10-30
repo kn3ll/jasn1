@@ -66,7 +66,7 @@ public class Name implements BerSequenceSet, Serializable {
 		return familyName;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"givenName",
 		"initial",
 		"familyName"

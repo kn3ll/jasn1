@@ -41,7 +41,7 @@ public class UserData implements BerChoice, Serializable {
 		this.fullyEncodedData = fullyEncodedData;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"simply_encoded_data",
 		"fully_encoded_data"
 	));
@@ -51,8 +51,10 @@ public class UserData implements BerChoice, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "simply_encoded_data":
+			case "simplyEncodedData":
 				return simplyEncodedData;
 			case "fully_encoded_data":
+			case "fullyEncodedData":
 				return fullyEncodedData;
 			default:
 				return null;
@@ -61,8 +63,10 @@ public class UserData implements BerChoice, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "simply_encoded_data":
+			case "simplyEncodedData":
 				return SimplyEncodedData.class;
 			case "fully_encoded_data":
+			case "fullyEncodedData":
 				return FullyEncodedData.class;
 			default:
 				return null;
@@ -71,9 +75,11 @@ public class UserData implements BerChoice, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "simply_encoded_data":
+			case "simplyEncodedData":
 				simplyEncodedData = (SimplyEncodedData) value;
 				break;
 			case "fully_encoded_data":
+			case "fullyEncodedData":
 				fullyEncodedData = (FullyEncodedData) value;
 				break;
 			default:

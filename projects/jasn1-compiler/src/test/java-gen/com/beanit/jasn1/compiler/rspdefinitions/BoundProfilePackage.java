@@ -673,7 +673,7 @@ public class BoundProfilePackage implements BerSequenceSet, Serializable {
 		this.sequenceOf86 = sequenceOf86;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"initialiseSecureChannelRequest",
 		"firstSequenceOf87",
 		"sequenceOf88",

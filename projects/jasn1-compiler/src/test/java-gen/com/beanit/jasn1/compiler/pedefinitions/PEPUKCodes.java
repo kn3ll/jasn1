@@ -194,7 +194,7 @@ public class PEPUKCodes implements BerSequenceSet, Serializable {
 		this.pukCodes = pukCodes;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"puk-Header",
 		"pukCodes"
 	));
@@ -204,6 +204,7 @@ public class PEPUKCodes implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "puk-Header":
+			case "pukHeader":
 				return pukHeader;
 			case "pukCodes":
 				return pukCodes;
@@ -214,6 +215,7 @@ public class PEPUKCodes implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "puk-Header":
+			case "pukHeader":
 				return PEHeader.class;
 			case "pukCodes":
 				return PukCodes.class;
@@ -224,6 +226,7 @@ public class PEPUKCodes implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "puk-Header":
+			case "pukHeader":
 				pukHeader = (PEHeader) value;
 				break;
 			case "pukCodes":

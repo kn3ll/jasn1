@@ -44,7 +44,7 @@ public class MyChoice2 implements BerChoice, Serializable {
 			this.test = test;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"test"
 		));
 		public List<String> getFields() {
@@ -164,7 +164,7 @@ public class MyChoice2 implements BerChoice, Serializable {
 			this.test2 = test2;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"test",
 			"test2"
 		));
@@ -307,7 +307,7 @@ public class MyChoice2 implements BerChoice, Serializable {
 		this.element4 = element4;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"element1",
 		"element2",
 		"myboolean",

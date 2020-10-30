@@ -53,7 +53,7 @@ public class UpdateMetadataRequest implements BerSequenceSet, Serializable {
 		this.profilePolicyRules = profilePolicyRules;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"serviceProviderName",
 		"profileName",
 		"iconType",

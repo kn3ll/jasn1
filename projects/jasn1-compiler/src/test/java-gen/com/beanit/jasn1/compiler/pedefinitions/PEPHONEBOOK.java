@@ -79,7 +79,7 @@ public class PEPHONEBOOK implements BerSequenceSet, Serializable {
 		this.efCcp1 = efCcp1;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"phonebook-header",
 		"templateID",
 		"df-phonebook",
@@ -107,44 +107,63 @@ public class PEPHONEBOOK implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "phonebook-header":
+			case "phonebookHeader":
 				return phonebookHeader;
 			case "templateID":
 				return templateID;
 			case "df-phonebook":
+			case "dfPhonebook":
 				return dfPhonebook;
 			case "ef-pbr":
+			case "efPbr":
 				return efPbr;
 			case "ef-ext1":
+			case "efExt1":
 				return efExt1;
 			case "ef-aas":
+			case "efAas":
 				return efAas;
 			case "ef-gas":
+			case "efGas":
 				return efGas;
 			case "ef-psc":
+			case "efPsc":
 				return efPsc;
 			case "ef-cc":
+			case "efCc":
 				return efCc;
 			case "ef-puid":
+			case "efPuid":
 				return efPuid;
 			case "ef-iap":
+			case "efIap":
 				return efIap;
 			case "ef-adn":
+			case "efAdn":
 				return efAdn;
 			case "ef-pbc":
+			case "efPbc":
 				return efPbc;
 			case "ef-anr":
+			case "efAnr":
 				return efAnr;
 			case "ef-puri":
+			case "efPuri":
 				return efPuri;
 			case "ef-email":
+			case "efEmail":
 				return efEmail;
 			case "ef-sne":
+			case "efSne":
 				return efSne;
 			case "ef-uid":
+			case "efUid":
 				return efUid;
 			case "ef-grp":
+			case "efGrp":
 				return efGrp;
 			case "ef-ccp1":
+			case "efCcp1":
 				return efCcp1;
 			default:
 				return null;
@@ -153,44 +172,63 @@ public class PEPHONEBOOK implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "phonebook-header":
+			case "phonebookHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "df-phonebook":
+			case "dfPhonebook":
 				return File.class;
 			case "ef-pbr":
+			case "efPbr":
 				return File.class;
 			case "ef-ext1":
+			case "efExt1":
 				return File.class;
 			case "ef-aas":
+			case "efAas":
 				return File.class;
 			case "ef-gas":
+			case "efGas":
 				return File.class;
 			case "ef-psc":
+			case "efPsc":
 				return File.class;
 			case "ef-cc":
+			case "efCc":
 				return File.class;
 			case "ef-puid":
+			case "efPuid":
 				return File.class;
 			case "ef-iap":
+			case "efIap":
 				return File.class;
 			case "ef-adn":
+			case "efAdn":
 				return File.class;
 			case "ef-pbc":
+			case "efPbc":
 				return File.class;
 			case "ef-anr":
+			case "efAnr":
 				return File.class;
 			case "ef-puri":
+			case "efPuri":
 				return File.class;
 			case "ef-email":
+			case "efEmail":
 				return File.class;
 			case "ef-sne":
+			case "efSne":
 				return File.class;
 			case "ef-uid":
+			case "efUid":
 				return File.class;
 			case "ef-grp":
+			case "efGrp":
 				return File.class;
 			case "ef-ccp1":
+			case "efCcp1":
 				return File.class;
 			default:
 				return null;
@@ -199,63 +237,82 @@ public class PEPHONEBOOK implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "phonebook-header":
+			case "phonebookHeader":
 				phonebookHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "df-phonebook":
+			case "dfPhonebook":
 				dfPhonebook = (File) value;
 				break;
 			case "ef-pbr":
+			case "efPbr":
 				efPbr = (File) value;
 				break;
 			case "ef-ext1":
+			case "efExt1":
 				efExt1 = (File) value;
 				break;
 			case "ef-aas":
+			case "efAas":
 				efAas = (File) value;
 				break;
 			case "ef-gas":
+			case "efGas":
 				efGas = (File) value;
 				break;
 			case "ef-psc":
+			case "efPsc":
 				efPsc = (File) value;
 				break;
 			case "ef-cc":
+			case "efCc":
 				efCc = (File) value;
 				break;
 			case "ef-puid":
+			case "efPuid":
 				efPuid = (File) value;
 				break;
 			case "ef-iap":
+			case "efIap":
 				efIap = (File) value;
 				break;
 			case "ef-adn":
+			case "efAdn":
 				efAdn = (File) value;
 				break;
 			case "ef-pbc":
+			case "efPbc":
 				efPbc = (File) value;
 				break;
 			case "ef-anr":
+			case "efAnr":
 				efAnr = (File) value;
 				break;
 			case "ef-puri":
+			case "efPuri":
 				efPuri = (File) value;
 				break;
 			case "ef-email":
+			case "efEmail":
 				efEmail = (File) value;
 				break;
 			case "ef-sne":
+			case "efSne":
 				efSne = (File) value;
 				break;
 			case "ef-uid":
+			case "efUid":
 				efUid = (File) value;
 				break;
 			case "ef-grp":
+			case "efGrp":
 				efGrp = (File) value;
 				break;
 			case "ef-ccp1":
+			case "efCcp1":
 				efCcp1 = (File) value;
 				break;
 			default:

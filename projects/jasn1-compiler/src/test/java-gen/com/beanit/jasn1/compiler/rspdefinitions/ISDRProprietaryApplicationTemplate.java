@@ -47,7 +47,7 @@ public class ISDRProprietaryApplicationTemplate implements BerSequenceSet, Seria
 		this.lpaeSupport = lpaeSupport;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"svn",
 		"lpaeSupport"
 	));

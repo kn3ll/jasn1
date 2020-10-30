@@ -47,7 +47,7 @@ public class CertificationDataObject implements BerSequenceSet, Serializable {
 		this.discoveryBaseURL = discoveryBaseURL;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"platformLabel",
 		"discoveryBaseURL"
 	));

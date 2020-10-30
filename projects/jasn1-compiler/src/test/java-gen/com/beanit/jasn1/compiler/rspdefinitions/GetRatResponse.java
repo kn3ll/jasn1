@@ -45,7 +45,7 @@ public class GetRatResponse implements BerSequenceSet, Serializable {
 		this.rat = rat;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"rat"
 	));
 	public List<String> getFields() {

@@ -61,7 +61,7 @@ public class PEOPTISIM implements BerSequenceSet, Serializable {
 		this.efUicciari = efUicciari;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"optisim-header",
 		"templateID",
 		"ef-pcscf",
@@ -80,26 +80,36 @@ public class PEOPTISIM implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "optisim-header":
+			case "optisimHeader":
 				return optisimHeader;
 			case "templateID":
 				return templateID;
 			case "ef-pcscf":
+			case "efPcscf":
 				return efPcscf;
 			case "ef-sms":
+			case "efSms":
 				return efSms;
 			case "ef-smsp":
+			case "efSmsp":
 				return efSmsp;
 			case "ef-smss":
+			case "efSmss":
 				return efSmss;
 			case "ef-smsr":
+			case "efSmsr":
 				return efSmsr;
 			case "ef-gbabp":
+			case "efGbabp":
 				return efGbabp;
 			case "ef-gbanl":
+			case "efGbanl":
 				return efGbanl;
 			case "ef-nafkca":
+			case "efNafkca":
 				return efNafkca;
 			case "ef-uicciari":
+			case "efUicciari":
 				return efUicciari;
 			default:
 				return null;
@@ -108,26 +118,36 @@ public class PEOPTISIM implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "optisim-header":
+			case "optisimHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "ef-pcscf":
+			case "efPcscf":
 				return File.class;
 			case "ef-sms":
+			case "efSms":
 				return File.class;
 			case "ef-smsp":
+			case "efSmsp":
 				return File.class;
 			case "ef-smss":
+			case "efSmss":
 				return File.class;
 			case "ef-smsr":
+			case "efSmsr":
 				return File.class;
 			case "ef-gbabp":
+			case "efGbabp":
 				return File.class;
 			case "ef-gbanl":
+			case "efGbanl":
 				return File.class;
 			case "ef-nafkca":
+			case "efNafkca":
 				return File.class;
 			case "ef-uicciari":
+			case "efUicciari":
 				return File.class;
 			default:
 				return null;
@@ -136,36 +156,46 @@ public class PEOPTISIM implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "optisim-header":
+			case "optisimHeader":
 				optisimHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "ef-pcscf":
+			case "efPcscf":
 				efPcscf = (File) value;
 				break;
 			case "ef-sms":
+			case "efSms":
 				efSms = (File) value;
 				break;
 			case "ef-smsp":
+			case "efSmsp":
 				efSmsp = (File) value;
 				break;
 			case "ef-smss":
+			case "efSmss":
 				efSmss = (File) value;
 				break;
 			case "ef-smsr":
+			case "efSmsr":
 				efSmsr = (File) value;
 				break;
 			case "ef-gbabp":
+			case "efGbabp":
 				efGbabp = (File) value;
 				break;
 			case "ef-gbanl":
+			case "efGbanl":
 				efGbanl = (File) value;
 				break;
 			case "ef-nafkca":
+			case "efNafkca":
 				efNafkca = (File) value;
 				break;
 			case "ef-uicciari":
+			case "efUicciari":
 				efUicciari = (File) value;
 				break;
 			default:

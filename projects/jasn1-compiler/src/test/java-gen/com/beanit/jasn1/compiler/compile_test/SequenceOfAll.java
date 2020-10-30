@@ -103,7 +103,7 @@ public class SequenceOfAll implements BerSequenceSet, Serializable {
 		this.myChoice = myChoice;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"myInteger",
 		"myInteger2",
 		"myBoolean",
@@ -203,8 +203,10 @@ public class SequenceOfAll implements BerSequenceSet, Serializable {
 			case "any":
 				return any;
 			case "my-sequence":
+			case "mySequence":
 				return mySequence;
 			case "my-choice":
+			case "myChoice":
 				return myChoice;
 			default:
 				return null;
@@ -273,8 +275,10 @@ public class SequenceOfAll implements BerSequenceSet, Serializable {
 			case "any":
 				return BerAny.class;
 			case "my-sequence":
+			case "mySequence":
 				return MySequence.class;
 			case "my-choice":
+			case "myChoice":
 				return MyChoice.class;
 			default:
 				return null;
@@ -373,9 +377,11 @@ public class SequenceOfAll implements BerSequenceSet, Serializable {
 				any = (BerAny) value;
 				break;
 			case "my-sequence":
+			case "mySequence":
 				mySequence = (MySequence) value;
 				break;
 			case "my-choice":
+			case "myChoice":
 				myChoice = (MyChoice) value;
 				break;
 			default:

@@ -45,7 +45,7 @@ public class EuiccMemoryResetRequest implements BerSequenceSet, Serializable {
 		this.resetOptions = resetOptions;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"resetOptions"
 	));
 	public List<String> getFields() {

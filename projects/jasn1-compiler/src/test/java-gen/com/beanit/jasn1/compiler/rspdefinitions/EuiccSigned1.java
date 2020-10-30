@@ -53,7 +53,7 @@ public class EuiccSigned1 implements BerSequenceSet, Serializable {
 		this.ctxParams1 = ctxParams1;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"serverAddress",
 		"serverChallenge",

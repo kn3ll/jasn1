@@ -245,7 +245,7 @@ public class PersonnelRecordzz implements BerSequenceSet, Serializable {
 		return children;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"name",
 		"title",
 		"number",

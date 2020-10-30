@@ -45,7 +45,7 @@ public class UICCApplicationParameters implements BerSequenceSet, Serializable {
 		this.uiccAdministrativeAccessApplicationSpecificParametersField = uiccAdministrativeAccessApplicationSpecificParametersField;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"uiccToolkitApplicationSpecificParametersField",
 		"uiccAccessApplicationSpecificParametersField",
 		"uiccAdministrativeAccessApplicationSpecificParametersField"

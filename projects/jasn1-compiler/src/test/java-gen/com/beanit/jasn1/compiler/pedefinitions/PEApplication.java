@@ -196,7 +196,7 @@ public class PEApplication implements BerSequenceSet, Serializable {
 		this.instanceList = instanceList;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"app-Header",
 		"loadBlock",
 		"instanceList"
@@ -207,6 +207,7 @@ public class PEApplication implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "app-Header":
+			case "appHeader":
 				return appHeader;
 			case "loadBlock":
 				return loadBlock;
@@ -219,6 +220,7 @@ public class PEApplication implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "app-Header":
+			case "appHeader":
 				return PEHeader.class;
 			case "loadBlock":
 				return ApplicationLoadPackage.class;
@@ -231,6 +233,7 @@ public class PEApplication implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "app-Header":
+			case "appHeader":
 				appHeader = (PEHeader) value;
 				break;
 			case "loadBlock":

@@ -53,7 +53,7 @@ public class RemoteProfileProvisioningRequest implements BerChoice, Serializable
 		this.handleNotification = handleNotification;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"initiateAuthenticationRequest",
 		"authenticateClientRequest",
 		"getBoundProfilePackageRequest",

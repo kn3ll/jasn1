@@ -41,7 +41,7 @@ public class PostalCode implements BerChoice, Serializable {
 		this.printableCode = printableCode;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"numeric-code",
 		"printable-code"
 	));
@@ -51,8 +51,10 @@ public class PostalCode implements BerChoice, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "numeric-code":
+			case "numericCode":
 				return numericCode;
 			case "printable-code":
+			case "printableCode":
 				return printableCode;
 			default:
 				return null;
@@ -61,8 +63,10 @@ public class PostalCode implements BerChoice, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "numeric-code":
+			case "numericCode":
 				return BerNumericString.class;
 			case "printable-code":
+			case "printableCode":
 				return BerPrintableString.class;
 			default:
 				return null;
@@ -71,9 +75,11 @@ public class PostalCode implements BerChoice, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "numeric-code":
+			case "numericCode":
 				numericCode = (BerNumericString) value;
 				break;
 			case "printable-code":
+			case "printableCode":
 				printableCode = (BerPrintableString) value;
 				break;
 			default:

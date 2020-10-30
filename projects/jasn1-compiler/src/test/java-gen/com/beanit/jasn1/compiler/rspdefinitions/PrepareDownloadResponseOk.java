@@ -47,7 +47,7 @@ public class PrepareDownloadResponseOk implements BerSequenceSet, Serializable {
 		this.euiccSignature2 = euiccSignature2;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"euiccSigned2",
 		"euiccSignature2"
 	));

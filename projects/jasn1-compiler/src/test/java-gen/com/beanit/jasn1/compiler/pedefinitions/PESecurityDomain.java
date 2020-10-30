@@ -349,7 +349,7 @@ public class PESecurityDomain implements BerSequenceSet, Serializable {
 			this.contactlessProtocolParameters = contactlessProtocolParameters;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"restrictParameter",
 			"contactlessProtocolParameters"
 		));
@@ -584,7 +584,7 @@ public class PESecurityDomain implements BerSequenceSet, Serializable {
 			this.catTpMaxPduSize = catTpMaxPduSize;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"catTpMaxSduSize",
 			"catTpMaxPduSize"
 		));
@@ -820,7 +820,7 @@ public class PESecurityDomain implements BerSequenceSet, Serializable {
 		this.catTpParameters = catTpParameters;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"sd-Header",
 		"instance",
 		"keyList",
@@ -834,6 +834,7 @@ public class PESecurityDomain implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "sd-Header":
+			case "sdHeader":
 				return sdHeader;
 			case "instance":
 				return instance;
@@ -852,6 +853,7 @@ public class PESecurityDomain implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "sd-Header":
+			case "sdHeader":
 				return PEHeader.class;
 			case "instance":
 				return ApplicationInstance.class;
@@ -870,6 +872,7 @@ public class PESecurityDomain implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "sd-Header":
+			case "sdHeader":
 				sdHeader = (PEHeader) value;
 				break;
 			case "instance":

@@ -47,7 +47,7 @@ public class SetNicknameRequest implements BerSequenceSet, Serializable {
 		this.profileNickname = profileNickname;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"iccid",
 		"profileNickname"
 	));

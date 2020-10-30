@@ -41,7 +41,7 @@ public class PhysicalDeliveryCountryName implements BerChoice, Serializable {
 		this.iso3166Alpha2Code = iso3166Alpha2Code;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"x121-dcc-code",
 		"iso-3166-alpha2-code"
 	));
@@ -51,8 +51,10 @@ public class PhysicalDeliveryCountryName implements BerChoice, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "x121-dcc-code":
+			case "x121DccCode":
 				return x121DccCode;
 			case "iso-3166-alpha2-code":
+			case "iso3166Alpha2Code":
 				return iso3166Alpha2Code;
 			default:
 				return null;
@@ -61,8 +63,10 @@ public class PhysicalDeliveryCountryName implements BerChoice, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "x121-dcc-code":
+			case "x121DccCode":
 				return BerNumericString.class;
 			case "iso-3166-alpha2-code":
+			case "iso3166Alpha2Code":
 				return BerPrintableString.class;
 			default:
 				return null;
@@ -71,9 +75,11 @@ public class PhysicalDeliveryCountryName implements BerChoice, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "x121-dcc-code":
+			case "x121DccCode":
 				x121DccCode = (BerNumericString) value;
 				break;
 			case "iso-3166-alpha2-code":
+			case "iso3166Alpha2Code":
 				iso3166Alpha2Code = (BerPrintableString) value;
 				break;
 			default:

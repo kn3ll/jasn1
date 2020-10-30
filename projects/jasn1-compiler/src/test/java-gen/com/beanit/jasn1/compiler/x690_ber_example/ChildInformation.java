@@ -54,7 +54,7 @@ public class ChildInformation implements BerSequenceSet, Serializable {
 		return dateOfBirth;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"name",
 		"dateOfBirth"
 	));

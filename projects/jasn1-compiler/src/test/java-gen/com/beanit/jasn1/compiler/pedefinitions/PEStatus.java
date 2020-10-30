@@ -47,7 +47,7 @@ public class PEStatus implements BerSequenceSet, Serializable {
 		this.offset = offset;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"status",
 		"identification",
 		"additional-information",
@@ -63,6 +63,7 @@ public class PEStatus implements BerSequenceSet, Serializable {
 			case "identification":
 				return identification;
 			case "additional-information":
+			case "additionalInformation":
 				return additionalInformation;
 			case "offset":
 				return offset;
@@ -77,6 +78,7 @@ public class PEStatus implements BerSequenceSet, Serializable {
 			case "identification":
 				return UInt15.class;
 			case "additional-information":
+			case "additionalInformation":
 				return UInt8.class;
 			case "offset":
 				return UInt31.class;
@@ -93,6 +95,7 @@ public class PEStatus implements BerSequenceSet, Serializable {
 				identification = (UInt15) value;
 				break;
 			case "additional-information":
+			case "additionalInformation":
 				additionalInformation = (UInt8) value;
 				break;
 			case "offset":

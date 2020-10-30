@@ -200,7 +200,7 @@ public class PolicyInformation implements BerSequenceSet, Serializable {
 		this.policyQualifiers = policyQualifiers;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"policyIdentifier",
 		"policyQualifiers"
 	));

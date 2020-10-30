@@ -47,7 +47,7 @@ public class AuthenticateResponseError implements BerSequenceSet, Serializable {
 		this.authenticateErrorCode = authenticateErrorCode;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"authenticateErrorCode"
 	));

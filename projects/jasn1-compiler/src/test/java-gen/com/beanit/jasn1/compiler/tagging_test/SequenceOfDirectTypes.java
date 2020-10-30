@@ -56,7 +56,7 @@ public class SequenceOfDirectTypes implements BerSequenceSet, Serializable {
 			return myBoolean;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"myInteger",
 			"myBoolean"
 		));
@@ -217,7 +217,7 @@ public class SequenceOfDirectTypes implements BerSequenceSet, Serializable {
 			return myBoolean;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"myInteger",
 			"myBoolean"
 		));
@@ -378,7 +378,7 @@ public class SequenceOfDirectTypes implements BerSequenceSet, Serializable {
 			return myBoolean;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"myInteger",
 			"myBoolean"
 		));
@@ -582,7 +582,7 @@ public class SequenceOfDirectTypes implements BerSequenceSet, Serializable {
 		return untaggedChoice2;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"untaggedInt",
 		"explicitlyTaggedInt",
 		"implicitlyTaggedInt",

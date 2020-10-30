@@ -196,7 +196,7 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 			this.myBoolean = myBoolean;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"myInteger",
 			"myBoolean"
 		));
@@ -377,7 +377,7 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 				this.myBoolean = myBoolean;
 			}
 
-			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 				"myInteger",
 				"myBoolean"
 			));
@@ -555,7 +555,7 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 				this.myBoolean = myBoolean;
 			}
 
-			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 				"myInteger",
 				"myBoolean"
 			));
@@ -945,7 +945,7 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 			this.myseqof = myseqof;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"myInteger",
 			"myChoice2",
 			"mySequence",
@@ -1204,7 +1204,7 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 			this.myBoolean = myBoolean;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"myInteger",
 			"myBoolean"
 		));
@@ -1446,7 +1446,7 @@ public class SequenceNameClashTest implements BerSequenceSet, Serializable {
 		this.sequenceNameClashTest = sequenceNameClashTest;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"myseqof",
 		"untaggedInteger",
 		"myChoice",

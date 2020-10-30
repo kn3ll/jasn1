@@ -53,7 +53,7 @@ public class InitiateAuthenticationOkEs9 implements BerSequenceSet, Serializable
 		this.serverCertificate = serverCertificate;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"serverSigned1",
 		"serverSignature1",

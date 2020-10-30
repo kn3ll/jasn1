@@ -194,7 +194,7 @@ public class Attribute implements BerSequenceSet, Serializable {
 		this.values = values;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"type",
 		"values"
 	));

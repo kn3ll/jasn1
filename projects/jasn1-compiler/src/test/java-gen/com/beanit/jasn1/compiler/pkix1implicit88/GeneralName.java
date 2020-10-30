@@ -61,7 +61,7 @@ public class GeneralName implements BerChoice, Serializable {
 		this.registeredID = registeredID;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"otherName",
 		"rfc822Name",
 		"dNSName",

@@ -43,7 +43,7 @@ public class BuiltInDomainDefinedAttribute implements BerSequenceSet, Serializab
 		this.value = value;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"type",
 		"value"
 	));

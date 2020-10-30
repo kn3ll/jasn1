@@ -43,7 +43,7 @@ public class CtxParams1 implements BerChoice, Serializable {
 		this.ctxParamsForCommonAuthentication = ctxParamsForCommonAuthentication;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"ctxParamsForCommonAuthentication"
 	));
 	public List<String> getFields() {

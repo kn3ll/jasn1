@@ -47,7 +47,7 @@ public class PersonalName implements BerSequenceSet, Serializable {
 		this.generationQualifier = generationQualifier;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"surname",
 		"given-name",
 		"initials",
@@ -61,10 +61,12 @@ public class PersonalName implements BerSequenceSet, Serializable {
 			case "surname":
 				return surname;
 			case "given-name":
+			case "givenName":
 				return givenName;
 			case "initials":
 				return initials;
 			case "generation-qualifier":
+			case "generationQualifier":
 				return generationQualifier;
 			default:
 				return null;
@@ -75,10 +77,12 @@ public class PersonalName implements BerSequenceSet, Serializable {
 			case "surname":
 				return BerPrintableString.class;
 			case "given-name":
+			case "givenName":
 				return BerPrintableString.class;
 			case "initials":
 				return BerPrintableString.class;
 			case "generation-qualifier":
+			case "generationQualifier":
 				return BerPrintableString.class;
 			default:
 				return null;
@@ -90,12 +94,14 @@ public class PersonalName implements BerSequenceSet, Serializable {
 				surname = (BerPrintableString) value;
 				break;
 			case "given-name":
+			case "givenName":
 				givenName = (BerPrintableString) value;
 				break;
 			case "initials":
 				initials = (BerPrintableString) value;
 				break;
 			case "generation-qualifier":
+			case "generationQualifier":
 				generationQualifier = (BerPrintableString) value;
 				break;
 			default:

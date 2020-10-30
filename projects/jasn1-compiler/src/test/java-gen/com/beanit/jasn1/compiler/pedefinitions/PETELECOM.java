@@ -119,7 +119,7 @@ public class PETELECOM implements BerSequenceSet, Serializable {
 		this.efMmssmode = efMmssmode;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"telecom-header",
 		"templateID",
 		"df-telecom",
@@ -167,84 +167,123 @@ public class PETELECOM implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "telecom-header":
+			case "telecomHeader":
 				return telecomHeader;
 			case "templateID":
 				return templateID;
 			case "df-telecom":
+			case "dfTelecom":
 				return dfTelecom;
 			case "ef-arr":
+			case "efArr":
 				return efArr;
 			case "ef-rma":
+			case "efRma":
 				return efRma;
 			case "ef-sume":
+			case "efSume":
 				return efSume;
 			case "ef-ice-dn":
+			case "efIceDn":
 				return efIceDn;
 			case "ef-ice-ff":
+			case "efIceFf":
 				return efIceFf;
 			case "ef-psismsc":
+			case "efPsismsc":
 				return efPsismsc;
 			case "df-graphics":
+			case "dfGraphics":
 				return dfGraphics;
 			case "ef-img":
+			case "efImg":
 				return efImg;
 			case "ef-iidf":
+			case "efIidf":
 				return efIidf;
 			case "ef-ice-graphics":
+			case "efIceGraphics":
 				return efIceGraphics;
 			case "ef-launch-scws":
+			case "efLaunchScws":
 				return efLaunchScws;
 			case "ef-icon":
+			case "efIcon":
 				return efIcon;
 			case "df-phonebook":
+			case "dfPhonebook":
 				return dfPhonebook;
 			case "ef-pbr":
+			case "efPbr":
 				return efPbr;
 			case "ef-ext1":
+			case "efExt1":
 				return efExt1;
 			case "ef-aas":
+			case "efAas":
 				return efAas;
 			case "ef-gas":
+			case "efGas":
 				return efGas;
 			case "ef-psc":
+			case "efPsc":
 				return efPsc;
 			case "ef-cc":
+			case "efCc":
 				return efCc;
 			case "ef-puid":
+			case "efPuid":
 				return efPuid;
 			case "ef-iap":
+			case "efIap":
 				return efIap;
 			case "ef-adn":
+			case "efAdn":
 				return efAdn;
 			case "ef-pbc":
+			case "efPbc":
 				return efPbc;
 			case "ef-anr":
+			case "efAnr":
 				return efAnr;
 			case "ef-puri":
+			case "efPuri":
 				return efPuri;
 			case "ef-email":
+			case "efEmail":
 				return efEmail;
 			case "ef-sne":
+			case "efSne":
 				return efSne;
 			case "ef-uid":
+			case "efUid":
 				return efUid;
 			case "ef-grp":
+			case "efGrp":
 				return efGrp;
 			case "ef-ccp1":
+			case "efCcp1":
 				return efCcp1;
 			case "df-multimedia":
+			case "dfMultimedia":
 				return dfMultimedia;
 			case "ef-mml":
+			case "efMml":
 				return efMml;
 			case "ef-mmdf":
+			case "efMmdf":
 				return efMmdf;
 			case "df-mmss":
+			case "dfMmss":
 				return dfMmss;
 			case "ef-mlpl":
+			case "efMlpl":
 				return efMlpl;
 			case "ef-mspl":
+			case "efMspl":
 				return efMspl;
 			case "ef-mmssmode":
+			case "efMmssmode":
 				return efMmssmode;
 			default:
 				return null;
@@ -253,84 +292,123 @@ public class PETELECOM implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "telecom-header":
+			case "telecomHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "df-telecom":
+			case "dfTelecom":
 				return File.class;
 			case "ef-arr":
+			case "efArr":
 				return File.class;
 			case "ef-rma":
+			case "efRma":
 				return File.class;
 			case "ef-sume":
+			case "efSume":
 				return File.class;
 			case "ef-ice-dn":
+			case "efIceDn":
 				return File.class;
 			case "ef-ice-ff":
+			case "efIceFf":
 				return File.class;
 			case "ef-psismsc":
+			case "efPsismsc":
 				return File.class;
 			case "df-graphics":
+			case "dfGraphics":
 				return File.class;
 			case "ef-img":
+			case "efImg":
 				return File.class;
 			case "ef-iidf":
+			case "efIidf":
 				return File.class;
 			case "ef-ice-graphics":
+			case "efIceGraphics":
 				return File.class;
 			case "ef-launch-scws":
+			case "efLaunchScws":
 				return File.class;
 			case "ef-icon":
+			case "efIcon":
 				return File.class;
 			case "df-phonebook":
+			case "dfPhonebook":
 				return File.class;
 			case "ef-pbr":
+			case "efPbr":
 				return File.class;
 			case "ef-ext1":
+			case "efExt1":
 				return File.class;
 			case "ef-aas":
+			case "efAas":
 				return File.class;
 			case "ef-gas":
+			case "efGas":
 				return File.class;
 			case "ef-psc":
+			case "efPsc":
 				return File.class;
 			case "ef-cc":
+			case "efCc":
 				return File.class;
 			case "ef-puid":
+			case "efPuid":
 				return File.class;
 			case "ef-iap":
+			case "efIap":
 				return File.class;
 			case "ef-adn":
+			case "efAdn":
 				return File.class;
 			case "ef-pbc":
+			case "efPbc":
 				return File.class;
 			case "ef-anr":
+			case "efAnr":
 				return File.class;
 			case "ef-puri":
+			case "efPuri":
 				return File.class;
 			case "ef-email":
+			case "efEmail":
 				return File.class;
 			case "ef-sne":
+			case "efSne":
 				return File.class;
 			case "ef-uid":
+			case "efUid":
 				return File.class;
 			case "ef-grp":
+			case "efGrp":
 				return File.class;
 			case "ef-ccp1":
+			case "efCcp1":
 				return File.class;
 			case "df-multimedia":
+			case "dfMultimedia":
 				return File.class;
 			case "ef-mml":
+			case "efMml":
 				return File.class;
 			case "ef-mmdf":
+			case "efMmdf":
 				return File.class;
 			case "df-mmss":
+			case "dfMmss":
 				return File.class;
 			case "ef-mlpl":
+			case "efMlpl":
 				return File.class;
 			case "ef-mspl":
+			case "efMspl":
 				return File.class;
 			case "ef-mmssmode":
+			case "efMmssmode":
 				return File.class;
 			default:
 				return null;
@@ -339,123 +417,162 @@ public class PETELECOM implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "telecom-header":
+			case "telecomHeader":
 				telecomHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "df-telecom":
+			case "dfTelecom":
 				dfTelecom = (File) value;
 				break;
 			case "ef-arr":
+			case "efArr":
 				efArr = (File) value;
 				break;
 			case "ef-rma":
+			case "efRma":
 				efRma = (File) value;
 				break;
 			case "ef-sume":
+			case "efSume":
 				efSume = (File) value;
 				break;
 			case "ef-ice-dn":
+			case "efIceDn":
 				efIceDn = (File) value;
 				break;
 			case "ef-ice-ff":
+			case "efIceFf":
 				efIceFf = (File) value;
 				break;
 			case "ef-psismsc":
+			case "efPsismsc":
 				efPsismsc = (File) value;
 				break;
 			case "df-graphics":
+			case "dfGraphics":
 				dfGraphics = (File) value;
 				break;
 			case "ef-img":
+			case "efImg":
 				efImg = (File) value;
 				break;
 			case "ef-iidf":
+			case "efIidf":
 				efIidf = (File) value;
 				break;
 			case "ef-ice-graphics":
+			case "efIceGraphics":
 				efIceGraphics = (File) value;
 				break;
 			case "ef-launch-scws":
+			case "efLaunchScws":
 				efLaunchScws = (File) value;
 				break;
 			case "ef-icon":
+			case "efIcon":
 				efIcon = (File) value;
 				break;
 			case "df-phonebook":
+			case "dfPhonebook":
 				dfPhonebook = (File) value;
 				break;
 			case "ef-pbr":
+			case "efPbr":
 				efPbr = (File) value;
 				break;
 			case "ef-ext1":
+			case "efExt1":
 				efExt1 = (File) value;
 				break;
 			case "ef-aas":
+			case "efAas":
 				efAas = (File) value;
 				break;
 			case "ef-gas":
+			case "efGas":
 				efGas = (File) value;
 				break;
 			case "ef-psc":
+			case "efPsc":
 				efPsc = (File) value;
 				break;
 			case "ef-cc":
+			case "efCc":
 				efCc = (File) value;
 				break;
 			case "ef-puid":
+			case "efPuid":
 				efPuid = (File) value;
 				break;
 			case "ef-iap":
+			case "efIap":
 				efIap = (File) value;
 				break;
 			case "ef-adn":
+			case "efAdn":
 				efAdn = (File) value;
 				break;
 			case "ef-pbc":
+			case "efPbc":
 				efPbc = (File) value;
 				break;
 			case "ef-anr":
+			case "efAnr":
 				efAnr = (File) value;
 				break;
 			case "ef-puri":
+			case "efPuri":
 				efPuri = (File) value;
 				break;
 			case "ef-email":
+			case "efEmail":
 				efEmail = (File) value;
 				break;
 			case "ef-sne":
+			case "efSne":
 				efSne = (File) value;
 				break;
 			case "ef-uid":
+			case "efUid":
 				efUid = (File) value;
 				break;
 			case "ef-grp":
+			case "efGrp":
 				efGrp = (File) value;
 				break;
 			case "ef-ccp1":
+			case "efCcp1":
 				efCcp1 = (File) value;
 				break;
 			case "df-multimedia":
+			case "dfMultimedia":
 				dfMultimedia = (File) value;
 				break;
 			case "ef-mml":
+			case "efMml":
 				efMml = (File) value;
 				break;
 			case "ef-mmdf":
+			case "efMmdf":
 				efMmdf = (File) value;
 				break;
 			case "df-mmss":
+			case "dfMmss":
 				dfMmss = (File) value;
 				break;
 			case "ef-mlpl":
+			case "efMlpl":
 				efMlpl = (File) value;
 				break;
 			case "ef-mspl":
+			case "efMspl":
 				efMspl = (File) value;
 				break;
 			case "ef-mmssmode":
+			case "efMmssmode":
 				efMmssmode = (File) value;
 				break;
 			default:

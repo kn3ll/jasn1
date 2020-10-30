@@ -41,7 +41,7 @@ public class PEEnd implements BerSequenceSet, Serializable {
 		this.endHeader = endHeader;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"end-header"
 	));
 	public List<String> getFields() {
@@ -50,6 +50,7 @@ public class PEEnd implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "end-header":
+			case "endHeader":
 				return endHeader;
 			default:
 				return null;
@@ -58,6 +59,7 @@ public class PEEnd implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "end-header":
+			case "endHeader":
 				return PEHeader.class;
 			default:
 				return null;
@@ -66,6 +68,7 @@ public class PEEnd implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "end-header":
+			case "endHeader":
 				endHeader = (PEHeader) value;
 				break;
 			default:

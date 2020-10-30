@@ -41,7 +41,7 @@ public class Time implements BerChoice, Serializable {
 		this.generalTime = generalTime;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"utcTime",
 		"generalTime"
 	));

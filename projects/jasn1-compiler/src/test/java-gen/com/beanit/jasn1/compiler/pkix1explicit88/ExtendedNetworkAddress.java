@@ -48,7 +48,7 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 			this.subAddress = subAddress;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"number",
 			"sub-address"
 		));
@@ -60,6 +60,7 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 				case "number":
 					return number;
 				case "sub-address":
+				case "subAddress":
 					return subAddress;
 				default:
 					return null;
@@ -70,6 +71,7 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 				case "number":
 					return BerNumericString.class;
 				case "sub-address":
+				case "subAddress":
 					return BerNumericString.class;
 				default:
 					return null;
@@ -81,6 +83,7 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 					number = (BerNumericString) value;
 					break;
 				case "sub-address":
+				case "subAddress":
 					subAddress = (BerNumericString) value;
 					break;
 				default:
@@ -275,7 +278,7 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 		this.psapAddress = psapAddress;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"e163-4-address",
 		"psap-address"
 	));
@@ -285,8 +288,10 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "e163-4-address":
+			case "e1634Address":
 				return e1634Address;
 			case "psap-address":
+			case "psapAddress":
 				return psapAddress;
 			default:
 				return null;
@@ -295,8 +300,10 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "e163-4-address":
+			case "e1634Address":
 				return E1634Address.class;
 			case "psap-address":
+			case "psapAddress":
 				return PresentationAddress.class;
 			default:
 				return null;
@@ -305,9 +312,11 @@ public class ExtendedNetworkAddress implements BerChoice, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "e163-4-address":
+			case "e1634Address":
 				e1634Address = (E1634Address) value;
 				break;
 			case "psap-address":
+			case "psapAddress":
 				psapAddress = (PresentationAddress) value;
 				break;
 			default:

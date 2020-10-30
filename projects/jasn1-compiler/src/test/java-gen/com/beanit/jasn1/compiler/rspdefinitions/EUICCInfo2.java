@@ -375,7 +375,7 @@ public class EUICCInfo2 implements BerSequenceSet, Serializable {
 		this.certificationDataObject = certificationDataObject;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"profileVersion",
 		"svn",
 		"euiccFirmwareVer",

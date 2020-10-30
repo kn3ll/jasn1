@@ -210,7 +210,7 @@ public class ApplicationInstance implements BerSequenceSet, Serializable {
 		this.processData = processData;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"applicationLoadPackageAID",
 		"classAID",
 		"instanceAID",

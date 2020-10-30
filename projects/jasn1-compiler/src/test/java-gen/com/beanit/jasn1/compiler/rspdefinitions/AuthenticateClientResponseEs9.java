@@ -47,7 +47,7 @@ public class AuthenticateClientResponseEs9 implements BerChoice, Serializable {
 		this.authenticateClientError = authenticateClientError;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"authenticateClientOk",
 		"authenticateClientError"
 	));

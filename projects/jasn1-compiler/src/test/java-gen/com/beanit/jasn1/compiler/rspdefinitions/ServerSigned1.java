@@ -51,7 +51,7 @@ public class ServerSigned1 implements BerSequenceSet, Serializable {
 		this.serverChallenge = serverChallenge;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"euiccChallenge",
 		"serverAddress",

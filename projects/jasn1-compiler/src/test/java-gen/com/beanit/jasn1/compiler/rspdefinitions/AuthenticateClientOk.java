@@ -53,7 +53,7 @@ public class AuthenticateClientOk implements BerSequenceSet, Serializable {
 		this.smdpCertificate = smdpCertificate;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"profileMetaData",
 		"smdpSigned2",

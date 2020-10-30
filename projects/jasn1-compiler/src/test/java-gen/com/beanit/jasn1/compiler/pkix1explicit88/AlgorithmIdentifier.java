@@ -43,7 +43,7 @@ public class AlgorithmIdentifier implements BerSequenceSet, Serializable {
 		this.parameters = parameters;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"algorithm",
 		"parameters"
 	));

@@ -45,7 +45,7 @@ public class NotificationSentRequest implements BerSequenceSet, Serializable {
 		this.seqNumber = seqNumber;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"seqNumber"
 	));
 	public List<String> getFields() {

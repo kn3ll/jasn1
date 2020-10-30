@@ -41,7 +41,7 @@ public class MySequence implements BerSequenceSet, Serializable {
 		this.implVisibleString = implVisibleString;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"implVisibleString"
 	));
 	public List<String> getFields() {

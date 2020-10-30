@@ -49,7 +49,7 @@ public class SmdpSigned2 implements BerSequenceSet, Serializable {
 		this.bppEuiccOtpk = bppEuiccOtpk;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"transactionId",
 		"ccRequiredFlag",
 		"bppEuiccOtpk"

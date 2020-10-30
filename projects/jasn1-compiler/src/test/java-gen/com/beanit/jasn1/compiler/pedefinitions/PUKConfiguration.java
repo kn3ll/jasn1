@@ -45,7 +45,7 @@ public class PUKConfiguration implements BerSequenceSet, Serializable {
 		this.maxNumOfAttempsRetryNumLeft = maxNumOfAttempsRetryNumLeft;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"keyReference",
 		"pukValue",
 		"maxNumOfAttemps-retryNumLeft"
@@ -60,6 +60,7 @@ public class PUKConfiguration implements BerSequenceSet, Serializable {
 			case "pukValue":
 				return pukValue;
 			case "maxNumOfAttemps-retryNumLeft":
+			case "maxNumOfAttempsRetryNumLeft":
 				return maxNumOfAttempsRetryNumLeft;
 			default:
 				return null;
@@ -72,6 +73,7 @@ public class PUKConfiguration implements BerSequenceSet, Serializable {
 			case "pukValue":
 				return BerOctetString.class;
 			case "maxNumOfAttemps-retryNumLeft":
+			case "maxNumOfAttempsRetryNumLeft":
 				return UInt8.class;
 			default:
 				return null;
@@ -86,6 +88,7 @@ public class PUKConfiguration implements BerSequenceSet, Serializable {
 				pukValue = (BerOctetString) value;
 				break;
 			case "maxNumOfAttemps-retryNumLeft":
+			case "maxNumOfAttempsRetryNumLeft":
 				maxNumOfAttempsRetryNumLeft = (UInt8) value;
 				break;
 			default:

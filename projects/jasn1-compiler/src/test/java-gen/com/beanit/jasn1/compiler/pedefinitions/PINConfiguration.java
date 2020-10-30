@@ -49,7 +49,7 @@ public class PINConfiguration implements BerSequenceSet, Serializable {
 		this.maxNumOfAttempsRetryNumLeft = maxNumOfAttempsRetryNumLeft;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"keyReference",
 		"pinValue",
 		"unblockingPINReference",
@@ -70,6 +70,7 @@ public class PINConfiguration implements BerSequenceSet, Serializable {
 			case "pinAttributes":
 				return pinAttributes;
 			case "maxNumOfAttemps-retryNumLeft":
+			case "maxNumOfAttempsRetryNumLeft":
 				return maxNumOfAttempsRetryNumLeft;
 			default:
 				return null;
@@ -86,6 +87,7 @@ public class PINConfiguration implements BerSequenceSet, Serializable {
 			case "pinAttributes":
 				return UInt8.class;
 			case "maxNumOfAttemps-retryNumLeft":
+			case "maxNumOfAttempsRetryNumLeft":
 				return UInt8.class;
 			default:
 				return null;
@@ -106,6 +108,7 @@ public class PINConfiguration implements BerSequenceSet, Serializable {
 				pinAttributes = (UInt8) value;
 				break;
 			case "maxNumOfAttemps-retryNumLeft":
+			case "maxNumOfAttempsRetryNumLeft":
 				maxNumOfAttempsRetryNumLeft = (UInt8) value;
 				break;
 			default:

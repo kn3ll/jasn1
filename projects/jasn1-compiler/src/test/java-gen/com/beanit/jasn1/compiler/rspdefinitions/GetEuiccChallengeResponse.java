@@ -45,7 +45,7 @@ public class GetEuiccChallengeResponse implements BerSequenceSet, Serializable {
 		this.euiccChallenge = euiccChallenge;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"euiccChallenge"
 	));
 	public List<String> getFields() {

@@ -57,7 +57,7 @@ public class ChoiceOfDirectTypes implements BerChoice, Serializable {
 			return myBoolean;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"myInteger",
 			"myBoolean"
 		));
@@ -218,7 +218,7 @@ public class ChoiceOfDirectTypes implements BerChoice, Serializable {
 			return myBoolean;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"myInteger",
 			"myBoolean"
 		));
@@ -379,7 +379,7 @@ public class ChoiceOfDirectTypes implements BerChoice, Serializable {
 			return myBoolean;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"myInteger",
 			"myBoolean"
 		));
@@ -580,7 +580,7 @@ public class ChoiceOfDirectTypes implements BerChoice, Serializable {
 		return untaggedChoice2;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"untaggedInt",
 		"explicitlyTaggedInt",
 		"implicitlyTaggedInt",

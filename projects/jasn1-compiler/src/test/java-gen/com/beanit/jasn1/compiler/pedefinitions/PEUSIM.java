@@ -91,7 +91,7 @@ public class PEUSIM implements BerSequenceSet, Serializable {
 		this.efEpsnsc = efEpsnsc;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"usim-header",
 		"templateID",
 		"adf-usim",
@@ -125,56 +125,81 @@ public class PEUSIM implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "usim-header":
+			case "usimHeader":
 				return usimHeader;
 			case "templateID":
 				return templateID;
 			case "adf-usim":
+			case "adfUsim":
 				return adfUsim;
 			case "ef-imsi":
+			case "efImsi":
 				return efImsi;
 			case "ef-arr":
+			case "efArr":
 				return efArr;
 			case "ef-keys":
+			case "efKeys":
 				return efKeys;
 			case "ef-keysPS":
+			case "efKeysPS":
 				return efKeysPS;
 			case "ef-hpplmn":
+			case "efHpplmn":
 				return efHpplmn;
 			case "ef-ust":
+			case "efUst":
 				return efUst;
 			case "ef-fdn":
+			case "efFdn":
 				return efFdn;
 			case "ef-sms":
+			case "efSms":
 				return efSms;
 			case "ef-smsp":
+			case "efSmsp":
 				return efSmsp;
 			case "ef-smss":
+			case "efSmss":
 				return efSmss;
 			case "ef-spn":
+			case "efSpn":
 				return efSpn;
 			case "ef-est":
+			case "efEst":
 				return efEst;
 			case "ef-start-hfn":
+			case "efStartHfn":
 				return efStartHfn;
 			case "ef-threshold":
+			case "efThreshold":
 				return efThreshold;
 			case "ef-psloci":
+			case "efPsloci":
 				return efPsloci;
 			case "ef-acc":
+			case "efAcc":
 				return efAcc;
 			case "ef-fplmn":
+			case "efFplmn":
 				return efFplmn;
 			case "ef-loci":
+			case "efLoci":
 				return efLoci;
 			case "ef-ad":
+			case "efAd":
 				return efAd;
 			case "ef-ecc":
+			case "efEcc":
 				return efEcc;
 			case "ef-netpar":
+			case "efNetpar":
 				return efNetpar;
 			case "ef-epsloci":
+			case "efEpsloci":
 				return efEpsloci;
 			case "ef-epsnsc":
+			case "efEpsnsc":
 				return efEpsnsc;
 			default:
 				return null;
@@ -183,56 +208,81 @@ public class PEUSIM implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "usim-header":
+			case "usimHeader":
 				return PEHeader.class;
 			case "templateID":
 				return BerObjectIdentifier.class;
 			case "adf-usim":
+			case "adfUsim":
 				return File.class;
 			case "ef-imsi":
+			case "efImsi":
 				return File.class;
 			case "ef-arr":
+			case "efArr":
 				return File.class;
 			case "ef-keys":
+			case "efKeys":
 				return File.class;
 			case "ef-keysPS":
+			case "efKeysPS":
 				return File.class;
 			case "ef-hpplmn":
+			case "efHpplmn":
 				return File.class;
 			case "ef-ust":
+			case "efUst":
 				return File.class;
 			case "ef-fdn":
+			case "efFdn":
 				return File.class;
 			case "ef-sms":
+			case "efSms":
 				return File.class;
 			case "ef-smsp":
+			case "efSmsp":
 				return File.class;
 			case "ef-smss":
+			case "efSmss":
 				return File.class;
 			case "ef-spn":
+			case "efSpn":
 				return File.class;
 			case "ef-est":
+			case "efEst":
 				return File.class;
 			case "ef-start-hfn":
+			case "efStartHfn":
 				return File.class;
 			case "ef-threshold":
+			case "efThreshold":
 				return File.class;
 			case "ef-psloci":
+			case "efPsloci":
 				return File.class;
 			case "ef-acc":
+			case "efAcc":
 				return File.class;
 			case "ef-fplmn":
+			case "efFplmn":
 				return File.class;
 			case "ef-loci":
+			case "efLoci":
 				return File.class;
 			case "ef-ad":
+			case "efAd":
 				return File.class;
 			case "ef-ecc":
+			case "efEcc":
 				return File.class;
 			case "ef-netpar":
+			case "efNetpar":
 				return File.class;
 			case "ef-epsloci":
+			case "efEpsloci":
 				return File.class;
 			case "ef-epsnsc":
+			case "efEpsnsc":
 				return File.class;
 			default:
 				return null;
@@ -241,81 +291,106 @@ public class PEUSIM implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "usim-header":
+			case "usimHeader":
 				usimHeader = (PEHeader) value;
 				break;
 			case "templateID":
 				templateID = (BerObjectIdentifier) value;
 				break;
 			case "adf-usim":
+			case "adfUsim":
 				adfUsim = (File) value;
 				break;
 			case "ef-imsi":
+			case "efImsi":
 				efImsi = (File) value;
 				break;
 			case "ef-arr":
+			case "efArr":
 				efArr = (File) value;
 				break;
 			case "ef-keys":
+			case "efKeys":
 				efKeys = (File) value;
 				break;
 			case "ef-keysPS":
+			case "efKeysPS":
 				efKeysPS = (File) value;
 				break;
 			case "ef-hpplmn":
+			case "efHpplmn":
 				efHpplmn = (File) value;
 				break;
 			case "ef-ust":
+			case "efUst":
 				efUst = (File) value;
 				break;
 			case "ef-fdn":
+			case "efFdn":
 				efFdn = (File) value;
 				break;
 			case "ef-sms":
+			case "efSms":
 				efSms = (File) value;
 				break;
 			case "ef-smsp":
+			case "efSmsp":
 				efSmsp = (File) value;
 				break;
 			case "ef-smss":
+			case "efSmss":
 				efSmss = (File) value;
 				break;
 			case "ef-spn":
+			case "efSpn":
 				efSpn = (File) value;
 				break;
 			case "ef-est":
+			case "efEst":
 				efEst = (File) value;
 				break;
 			case "ef-start-hfn":
+			case "efStartHfn":
 				efStartHfn = (File) value;
 				break;
 			case "ef-threshold":
+			case "efThreshold":
 				efThreshold = (File) value;
 				break;
 			case "ef-psloci":
+			case "efPsloci":
 				efPsloci = (File) value;
 				break;
 			case "ef-acc":
+			case "efAcc":
 				efAcc = (File) value;
 				break;
 			case "ef-fplmn":
+			case "efFplmn":
 				efFplmn = (File) value;
 				break;
 			case "ef-loci":
+			case "efLoci":
 				efLoci = (File) value;
 				break;
 			case "ef-ad":
+			case "efAd":
 				efAd = (File) value;
 				break;
 			case "ef-ecc":
+			case "efEcc":
 				efEcc = (File) value;
 				break;
 			case "ef-netpar":
+			case "efNetpar":
 				efNetpar = (File) value;
 				break;
 			case "ef-epsloci":
+			case "efEpsloci":
 				efEpsloci = (File) value;
 				break;
 			case "ef-epsnsc":
+			case "efEpsnsc":
 				efEpsnsc = (File) value;
 				break;
 			default:

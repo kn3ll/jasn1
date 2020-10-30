@@ -49,7 +49,7 @@ public class RetrieveNotificationsListRequest implements BerSequenceSet, Seriali
 			this.profileManagementOperation = profileManagementOperation;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"seqNumber",
 			"profileManagementOperation"
 		));
@@ -195,7 +195,7 @@ public class RetrieveNotificationsListRequest implements BerSequenceSet, Seriali
 		this.searchCriteria = searchCriteria;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"searchCriteria"
 	));
 	public List<String> getFields() {

@@ -45,7 +45,7 @@ public class ORAddress implements BerSequenceSet, Serializable {
 		this.extensionAttributes = extensionAttributes;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"built-in-standard-attributes",
 		"built-in-domain-defined-attributes",
 		"extension-attributes"
@@ -56,10 +56,13 @@ public class ORAddress implements BerSequenceSet, Serializable {
 	public BerType getField(String fieldName) {
 		switch(fieldName) {
 			case "built-in-standard-attributes":
+			case "builtInStandardAttributes":
 				return builtInStandardAttributes;
 			case "built-in-domain-defined-attributes":
+			case "builtInDomainDefinedAttributes":
 				return builtInDomainDefinedAttributes;
 			case "extension-attributes":
+			case "extensionAttributes":
 				return extensionAttributes;
 			default:
 				return null;
@@ -68,10 +71,13 @@ public class ORAddress implements BerSequenceSet, Serializable {
 	public Class<? extends BerType> getFieldClass(String fieldName) {
 		switch(fieldName) {
 			case "built-in-standard-attributes":
+			case "builtInStandardAttributes":
 				return BuiltInStandardAttributes.class;
 			case "built-in-domain-defined-attributes":
+			case "builtInDomainDefinedAttributes":
 				return BuiltInDomainDefinedAttributes.class;
 			case "extension-attributes":
+			case "extensionAttributes":
 				return ExtensionAttributes.class;
 			default:
 				return null;
@@ -80,12 +86,15 @@ public class ORAddress implements BerSequenceSet, Serializable {
 	public void setField(String fieldName, BerType value) {
 		switch(fieldName) {
 			case "built-in-standard-attributes":
+			case "builtInStandardAttributes":
 				builtInStandardAttributes = (BuiltInStandardAttributes) value;
 				break;
 			case "built-in-domain-defined-attributes":
+			case "builtInDomainDefinedAttributes":
 				builtInDomainDefinedAttributes = (BuiltInDomainDefinedAttributes) value;
 				break;
 			case "extension-attributes":
+			case "extensionAttributes":
 				extensionAttributes = (ExtensionAttributes) value;
 				break;
 			default:

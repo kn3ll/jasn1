@@ -59,7 +59,7 @@ public class TBSCertificate implements BerSequenceSet, Serializable {
 		this.extensions = extensions;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"version",
 		"serialNumber",
 		"signature",

@@ -51,7 +51,7 @@ public class DistributionPoint implements BerSequenceSet, Serializable {
 		this.cRLIssuer = cRLIssuer;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"distributionPoint",
 		"reasons",
 		"cRLIssuer"

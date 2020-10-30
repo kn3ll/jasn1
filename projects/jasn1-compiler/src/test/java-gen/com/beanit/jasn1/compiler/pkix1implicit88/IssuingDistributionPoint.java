@@ -57,7 +57,7 @@ public class IssuingDistributionPoint implements BerSequenceSet, Serializable {
 		this.onlyContainsAttributeCerts = onlyContainsAttributeCerts;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"distributionPoint",
 		"onlyContainsUserCerts",
 		"onlyContainsCACerts",

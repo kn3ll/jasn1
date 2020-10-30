@@ -47,7 +47,7 @@ public class EventEntries implements BerSequenceSet, Serializable {
 		this.rspServerAddress = rspServerAddress;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"eventId",
 		"rspServerAddress"
 	));

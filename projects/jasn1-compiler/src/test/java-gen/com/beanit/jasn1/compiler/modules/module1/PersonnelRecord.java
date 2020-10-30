@@ -204,7 +204,7 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 			return employeeNumberZ;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"employeeNumber-z"
 		));
 		public List<String> getFields() {
@@ -213,6 +213,7 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 		public BerType getField(String fieldName) {
 			switch(fieldName) {
 				case "employeeNumber-z":
+				case "employeeNumberZ":
 					return employeeNumberZ;
 				default:
 					return null;
@@ -221,6 +222,7 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 		public Class<? extends BerType> getFieldClass(String fieldName) {
 			switch(fieldName) {
 				case "employeeNumber-z":
+				case "employeeNumberZ":
 					return com.beanit.jasn1.compiler.modules.module2.EmployeeNumberZ.class;
 				default:
 					return null;
@@ -229,6 +231,7 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 		public void setField(String fieldName, BerType value) {
 			switch(fieldName) {
 				case "employeeNumber-z":
+				case "employeeNumberZ":
 					employeeNumberZ = (com.beanit.jasn1.compiler.modules.module2.EmployeeNumberZ) value;
 					break;
 				default:
@@ -341,7 +344,7 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 				return test2;
 			}
 
-			private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+			private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 				"test1",
 				"test2"
 			));
@@ -868,7 +871,7 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 		return embeddedPdv;
 	}
 
-	private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+	private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 		"name",
 		"title",
 		"number",
@@ -920,8 +923,10 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 			case "test6":
 				return test6;
 			case "employeeNumber-z":
+			case "employeeNumberZ":
 				return employeeNumberZ;
 			case "code":
+			case "code_":
 				return code_;
 			case "testSequenceOf":
 				return testSequenceOf;
@@ -962,8 +967,10 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 			case "test6":
 				return TestChoice.class;
 			case "employeeNumber-z":
+			case "employeeNumberZ":
 				return EmployeeNumberZ.class;
 			case "code":
+			case "code_":
 				return BerVisibleString.class;
 			case "testSequenceOf":
 				return TestSequenceOf.class;
@@ -1017,9 +1024,11 @@ public class PersonnelRecord implements BerSequenceSet, Serializable {
 				test6 = (TestChoice) value;
 				break;
 			case "employeeNumber-z":
+			case "employeeNumberZ":
 				employeeNumberZ = (EmployeeNumberZ) value;
 				break;
 			case "code":
+			case "code_":
 				code_ = (BerVisibleString) value;
 				break;
 			case "testSequenceOf":

@@ -53,7 +53,7 @@ public class PolicyMappings implements BerSequenceOf, Serializable {
 			this.subjectDomainPolicy = subjectDomainPolicy;
 		}
 
-		private final List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
+		private final transient List<String> FIELDS = Collections.unmodifiableList(Arrays.asList(
 			"issuerDomainPolicy",
 			"subjectDomainPolicy"
 		));
