@@ -1,6 +1,6 @@
 project.ext {
 
-    cfgVersion = "1.11.2.m2"
+    cfgVersion = "1.11.2.2"
 
     cfgGroup = "com.beanit"
 
